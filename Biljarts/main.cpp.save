@@ -4,8 +4,7 @@
 
 using namespace std;
 
-void PrintVector (const vector<int>& v){
-  //vector<int> v;
+void PrintVector (const vector<double>& v){
   for (int i=0; i<v.size();i++){
     cout << v[i] << endl;
   }
@@ -13,7 +12,10 @@ void PrintVector (const vector<int>& v){
 
 int main(){
     std::vector<double> TestVector = {7, 5, 16, 8};
-    
-    //TestVector = vectorMagnitude(TestVector);
+    double TestVectorAns;
+     PrintVector(TestVector);
+    TestVectorAns = vectorMagnitude(TestVector);
+    //Test .gitignore
+    cout << TestVectorAns << endl;
     return 0;
 }
