@@ -15,5 +15,7 @@ int main(){
     std::vector<double> TestVector = {7, 5, 16, 8};
      PrintVector(TestVector);
     //TestVector = vectorMagnitude(TestVector);
+
+    cout << TestVector[2] << endl;
     return 0;
 }
