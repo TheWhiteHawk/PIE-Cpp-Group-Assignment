@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1508787016 source:c:\users\ben\desktop\biljarts\main.cpp
+	<iostream>
+	<vector>
+	"vectorOperations.h"
+
+1508786988 c:\users\ben\desktop\biljarts\vectoroperations.h
+	<vector>
+
+1508786868 source:c:\users\ben\desktop\biljarts\vectoroperations.cpp
+	<iostream>
+	<vector>
+	<math.h>
+
