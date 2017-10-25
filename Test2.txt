@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 ydFHLIFJFD;JÁJ
+=======
+asdlkfjin
+
+
+BAS 
+
+lslsl
+>>>>>>> e101e3717b6705284e94267a3d0a9ccb5f96fc81
