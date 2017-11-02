@@ -1,13 +1,16 @@
 #include <iostream>
 #include <vector>
 #include "vectorOperations.h"
+#include "ball.h"
 
 using namespace std;
 
 void PrintVector (const vector<double>& v){
-  for (int i=0; i<v.size();i++){
-    cout << v[i] << endl;
-  }
+    cout << "============== Print Vector ==============" << endl;
+    for (int i=0; i<v.size();i++){
+        cout << v[i] << endl;
+    }
+    cout << "==========================================" << endl << endl;
 }
 
 int main(){
@@ -17,5 +20,14 @@ int main(){
     TestVectorAns = vectorMagnitude(TestVector);
     //Test .gitignore
     cout << TestVectorAns << endl;
+
+
+
+
+    Ball ball1;
+
+
+
+
     return 0;
 }

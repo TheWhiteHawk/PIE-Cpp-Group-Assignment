@@ -20,8 +20,16 @@
 1508940613 c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.h
 	<vector>
 
-1508940613 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.cpp
+1508937013 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.cpp
 	<iostream>
 	<vector>
 	<math.h>
+
+1509640132 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\ball.cpp
+	"ball.h"
+	<iostream>
+	<vector>
+
+1509635970 c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\ball.h
+	<vector>
 
