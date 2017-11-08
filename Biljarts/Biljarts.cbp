@@ -32,11 +32,11 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="ball.cpp" />
-		<Unit filename="ball.h" />
+		<Unit filename="../BiljardsSDL/ball.cpp" />
+		<Unit filename="../BiljardsSDL/ball.h" />
+		<Unit filename="../BiljardsSDL/vectorOperations.cpp" />
+		<Unit filename="../BiljardsSDL/vectorOperations.h" />
 		<Unit filename="main.cpp" />
-		<Unit filename="vectorOperations.cpp" />
-		<Unit filename="vectorOperations.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
