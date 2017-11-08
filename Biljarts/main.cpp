@@ -58,12 +58,17 @@ void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double
 }
 
 int main(){
-    vector<double> v {1,0};
+    vector<double> v {1,1};
+    vector<double> in {1,1};
+    vector<double> out {0,0};
     double cos = vectorCos(v);
     double sin = vectorSin(v);
-
     vector<vector<double>> M { {1,2} , {3,4} };
-    matrixPrint(M);
+    //matrixPrint(M);
+    transformMatrix(cos,sin,M);
+    //matrixPrint(M);
+    vectorMatrixProduct(in,M,out);
+    vectorPrint(out);
     return 0;
 }
 
