@@ -55,3 +55,16 @@
 1510039024 c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\ball.h
 	<vector>
 
+1509640132 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
+	"ball.h"
+	<iostream>
+	<vector>
+
+1509635970 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
+	<vector>
+
+1510143970 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
+	<iostream>
+	<vector>
+	<math.h>
+

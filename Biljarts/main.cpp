@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include "vectorOperations.h"
+#include "../BiljardsSDL/vectorOperations.h"
+#include "../BiljardsSDL/ball.h"
 
 using namespace std;
 
