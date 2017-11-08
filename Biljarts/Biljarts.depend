@@ -12,12 +12,13 @@
 	<vector>
 	<math.h>
 
-1508940827 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\main.cpp
+1509641273 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\main.cpp
 	<iostream>
 	<vector>
 	"vectorOperations.h"
+	"ball.h"
 
-1508940613 c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.h
+1508937013 c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.h
 	<vector>
 
 1508937013 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.cpp
