@@ -31,6 +31,21 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="ball.cpp" />
+		<Unit filename="ball.h" />
+		<Unit filename="cleanup.cpp" />
+		<Unit filename="drawcircle.cpp" />
+		<Unit filename="drawcircle.h" />
+		<Unit filename="game.cpp" />
+		<Unit filename="game.h" />
+		<Unit filename="includes.h" />
+		<Unit filename="loadcontent.cpp" />
+		<Unit filename="onevent.cpp" />
+		<Unit filename="oninit.cpp" />
+		<Unit filename="onloop.cpp" />
+		<Unit filename="onrender.cpp" />
+		<Unit filename="vectorOperations.cpp" />
+		<Unit filename="vectorOperations.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

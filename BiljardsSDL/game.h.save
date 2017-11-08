@@ -9,8 +9,9 @@ private :
  bool Running;
  const int SCREEN_WIDTH = 1440;
  const int SCREEN_HEIGHT = 900;
- const double TABLE_WIDTH_MM = 3569;
- const double TABLE_HEIGH_MM = 1778;
+ const int TABLE_WIDTH_MM = 3569;
+ const int TABLE_HEIGH_MM = 1778;
+ const int RATIO_TABLE = TABLE_HEIGH_MM/TABLE_WIDTH_MM;
  const int TABLE_WIDTH = 1000;
  const int TABLE_HEIGHT = TABLE_WIDTH*(TABLE_HEIGH_MM/TABLE_WIDTH_MM);
  const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;

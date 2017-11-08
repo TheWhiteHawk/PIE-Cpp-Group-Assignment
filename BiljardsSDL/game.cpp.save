@@ -11,9 +11,9 @@ int game::OnExecute ()  {
    return -1;
   }
 
-
-
-  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
+  
+  
+  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS
   time = 0;
  while ( Running )  {
    while ( SDL_PollEvent ( & Event ) )  {

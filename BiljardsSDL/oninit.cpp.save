@@ -4,9 +4,11 @@ bool game::OnInit ()  {
  if ( SDL_Init ( SDL_INIT_EVERYTHING )  < 0 )  {
    return false;
   }
-
+    //Screen dimension constants
+    SCREEN_WIDTH = 640;
+    SCREEN_HEIGHT = 480;
   // win = SDL_CreateWindow ( "Image Loading" , 100 , 100 , WIDTH , HEIGHT , SDL_WINDOW_RESIZABLE ) ;
-  if ( ( window = SDL_CreateWindow ( "SDL Render Clear" , 100 , 100 , SCREEN_WIDTH ,SCREEN_HEIGHT , SDL_WINDOW_SHOWN ) )  == NULL )  {
+  if ( ( window = SDL_CreateWindow ( "SDL Render Clear" , 100 , 100 , 640 , 480 , SDL_WINDOW_SHOWN ) )  == NULL )  {
    return false;
   }
   // SDL Renderer
