@@ -2,14 +2,16 @@
 1509918936 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
 	"game.h"
 
-1510152802 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
+1510230971 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
 	"includes.h"
+	<math.h>
 
-1510143180 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\includes.h
+1510225606 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\includes.h
 	<SDL.h>
 	<SDL_image.h>
 	<iostream>
 	"ball.h"
+	"vectorOperations.h"
 	< SDL.h >
 	< SDL_image.h >
 	< SDL2 / SDL.h >
@@ -23,10 +25,10 @@
 	<SDL_image.h>
 	"game.h"
 
-1509980547 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.cpp
+1510233591 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.cpp
 	"game.h"
 
-1509919017 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
+1510236262 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
 	"game.h"
 
 1509919090 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
@@ -38,7 +40,7 @@
 1509976425 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
 	"game.h"
 
-1510151040 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
+1510236200 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
 	"game.h"
 	"drawcircle.h"
 
@@ -56,4 +58,7 @@
 	<iostream>
 	<vector>
 	<math.h>
+
+1510143970 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.h
+	<vector>
 

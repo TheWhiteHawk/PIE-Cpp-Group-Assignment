@@ -7,13 +7,16 @@ game::game ()
 }
 
 int game::OnExecute ()  {
- if ( OnInit()  == false )  {
-   return -1;
+  if ( OnInit()  == false )  {
+    return -1;
   }
 
-  
-  
-  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS
+
+
+  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
+  if (LoadContent (POS_POCKET_CORNER_BALLS) == false) {
+    return -
+  }
   time = 0;
  while ( Running )  {
    while ( SDL_PollEvent ( & Event ) )  {
