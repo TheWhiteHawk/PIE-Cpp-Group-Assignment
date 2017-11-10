@@ -63,4 +63,11 @@ double Ball::getRadius(){
     return radius;
 }
 
+void Ball::setHasScored(bool newHasScored){
+    hasScored = newHasScored;
+}
+
+bool Ball::getHasScored(){
+    return hasScored;
+}
 

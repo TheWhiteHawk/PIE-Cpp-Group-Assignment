@@ -34,10 +34,11 @@
 1509635970 c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\ball.h
 	<vector>
 
-1510142984 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\main.cpp
+1510233743 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\main.cpp
 	<iostream>
 	<vector>
-	"vectorOperations.h"
+	"../BiljardsSDL/vectorOperations.h"
+	"../BiljardsSDL/ball.h"
 
 1510142971 c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.h
 	<vector>
@@ -67,4 +68,20 @@
 	<iostream>
 	<vector>
 	<math.h>
+
+1510235483 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
+	"ball.h"
+	<iostream>
+	<vector>
+
+1510235488 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
+	<vector>
+
+1510145573 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
+	<iostream>
+	<vector>
+	<math.h>
+
+1510145528 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.h
+	<vector>
 

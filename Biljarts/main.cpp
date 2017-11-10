@@ -5,57 +5,79 @@
 
 using namespace std;
 
-double vectorCos(std::vector<double> v){
-    std::vector<double> x {1,0};
-    double dotproduct = vectorDotProduct(v,x);
-    double magnitude = vectorMagnitude(v);
-    double cos = dotproduct / magnitude;
-    return cos;
+
+
+
+void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
+    bool hasScored_A = ball_A.getHasScored();
+    bool hasScored_B = ball_B.getHasScored();
+    if (!hasScored_A && !hasScored_B){
+        std::vector<double> ball_A_position = ball_A.getPosition();
+        std::vector<double> ball_B_position = ball_B.getPosition();
+        std::vector<double> differenceBallPosition;
+
+        vectorSubstraction(ball_A_position, ball_B_position, differenceBallPosition);
+        double distanceBetweenBalls = vectorMagnitude(differenceBallPosition);
+
+        if (distanceBetweenBalls < ball_A.getRadius() + ball_B.getRadius()){
+            //Calculating transformation matrices
+            double cos = vectorCos(differenceBallPosition);
+            double sin = vectorSin(differenceBallPosition);
+            std::vector<std::vector<double>> transformationMatrix;
+            std::vector<std::vector<double>> inverseTransformationMatrix;
+            transformMatrix(cos,sin,transformationMatrix);
+            transformMatrixInv(cos,sin,inverseTransformationMatrix);
+
+            //Preforming coordinate transformation to collision frame
+                //Current ball
+                std::vector<double> ball_A_velocity = ball_A.getVelocity();
+                std::vector<double> ball_A_velocityTrans;
+                vectorMatrixProduct(ball_A_velocity,transformationMatrix,ball_A_velocityTrans);
+
+                //Target ball
+                std::vector<double> ball_B_velocity = ball_B.getVelocity();
+                std::vector<double> ball_B_velocityTrans;
+                vectorMatrixProduct(ball_B_velocity,transformationMatrix,ball_B_velocityTrans);
+
+            //Collision constants
+            //Masses
+            double ball_A_mass = ball_A.getMass();
+            double ball_B_mass = ball_B.getMass();
+
+            //Calculating new velocities
+            collisionReturnVelocity(ball_A_velocityTrans, ball_B_velocityTrans, ball_A_mass, ball_B_mass, restitutionCoefficient);
+
+            //Preforming inverse coordinate transformation to collision frame
+                //Current ball
+                vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
+                ball_A.setVelocity(ball_A_velocity);
+
+                //Target ball
+                vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
+                ball_B.setVelocity(ball_B_velocity);
+        }
+    }
 }
 
-double vectorSin(std::vector<double> v){
-    std::vector<double> y {0,1};
-    double dotproduct = vectorDotProduct(v,y);
-    double magnitude = vectorMagnitude(v);
-    double sin = dotproduct / magnitude;
-    return sin;
-}
+void collisions(std::vector<Ball> balls, std::vector<Ball> pocketBalls){
+    //Ball on ball collisions
+    for (int i = 0; i < (balls.size() - 1); i++){
+        for (int j = i; j < balls.size(); j++){
+            double restitutionCoefficientBalls = 0.9;
+            collisionBalls(balls[i],balls[j],restitutionCoefficientBalls);
+        }
+    }
 
-void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
-    M = { {cos , -sin},{sin , cos} };
-}
-
-void transformMatrixInv(double cos, double sin, std::vector<std::vector<double>> &M){
-    M = { {cos , sin},{-sin , cos} };
-}
-
-void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>> M, std::vector<double> &out){
-    int sizeVector = in.size();
-    out.resize(sizeVector,0);
-    int rowMatrix = M.size();
-    int colMatrix = M[0].size();
-    if (rowMatrix == colMatrix){
-        if (colMatrix == sizeVector){
-            for (int i = 0; i < rowMatrix; i++){
-                for (int j = 0; j < colMatrix; j++){
-                    out[i] += in[j]*M[i][j];
-                }
+    //Wall collisions
+    if (true){
+        //Ball on corner collisions
+        for (int i = 0; i < (balls.size() - 1); i++){
+            for (int j = 0; j < pocketBalls.size(); j++){
+                double restitutionCoefficientBalls = 0.6;
+                collisionBalls(balls[i],pocketBalls[j],restitutionCoefficientBalls);
             }
         }
-        else{
-            cout << "Number of columns in the matrix does not match vector size!" << endl;
-        }
     }
-    else{
-        cout << "Matrix is not square!" << endl;
-    }
-}
-
-void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double mass_1, double mass_2, double restitutionCoefficient){
-    double vPar_1 = velocity_1[0];
-    double vPar_2 = velocity_2[0];
-    velocity_1[0] = ((restitutionCoefficient * mass_2 * (vPar_2 - vPar_1)) + (mass_1 * vPar_1) + (mass_2 * vPar_2)) / (mass_1 + mass_2);
-    velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2);
 }
 
 int main(){
@@ -66,7 +88,7 @@ int main(){
     double sin = vectorSin(v);
     vector<vector<double>> M { {1,2} , {3,4} };
     //matrixPrint(M);
-    transformMatrix(cos,sin,M);
+    transformMatrixInv(cos,sin,M);
     //matrixPrint(M);
     vectorMatrixProduct(in,M,out);
     vectorPrint(out);

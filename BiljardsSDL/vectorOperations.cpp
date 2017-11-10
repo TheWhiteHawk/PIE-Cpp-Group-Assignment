@@ -106,3 +106,56 @@ void matrixPrint(std::vector<std::vector<double>> M){
     std::cout << std::endl;
     }
 }
+
+double vectorCos(std::vector<double> v){
+    std::vector<double> x {1,0};
+    double dotproduct = vectorDotProduct(v,x);
+    double magnitude = vectorMagnitude(v);
+    double cos = dotproduct / magnitude;
+    return cos;
+}
+
+double vectorSin(std::vector<double> v){
+    std::vector<double> y {0,1};
+    double dotproduct = vectorDotProduct(v,y);
+    double magnitude = vectorMagnitude(v);
+    double sin = dotproduct / magnitude;
+    return sin;
+}
+
+void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
+    M = { {cos , -sin},{sin , cos} };
+}
+
+void transformMatrixInv(double cos, double sin, std::vector<std::vector<double>> &M){
+    M = { {cos , sin},{-sin , cos} };
+}
+
+void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>> M, std::vector<double> &out){
+    int sizeVector = in.size();
+    out.resize(sizeVector,0);
+    int rowMatrix = M.size();
+    int colMatrix = M[0].size();
+    if (rowMatrix == colMatrix){
+        if (colMatrix == sizeVector){
+            for (int i = 0; i < rowMatrix; i++){
+                for (int j = 0; j < colMatrix; j++){
+                    out[i] += in[j]*M[i][j];
+                }
+            }
+        }
+        else{
+            std::cout << "Number of columns in the matrix does not match vector size!" << std::endl;
+        }
+    }
+    else{
+        std::cout << "Matrix is not square!" << std::endl;
+    }
+}
+
+void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double mass_1, double mass_2, double restitutionCoefficient){
+    double vPar_1 = velocity_1[0];
+    double vPar_2 = velocity_2[0];
+    velocity_1[0] = ((restitutionCoefficient * mass_2 * (vPar_2 - vPar_1)) + (mass_1 * vPar_1) + (mass_2 * vPar_2)) / (mass_1 + mass_2);
+    velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2);
+}

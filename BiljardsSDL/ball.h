@@ -10,6 +10,7 @@ private:
    std::vector<double> velocity;
    double mass;
    double radius;
+   bool hasScored;
 public:
    void setPosition(std::vector<double>);
    std::vector<double> getPosition();
@@ -19,6 +20,8 @@ public:
    double getMass();
    void setRadius(double);
    double getRadius();
+   void setHasScored(bool);
+   bool getHasScored();
 };
 
 
