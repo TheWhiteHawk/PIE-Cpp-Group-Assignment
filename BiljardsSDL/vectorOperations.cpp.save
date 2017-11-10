@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
+#include"game.h"
 
 double vectorMagnitude(std::vector<double> v){
     double value = 0;
@@ -160,4 +161,7 @@ void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double
     velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2);
 }
 
+void TestPrint(){
+cout game::CORNER_X
+}
 

@@ -7,7 +7,7 @@ void game::OnRender()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    //Render red filled quad
+    //Render gray filled quad
     SDL_Rect fillRect1 = { CORNER_X-CORNER_BALL_RATIO*BALL_RADIUS*2, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2, TABLE_WIDTH+CORNER_BALL_RATIO*BALL_RADIUS*4, TABLE_HEIGHT+CORNER_BALL_RATIO*BALL_RADIUS*4 };
 	SDL_SetRenderDrawColor( renderer, 120, 120, 120, 255 );
 	SDL_RenderFillRect( renderer, &fillRect1 );

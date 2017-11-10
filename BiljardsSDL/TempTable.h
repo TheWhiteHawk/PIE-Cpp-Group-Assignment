@@ -1,28 +1,34 @@
 #ifndef TEMPTABLE_H
 #define TEMPTABLE_H
 
-#include <vector>
-
 class TempTable
 {
-private:
-    std::vector<double> offset;
-    double width;
-    double length;
-    std::vector<std::vector<double>> cornerCoordinates;
-    double cornerRadius;
+public :
+ //Screen in pixels
+ const int SCREEN_WIDTH = 1440;
+ const int SCREEN_HEIGHT = 900;
+ //Table dimensions in meters
+ const double TABLE_WIDTH_M = 3.569;
+ const double TABLE_HEIGH_M = 1.778;
+ //Table dimensions in pixels
+ const int TABLE_WIDTH = 1000;
+ const int TABLE_HEIGHT = TABLE_WIDTH*(TABLE_HEIGH_M/TABLE_WIDTH_M);
+ //Pixel/Meter ratio
+ const double PIXEL_METER_RATIO = TABLE_WIDTH / TABLE_WIDTH_M;
+ //Radius of the ball in meters
+ const double BALL_RADIUS_M = 57.15/1000;
+ //Radius of the ball in pixels
+ const double BALL_RADIUS = BALL_RADIUS_M*PIXEL_METER_RATIO;
+ //Pocket width/Ball diameter Ratio
+ const double POCKET_BALL_RATIO = 1.6;
+ //Pocket corner radius/Ball diameter Ratio;
+ const double CORNER_BALL_RATIO = 2;
+ //Distance pocket corner center to table corner
+ const double CORNER_CORNER = sqrt(pow(2*(POCKET_BALL_RATIO+CORNER_BALL_RATIO)*BALL_RADIUS,2)/2)-(2*BALL_RADIUS);
 
-public:
-    void setOffset(std::vector<double>);
-    std::vector<double> getOffset();
-    void setWidth(double);
-    double getWidth();
-    void setLength(double);
-    double getLength();
-    void setCornerCoordinates(std::vector<std::vector<double>>);
-    std::vector<std::vector<double>> getCornerCoordinates();
-    void setCornerRadius(double);
-    double getCornerRadius();
+
+ const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;
+ const int CORNER_Y = (SCREEN_HEIGHT-TABLE_HEIGHT)/2;
 };
 
 #endif // TEMPTABLE_H

@@ -29,4 +29,6 @@ void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>
 
 void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double mass_1, double mass_2, double restitutionCoefficient);
 
+void TestPrint();
+
 #endif // VECTOROPERATIONS_H_INCLUDED

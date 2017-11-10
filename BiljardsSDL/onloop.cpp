@@ -2,4 +2,5 @@
 void game::OnLoop ()
 {
     time += 1;
+
 }

@@ -1,16 +1,11 @@
-#ifndef GAME_H_INCLUDED
-#define GAME_H_INCLUDED
+#ifndef TEMPTABLE_H
+#define TEMPTABLE_H
 
-#include"includes.h"
-#include <math.h>
-#include "TempTable.h"
+#include <vector>
 
-class game : public TempTable
+class TempTable
 {
 private :
- bool Running;
-
- /*
  //Screen in pixels
  const int SCREEN_WIDTH = 1440;
  const int SCREEN_HEIGHT = 900;
@@ -36,28 +31,6 @@ private :
 
  const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;
  const int CORNER_Y = (SCREEN_HEIGHT-TABLE_HEIGHT)/2;
- */
+};
 
-
-
-  //Position of the pocket corners
- std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
- std::vector<Ball> POCKET_CORNER_BALLS;
-
- SDL_Window * window;
- SDL_Renderer * renderer;
- SDL_Event Event;
- int time;
-public :
- game () ;
-  // virtual ~game () ;
- int OnExecute () ;
- bool OnInit () ;
- bool LoadContent () ;
- void OnEvent ( SDL_Event * Event ) ;
- void OnLoop () ;
- void OnRender () ;
- void Cleanup () ;
-
-} ;
-#endif // GAME_H_INCLUDED
+#endif // TEMPTABLE_H
