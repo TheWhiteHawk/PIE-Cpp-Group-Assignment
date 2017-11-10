@@ -6,22 +6,25 @@
 class Ball
 {
 private:
-   std::vector<double> position;
-   std::vector<double> velocity;
-   double mass;
-   double radius;
-   bool hasScored;
+    std::vector<double> position;
+    std::vector<double> previousPosition;
+    std::vector<double> velocity;
+    double mass;
+    double radius;
+    bool hasScored;
 public:
-   void setPosition(std::vector<double>);
-   std::vector<double> getPosition();
-   void setVelocity(std::vector<double>);
-   std::vector<double> getVelocity();
-   void setMass(double);
-   double getMass();
-   void setRadius(double);
-   double getRadius();
-   void setHasScored(bool);
-   bool getHasScored();
+    void setPosition(std::vector<double>);
+    std::vector<double> getPosition();
+    void setPreviousPosition(std::vector<double>);
+    std::vector<double> getPreviousPosition();
+    void setVelocity(std::vector<double>);
+    std::vector<double> getVelocity();
+    void setMass(double);
+    double getMass();
+    void setRadius(double);
+    double getRadius();
+    void setHasScored(bool);
+    bool getHasScored();
 };
 
 

@@ -12,9 +12,9 @@ void game::OnRender()
 	SDL_SetRenderDrawColor( renderer, 120, 120, 120, 255 );
 	SDL_RenderFillRect( renderer, &fillRect1 );
 
-    //Render green filled quad
+    //Render red filled quad
     SDL_Rect fillRect = { CORNER_X, CORNER_Y, TABLE_WIDTH, TABLE_HEIGHT };
-	SDL_SetRenderDrawColor( renderer, 0, 140, 0, 255 );
+	SDL_SetRenderDrawColor( renderer, 255, 0, 0, 255 );
 	SDL_RenderFillRect( renderer, &fillRect );
 
     //Draw blue horizontal line

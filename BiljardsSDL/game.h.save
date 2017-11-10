@@ -30,7 +30,7 @@ private :
  //Distance pocket corner center to table corner
  const double CORNER_CORNER = sqrt(pow(2*(POCKET_BALL_RATIO+CORNER_BALL_RATIO)*BALL_RADIUS,2)/2)-(2*BALL_RADIUS);
 
- //Position of the pocket corners
+ //
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
 
 
@@ -45,7 +45,7 @@ public :
   // virtual ~game () ;
  int OnExecute () ;
  bool OnInit () ;
- bool LoadContent () ;
+ bool LoadContent (std::vector<std::vector<double>> &out) ;
  void OnEvent ( SDL_Event * Event ) ;
  void OnLoop () ;
  void OnRender () ;

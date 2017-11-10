@@ -2,6 +2,7 @@
 #include <vector>
 #include "../BiljardsSDL/vectorOperations.h"
 #include "../BiljardsSDL/ball.h"
+#include "../BiljardsSDL/TempTable.h"
 
 using namespace std;
 
@@ -19,7 +20,7 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
         vectorSubstraction(ball_A_position, ball_B_position, differenceBallPosition);
         double distanceBetweenBalls = vectorMagnitude(differenceBallPosition);
 
-        if (distanceBetweenBalls < ball_A.getRadius() + ball_B.getRadius()){
+        if (distanceBetweenBalls < (ball_A.getRadius() + ball_B.getRadius())){
             //Calculating transformation matrices
             double cos = vectorCos(differenceBallPosition);
             double sin = vectorSin(differenceBallPosition);
@@ -55,6 +56,10 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
                 //Target ball
                 vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
                 ball_B.setVelocity(ball_B_velocity);
+
+            //Setting position
+            ball_A.setPosition(ball_A.getPreviousPosition());
+            ball_B.setPosition(ball_B.getPreviousPosition());
         }
     }
 }
