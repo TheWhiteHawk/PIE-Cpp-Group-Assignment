@@ -25,9 +25,18 @@ bool game::LoadContent ()
         }
     }
 
-    POCKET_CORNER_BALLS;
-
-
+    for(int n=0; n<POS_POCKET_CORNER_BALLS.size(); n++){
+        Ball tempBall;
+        tempBall.setMass(pow(10,150));
+        vector<double> tempVector {0 , 0};
+        tempBall.setVelocity(tempVector);
+        for ( int i = 0; i<2; i++ )   { tempVector[i] = POS_POCKET_CORNER_BALLS[n][i]; }
+        tempBall.setPosition(tempVector);
+        tempBall.setRadius(BALL_RADIUS);
+        tempBall.setHasScored(false);
+        POCKET_CORNER_BALLS.push_back(tempBall);
+    }
+    //cout << "TEST DINGEN:  " <<POCKET_CORNER_BALLS[0].getPosition()[0] << endl;
 
 
 //    for(int n = 0; n<4; n++){
@@ -38,5 +47,28 @@ bool game::LoadContent ()
 
 
 
- return 1;
+
+    for(int n =0; n<16; n++)  {
+        Ball tempBall;
+        balls.push_back(tempBall);
+    }
+
+    vector<double> tempVector(2);
+    tempVector[0] = TABLE_WIDTH/4+CORNER_X;
+    tempVector[1] = TABLE_HEIGHT/2;
+    balls[0].setPosition(tempVector);
+    int index = 1;
+    for (int n = 0; n<5; n++)  {
+            for (int m = 0; m<(n+1); m++) {
+                tempVector[0] = (TABLE_WIDTH/4)*3+CORNER_X + n*sqrt(3)*BALL_RADIUS;
+                tempVector[1] = TABLE_HEIGHT/2+CORNER_Y// - (n-(2*m))*BALL_RADIUS;
+                balls[index].setPosition(tempVector);
+                index++;
+            }
+    }
+
+
+
+
+    return 1;
 }

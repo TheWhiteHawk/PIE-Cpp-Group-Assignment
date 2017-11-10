@@ -1,11 +1,9 @@
 #ifndef TEMPTABLE_H
 #define TEMPTABLE_H
 
-#include <vector>
-
 class TempTable
 {
-private :
+public :
  //Screen in pixels
  const int SCREEN_WIDTH = 1440;
  const int SCREEN_HEIGHT = 900;
@@ -26,7 +24,7 @@ private :
  //Pocket corner radius/Ball diameter Ratio;
  const double CORNER_BALL_RATIO = 2;
  //Distance pocket corner center to table corner
- const double CORNER_CORNER = sqrt(pow(2*(POCKET_BALL_RATIO+CORNER_BALL_RATIO)*BALL_RADIUS,2)/2)-(2*BALL_RADIUS);
+ const double CORNER_CORNER = sqrt(pow(2*(POCKET_BALL_RATIO+CORNER_BALL_RATIO)*BALL_RADIUS,2)/2)-(CORNER_BALL_RATIO*BALL_RADIUS);
 
 
  const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;

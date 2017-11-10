@@ -31,6 +31,7 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="TempTable.h" />
 		<Unit filename="ball.cpp" />
 		<Unit filename="ball.h" />
 		<Unit filename="cleanup.cpp" />
