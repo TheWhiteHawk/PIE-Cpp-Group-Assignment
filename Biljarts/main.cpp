@@ -74,6 +74,7 @@ void collisions(std::vector<Ball> balls, std::vector<Ball> pocketBalls){
     }
 
     //Wall collisions
+    double A = //X
     if (true){
         //Ball on corner collisions
         for (int i = 0; i < (balls.size() - 1); i++){
