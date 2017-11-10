@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -32,6 +34,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="../BiljardsSDL/TempTable.cpp" />
+		<Unit filename="../BiljardsSDL/TempTable.h" />
 		<Unit filename="../BiljardsSDL/ball.cpp" />
 		<Unit filename="../BiljardsSDL/ball.h" />
 		<Unit filename="../BiljardsSDL/vectorOperations.cpp" />
