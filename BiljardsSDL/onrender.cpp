@@ -71,11 +71,11 @@ void game::OnRender()
 
     //Plot Balls
     SDL_Color ballColor = {.r = 255, .g = 255, .b = 255};
-    cout << "balls.size() = " <<balls.size() << endl;
+    //cout << "balls.size() = " <<balls.size() << endl;
         for(int n=0; n<balls.size(); n++){
-        cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
+        //cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
         center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
-        radius = BALL_RADIUS;
+        radius = balls[n].getRadius();
         draw_circle(renderer, center, radius, ballColor);
     }
 
@@ -89,6 +89,27 @@ void game::OnRender()
 //    int radius = time/10;
 //    SDL_Color color = {.r = 255, .g = 255, .b = 255};
 //    draw_circle(renderer, center, radius, color);
+
+
+
+    char integer_string[32];
+    int FPS = FPS;//SDL_GetTicks();
+    sprintf(integer_string, "%d", FPS);
+    char FPStext[64] = "FPS  ";
+    strcat(FPStext, integer_string);
+
+    SDL_Color textColor = {.r = 255, .g = 255, .b = 255};
+    surface = TTF_RenderText_Solid(font, FPStext , textColor);
+    texture = SDL_CreateTextureFromSurface(renderer, surface);
+
+    int texW = 0;
+    int texH = 0;
+    SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+    SDL_Rect dstrect = { 0, 0, texW, texH };
+
+    SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
+
 
 
 

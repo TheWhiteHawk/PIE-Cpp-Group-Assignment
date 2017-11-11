@@ -4,6 +4,10 @@ bool game::OnInit ()  {
  if ( SDL_Init ( SDL_INIT_EVERYTHING )  < 0 )  {
    return false;
   }
+  if ( TTF_Init() < 0 )  {
+   return false;
+  }
+
 
   // win = SDL_CreateWindow ( "Image Loading" , 100 , 100 , WIDTH , HEIGHT , SDL_WINDOW_RESIZABLE ) ;
   if ( ( window = SDL_CreateWindow ( "SDL Render Clear" , 100 , 100 , SCREEN_WIDTH ,SCREEN_HEIGHT , SDL_WINDOW_SHOWN ) )  == NULL )  {
@@ -15,5 +19,12 @@ bool game::OnInit ()  {
    cout << SDL_GetError ()  << endl;
    return 1;
   }
+
+  font = TTF_OpenFont("arial.ttf", 25);
+  if ( font == NULL ) {
+   cout << SDL_GetError ()  << endl;
+   return 1;
+  }
+
  return true;
 }

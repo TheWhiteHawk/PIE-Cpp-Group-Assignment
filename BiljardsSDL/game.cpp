@@ -1,4 +1,5 @@
 #include"game.h"
+#include <SDL_ttf.h>
 
 game::game ()
 {
@@ -13,12 +14,15 @@ int game::OnExecute ()  {
 
 
 
+
   if (LoadContent () == false) {
     return -1;
   }
   //matrixPrint(POS_POCKET_CORNER_BALLS);
 
-  time = 0;
+  FPS = 0;
+  time = SDL_GetTicks();
+  previousTime = SDL_GetTicks();
  while ( Running )  {
    while ( SDL_PollEvent ( & Event ) )  {
      OnEvent ( & Event ) ;

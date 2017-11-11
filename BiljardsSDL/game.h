@@ -38,17 +38,23 @@ private :
  const int CORNER_Y = (SCREEN_HEIGHT-TABLE_HEIGHT)/2;
  */
 
+ //FPS and frames
+ int FPS;
+ int time;
+ double previousTime;
 
-
-  //Position of the pocket corners
+ //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
  std::vector<Ball> POCKET_CORNER_BALLS;
  std::vector<Ball> balls;
 
  SDL_Window * window;
  SDL_Renderer * renderer;
+ TTF_Font * font;
+ SDL_Surface * surface;
+ SDL_Texture * texture;
+
  SDL_Event Event;
- int time;
 public :
  game () ;
   // virtual ~game () ;

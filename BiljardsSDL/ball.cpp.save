@@ -86,16 +86,17 @@ bool Ball::getHasScored(){
 
 void Ball::setBallNumber(int newBallNumber){
     if (newBallNumber > -2){
-        ballNumber = newBallNumber;
+        ballNumbers = newBallNumber;
     }
     else{
-        std::cout << "ballNumber cannot be smaller than -1" << std::endl;
+        std::cout << "Invalid radius" << std::endl;
         std::exit(-1);
     }
 }
 
+
 int Ball::getBallNumber(){
-    return ballNumber;
+    
 }
 
 

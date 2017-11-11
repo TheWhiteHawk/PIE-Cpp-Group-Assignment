@@ -3,9 +3,11 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 #include <iostream>
 #include "ball.h"
 #include "vectorOperations.h"
+#include <string.h>
 
 using namespace std;
 

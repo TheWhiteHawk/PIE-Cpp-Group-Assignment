@@ -26,8 +26,7 @@ public:
     double getRadius();
     void setHasScored(bool);
     bool getHasScored();
-    void setBallNumber(int);
-    int getBallNumber();
+    void setBallNumber()
 };
 
 

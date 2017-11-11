@@ -34,6 +34,7 @@ bool game::LoadContent ()
         tempBall.setPosition(tempVector);
         tempBall.setRadius(BALL_RADIUS);
         tempBall.setHasScored(false);
+        tempBall.setBallNumber(-1);
         POCKET_CORNER_BALLS.push_back(tempBall);
     }
     //cout << "TEST DINGEN:  " <<POCKET_CORNER_BALLS[0].getPosition()[0] << endl;
@@ -47,7 +48,7 @@ bool game::LoadContent ()
 
 
 
-
+    //Initialize balls
     for(int n =0; n<16; n++)  {
         Ball tempBall;
         balls.push_back(tempBall);
@@ -55,16 +56,39 @@ bool game::LoadContent ()
 
     vector<double> tempVector(2);
     tempVector[0] = TABLE_WIDTH/4+CORNER_X;
-    tempVector[1] = TABLE_HEIGHT/2;
+    tempVector[1] = TABLE_HEIGHT/2+CORNER_Y;
     balls[0].setPosition(tempVector);
     int index = 1;
     for (int n = 0; n<5; n++)  {
             for (int m = 0; m<(n+1); m++) {
                 tempVector[0] = (TABLE_WIDTH/4)*3+CORNER_X + n*sqrt(3)*BALL_RADIUS;
-                tempVector[1] = TABLE_HEIGHT/2+CORNER_Y// - (n-(2*m))*BALL_RADIUS;
+                tempVector[1] = TABLE_HEIGHT/2+CORNER_Y - (n-(2*m))*BALL_RADIUS;
                 balls[index].setPosition(tempVector);
                 index++;
             }
+    }
+
+    const double BALL_MASS = 0.170097139; //mass of the ball in kg, the mass is 6 oz
+    for (int n = 0; n<balls.size(); n++) {
+        switch (n) {
+            case 0 ... 4:   balls[n].setBallNumber(n);
+                                    break;
+            case 5:          balls[n].setBallNumber(8);
+                                    break;
+            case 6 ... 8:   balls[n].setBallNumber(n-1);
+                                    break;
+            case 9 ... 13:   balls[n].setBallNumber(n);
+                                    break;
+            case 14:        balls[n].setBallNumber(n+1);
+                                    break;
+            case 15:        balls[n].setBallNumber(n-1);
+                                    break;
+        }
+        balls[n].setMass(BALL_MASS);
+        balls[n].setRadius(BALL_RADIUS);
+        balls[n].setVelocity(vector<double>{0,0});
+        balls[n].setPreviousPosition(balls[n].getPosition());
+        balls[n].setHasScored(false);
     }
 
 

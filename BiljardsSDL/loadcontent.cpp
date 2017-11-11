@@ -32,8 +32,10 @@ bool game::LoadContent ()
         tempBall.setVelocity(tempVector);
         for ( int i = 0; i<2; i++ )   { tempVector[i] = POS_POCKET_CORNER_BALLS[n][i]; }
         tempBall.setPosition(tempVector);
+        tempBall.setPreviousPosition(tempVector);
         tempBall.setRadius(BALL_RADIUS);
         tempBall.setHasScored(false);
+        tempBall.setBallNumber(-1);
         POCKET_CORNER_BALLS.push_back(tempBall);
     }
     //cout << "TEST DINGEN:  " <<POCKET_CORNER_BALLS[0].getPosition()[0] << endl;
@@ -47,7 +49,7 @@ bool game::LoadContent ()
 
 
 
-
+    //Initialize balls
     for(int n =0; n<16; n++)  {
         Ball tempBall;
         balls.push_back(tempBall);
@@ -65,6 +67,29 @@ bool game::LoadContent ()
                 balls[index].setPosition(tempVector);
                 index++;
             }
+    }
+
+    const double BALL_MASS = 0.170097139; //mass of the ball in kg, the mass is 6 oz
+    for (int n = 0; n<balls.size(); n++) {
+        switch (n) {
+            case 0 ... 4:   balls[n].setBallNumber(n);
+                                    break;
+            case 5:          balls[n].setBallNumber(8);
+                                    break;
+            case 6 ... 8:   balls[n].setBallNumber(n-1);
+                                    break;
+            case 9 ... 13:   balls[n].setBallNumber(n);
+                                    break;
+            case 14:        balls[n].setBallNumber(n+1);
+                                    break;
+            case 15:        balls[n].setBallNumber(n-1);
+                                    break;
+        }
+        balls[n].setMass(BALL_MASS);
+        balls[n].setRadius(BALL_RADIUS);
+        balls[n].setVelocity(vector<double>{0,0});
+        balls[n].setPreviousPosition(balls[n].getPosition());
+        balls[n].setHasScored(false);
     }
 
 
