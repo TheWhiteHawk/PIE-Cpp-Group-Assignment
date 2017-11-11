@@ -40,8 +40,9 @@ private :
 
  //FPS and frames
  int FPS;
- int time;
+ double time;
  double previousTime;
+ double maxDt;
 
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;

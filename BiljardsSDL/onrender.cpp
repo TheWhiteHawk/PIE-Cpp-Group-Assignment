@@ -93,7 +93,6 @@ void game::OnRender()
 
 
     char integer_string[32];
-    int FPS = FPS;//SDL_GetTicks();
     sprintf(integer_string, "%d", FPS);
     char FPStext[64] = "FPS  ";
     strcat(FPStext, integer_string);

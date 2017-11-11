@@ -20,12 +20,13 @@ int game::OnExecute ()  {
   }
   //matrixPrint(POS_POCKET_CORNER_BALLS);
 
-  time = 0;
   FPS = 0;
-  previousTime = 
- while ( Running )  {
-   while ( SDL_PollEvent ( & Event ) )  {
-     OnEvent ( & Event ) ;
+  maxDt = 5; //max Dt in ms
+  time = SDL_GetTicks();
+  previousTime = SDL_GetTicks();
+  while ( Running )  {
+        while ( SDL_PollEvent ( & Event ) )  {
+      OnEvent ( & Event ) ;
     }
 
    OnLoop () ;
