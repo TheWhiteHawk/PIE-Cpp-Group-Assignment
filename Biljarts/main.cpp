@@ -65,6 +65,7 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
 }
 
 void collisions(std::vector<Ball> balls, std::vector<Ball> pocketBalls){
+    TempTable table;
     //Ball on ball collisions
     for (int i = 0; i < (balls.size() - 1); i++){
         for (int j = i; j < balls.size(); j++){
@@ -74,13 +75,31 @@ void collisions(std::vector<Ball> balls, std::vector<Ball> pocketBalls){
     }
 
     //Wall collisions
-    double A = //X
-    if (true){
-        //Ball on corner collisions
-        for (int i = 0; i < (balls.size() - 1); i++){
+    //Flat wall ranges
+    double A = pocketBalls[0].getPosition()[0];
+    double B = pocketBalls[2].getPosition()[0];
+    double C = pocketBalls[8].getPosition()[0];
+    double D = pocketBalls[6].getPosition()[0];
+    double E = pocketBalls[1].getPosition()[1];
+    double F = pocketBalls[4].getPosition()[1];
+
+    for (int i = 0; i < balls.size(); i++){
+        std::vector<double> r = balls[i].getPosition();
+        double restitutionCoefficientWalls = 0.6;
+        if (!(((A <= r[0] <= B) || (C <= r[0] <= D)) && (E <= r[1] <= F))){
+            //Ball on corner collisions
             for (int j = 0; j < pocketBalls.size(); j++){
-                double restitutionCoefficientBalls = 0.6;
-                collisionBalls(balls[i],pocketBalls[j],restitutionCoefficientBalls);
+                collisionBalls(balls[i],pocketBalls[j],restitutionCoefficientWalls);
+            }
+        }
+        else{
+            double W = table.TABLE_WIDTH;
+            double H = table.TABLE_HEIGHT;
+            double cornerX = table.CORNER_X;
+            double cornerY = table.CORNER_Y;
+            double R = balls.getRadius();
+            if ((r[0] < R)||()){
+
             }
         }
     }

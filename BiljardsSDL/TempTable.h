@@ -1,5 +1,6 @@
 #ifndef TEMPTABLE_H
 #define TEMPTABLE_H
+#include "math.h"
 
 class TempTable
 {
