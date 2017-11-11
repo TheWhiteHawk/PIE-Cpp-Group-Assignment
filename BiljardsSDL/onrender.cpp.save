@@ -69,6 +69,19 @@ void game::OnRender()
 
 
 
+    //Plot Balls
+    SDL_Color ballColor = {.r = 255, .g = 255, .b = 255};
+    cout << "balls.size() = " <<balls.size() << endl;
+        for(int n=0; n<balls.size(); n++){
+        cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " <<  << endl;
+        center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
+        radius = BALL_RADIUS;
+        draw_circle(renderer, center, radius, ballColor);
+    }
+
+
+
+
 
 
 
