@@ -77,10 +77,12 @@
 1510308811 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
 	<vector>
 
-1510319467 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
+1510395804 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
 	<iostream>
 	<vector>
 	<math.h>
+	"../BiljardsSDL/ball.h"
+	"../BiljardsSDL/TempTable.h"
 
 1510145528 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.h
 	<vector>
@@ -90,6 +92,6 @@
 	<iostream>
 	<vector>
 
-1510310955 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
-	<vector>
+1510391198 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
+	"math.h"
 

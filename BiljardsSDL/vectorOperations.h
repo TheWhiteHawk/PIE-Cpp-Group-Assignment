@@ -2,6 +2,7 @@
 #define VECTOROPERATIONS_H_INCLUDED
 
 #include <vector>
+#include "../BiljardsSDL/ball.h"
 
 double vectorMagnitude(std::vector<double> v);
 
@@ -30,5 +31,11 @@ void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>
 void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double mass_1, double mass_2, double restitutionCoefficient);
 
 void TestPrint();
+
+void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient);
+
+void collisionWalls(std::vector<Ball> &balls, std::vector<Ball> pocketBalls);
+
+void collisions(std::vector<Ball> &balls, std::vector<Ball> pocketBalls);
 
 #endif // VECTOROPERATIONS_H_INCLUDED
