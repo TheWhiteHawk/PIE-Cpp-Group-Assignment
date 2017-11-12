@@ -207,28 +207,30 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
                 std::vector<double> ball_B_velocityTrans = {0,0};
                 vectorMatrixProduct(ball_B_velocity,transformationMatrix,ball_B_velocityTrans);
 
-            //Collision constants
-            //Masses
-            double ball_A_mass = ball_A.getMass();
-            double ball_B_mass = ball_B.getMass();
+            if (ball_A_velocityTrans[0] > ball_B_velocityTrans[0]){
+                //Collision constants
+                //Masses
+                double ball_A_mass = ball_A.getMass();
+                double ball_B_mass = ball_B.getMass();
 
-            //Calculating new velocities
-            collisionReturnVelocity(ball_A_velocityTrans, ball_B_velocityTrans, ball_A_mass, ball_B_mass, restitutionCoefficient);
+                //Calculating new velocities
+                collisionReturnVelocity(ball_A_velocityTrans, ball_B_velocityTrans, ball_A_mass, ball_B_mass, restitutionCoefficient);
 
-            //Preforming inverse coordinate transformation to collision frame
-                //Current ball
-                ball_A_velocity = {0,0};
-                vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
-                ball_A.setVelocity(ball_A_velocity);
+                //Preforming inverse coordinate transformation to collision frame
+                    //Current ball
+                    ball_A_velocity = {0,0};
+                    vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
+                    ball_A.setVelocity(ball_A_velocity);
 
-                //Target ball
-                ball_B_velocity = {0,0};
-                vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
-                ball_B.setVelocity(ball_B_velocity);
+                    //Target ball
+                    ball_B_velocity = {0,0};
+                    vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
+                    ball_B.setVelocity(ball_B_velocity);
 
-            //Setting position
-            ball_A.setPosition(ball_A.getPreviousPosition());
-            ball_B.setPosition(ball_B.getPreviousPosition());
+                //Setting position
+                ball_A.setPosition(ball_A.getPreviousPosition());
+                ball_B.setPosition(ball_B.getPreviousPosition());
+            }
         }
     }
 }

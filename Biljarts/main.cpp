@@ -8,7 +8,7 @@
 using namespace std;
 
 int main(){
-    vector<double> v {0,0.00000000000000000000000000000001};
+    vector<double> v {0.5,0};
     vector<double> in {1,1};
     vector<double> out {0,0};
     double cos = vectorCos(v);
