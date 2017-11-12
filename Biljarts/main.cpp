@@ -8,17 +8,23 @@
 using namespace std;
 
 int main(){
-    vector<double> v {1,1};
-    vector<double> in {0,1};
+    vector<double> v {0,0.00000000000000000000000000000001};
+    vector<double> in {1,1};
     vector<double> out {0,0};
     double cos = vectorCos(v);
     double sin = vectorSin(v);
-    vector<vector<double>> M { {1,2} , {3,4} };
+
+    cout << cos << "\t" << sin << endl;
+    /*vector<vector<double>> M { {1,2} , {3,4} };
     //matrixPrint(M);
-    transformMatrixInv(cos,sin,M);
+    transformMatrix(cos,sin,M);
     //matrixPrint(M);
     vectorMatrixProduct(in,M,out);
     vectorPrint(out);
+    transformMatrixInv(cos,sin,M);
+    vector<double> out2 {0,0};
+    vectorMatrixProduct(out,M,out2);
+    vectorPrint(out2);*/
     return 0;
 }
 

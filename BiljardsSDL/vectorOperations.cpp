@@ -113,16 +113,26 @@ double vectorCos(std::vector<double> v){
     std::vector<double> x {1,0};
     double dotproduct = vectorDotProduct(v,x);
     double magnitude = vectorMagnitude(v);
-    double cos = dotproduct / magnitude;
-    return cos;
+    if (magnitude > pow(10,-300)){
+        double cos = dotproduct / magnitude;
+        return cos;
+    }
+    else{
+        return 0;
+    }
 }
 
 double vectorSin(std::vector<double> v){
     std::vector<double> y {0,1};
     double dotproduct = vectorDotProduct(v,y);
     double magnitude = vectorMagnitude(v);
+    if (magnitude > pow(10,-300)){
     double sin = dotproduct / magnitude;
     return sin;
+    }
+    else{
+        return 0;
+    }
 }
 
 void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
