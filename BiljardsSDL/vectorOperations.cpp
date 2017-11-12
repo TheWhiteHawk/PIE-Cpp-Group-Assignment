@@ -189,12 +189,12 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
             //Preforming coordinate transformation to collision frame
                 //Current ball
                 std::vector<double> ball_A_velocity = ball_A.getVelocity();
-                std::vector<double> ball_A_velocityTrans;
+                std::vector<double> ball_A_velocityTrans = {0,0};
                 vectorMatrixProduct(ball_A_velocity,transformationMatrix,ball_A_velocityTrans);
 
                 //Target ball
                 std::vector<double> ball_B_velocity = ball_B.getVelocity();
-                std::vector<double> ball_B_velocityTrans;
+                std::vector<double> ball_B_velocityTrans = {0,0};
                 vectorMatrixProduct(ball_B_velocity,transformationMatrix,ball_B_velocityTrans);
 
             //Collision constants
