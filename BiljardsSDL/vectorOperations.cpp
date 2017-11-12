@@ -173,7 +173,7 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
         std::vector<double> ball_B_position = ball_B.getPosition();
         std::vector<double> differenceBallPosition;
 
-        vectorSubstraction(ball_A_position, ball_B_position, differenceBallPosition);
+        vectorSubstraction(ball_B_position, ball_A_position, differenceBallPosition);
         double distanceBetweenBalls = vectorMagnitude(differenceBallPosition);
 
         //Checking if they are close enough for collisions
@@ -207,10 +207,12 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
 
             //Preforming inverse coordinate transformation to collision frame
                 //Current ball
+                ball_A_velocity = {0,0};
                 vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
                 ball_A.setVelocity(ball_A_velocity);
 
                 //Target ball
+                ball_B_velocity = {0,0};
                 vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
                 ball_B.setVelocity(ball_B_velocity);
 

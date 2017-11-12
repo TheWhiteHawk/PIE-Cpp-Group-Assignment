@@ -34,11 +34,13 @@
 1509635970 c:\users\bas\documents\github\pie-cpp-group-assignment\biljarts\ball.h
 	<vector>
 
-1510309421 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\main.cpp
+1510482086 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\main.cpp
 	<iostream>
 	<vector>
+	<math.h>
 	"../BiljardsSDL/vectorOperations.h"
 	"../BiljardsSDL/ball.h"
+	"../BiljardsSDL/TempTable.h"
 
 1510142971 c:\users\ben\documents\github\pie-cpp-group-assignment\biljarts\vectoroperations.h
 	<vector>
@@ -69,12 +71,12 @@
 	<vector>
 	<math.h>
 
-1510308910 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
+1510482088 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
 	"ball.h"
 	<iostream>
 	<vector>
 
-1510308811 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
+1510482088 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
 	<vector>
 
 1510395804 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
@@ -84,8 +86,9 @@
 	"../BiljardsSDL/ball.h"
 	"../BiljardsSDL/TempTable.h"
 
-1510145528 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.h
+1510482086 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.h
 	<vector>
+	"../BiljardsSDL/ball.h"
 
 1510311808 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.cpp
 	"TempTable.h"
