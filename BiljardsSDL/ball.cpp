@@ -33,12 +33,14 @@ std::vector<double> Ball::getPreviousPosition(){
 }
 
 void Ball::setVelocity(std::vector<double>newVel){
-    if (newVel.size() == 2){
-        velocity = newVel;
-    }
-    else{
-        std::cout << "newVel.size() is not 2, it is: "<< newVel.size() << std::endl;
-        std::exit(-1);
+    if (ballNumber > -1) {
+        if (newVel.size() == 2){
+            velocity = newVel;
+        }
+        else{
+            std::cout << "newVel.size() is not 2, it is: "<< newVel.size() << std::endl;
+            std::exit(-1);
+        }
     }
 }
 

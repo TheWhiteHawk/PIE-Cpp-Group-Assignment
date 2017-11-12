@@ -58,6 +58,11 @@ bool game::LoadContent ()
     vector<double> tempVector(2);
     tempVector[0] = TABLE_WIDTH/4+CORNER_X;
     tempVector[1] = TABLE_HEIGHT/2+CORNER_Y;
+
+    //TEST
+    //tempVector[0] = (TABLE_WIDTH/4)*3+CORNER_X;
+    //tempVector[1] = TABLE_HEIGHT+CORNER_Y;
+
     balls[0].setPosition(tempVector);
     int index = 1;
     for (int n = 0; n<5; n++)  {

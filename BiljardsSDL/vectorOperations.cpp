@@ -136,11 +136,11 @@ double vectorSin(std::vector<double> v){
 }
 
 void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
-    M = { {cos , -sin},{sin , cos} };
+    M = { {cos , sin},{-sin , cos} };
 }
 
 void transformMatrixInv(double cos, double sin, std::vector<std::vector<double>> &M){
-    M = { {cos , sin},{-sin , cos} };
+    M = { {cos , -sin},{sin , cos} };
 }
 
 void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>> M, std::vector<double> &out){

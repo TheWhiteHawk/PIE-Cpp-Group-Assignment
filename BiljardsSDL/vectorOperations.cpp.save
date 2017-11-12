@@ -1,7 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
-#include"game.h"
+#include "../BiljardsSDL/ball.h"
+#include "../BiljardsSDL/TempTable.h"
 
 double vectorMagnitude(std::vector<double> v){
     double value = 0;
@@ -112,16 +113,26 @@ double vectorCos(std::vector<double> v){
     std::vector<double> x {1,0};
     double dotproduct = vectorDotProduct(v,x);
     double magnitude = vectorMagnitude(v);
-    double cos = dotproduct / magnitude;
-    return cos;
+    if (magnitude > pow(10,-300)){
+        double cos = dotproduct / magnitude;
+        return cos;
+    }
+    else{
+        return 0;
+    }
 }
 
 double vectorSin(std::vector<double> v){
     std::vector<double> y {0,1};
     double dotproduct = vectorDotProduct(v,y);
     double magnitude = vectorMagnitude(v);
+    if (magnitude > pow(10,-300)){
     double sin = dotproduct / magnitude;
     return sin;
+    }
+    else{
+        return 0;
+    }
 }
 
 void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
@@ -129,7 +140,7 @@ void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M
 }
 
 void transformMatrixInv(double cos, double sin, std::vector<std::vector<double>> &M){
-    M = { {cos , sin},{-sin , cos} };
+    M = { {cos , -sin},{-sin , cos} };
 }
 
 void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>> M, std::vector<double> &out){
@@ -161,7 +172,133 @@ void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double
     velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2);
 }
 
-void TestPrint(){
-cout game::CORNER_X
+void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
+    //Checking if either or both of the balls have scored
+    //No collision check is necessary of one of the balls has scored
+    bool hasScored_A = ball_A.getHasScored();
+    bool hasScored_B = ball_B.getHasScored();
+    if (!hasScored_A && !hasScored_B){
+        //Calculating the distance between the balls
+        std::vector<double> ball_A_position = ball_A.getPosition();
+        std::vector<double> ball_B_position = ball_B.getPosition();
+        std::vector<double> differenceBallPosition;
+
+        vectorSubstraction(ball_B_position, ball_A_position, differenceBallPosition);
+        double distanceBetweenBalls = vectorMagnitude(differenceBallPosition);
+
+        //Checking if they are close enough for collisions
+        if (distanceBetweenBalls < (ball_A.getRadius() + ball_B.getRadius())){
+            //Calculating transformation matrices
+            double cos = vectorCos(differenceBallPosition);
+            double sin = vectorSin(differenceBallPosition);
+            std::vector<std::vector<double>> transformationMatrix;
+            std::vector<std::vector<double>> inverseTransformationMatrix;
+            transformMatrix(cos,sin,transformationMatrix);
+            transformMatrixInv(cos,sin,inverseTransformationMatrix);
+
+            //Preforming coordinate transformation to collision frame
+                //Current ball
+                std::vector<double> ball_A_velocity = ball_A.getVelocity();
+                std::vector<double> ball_A_velocityTrans = {0,0};
+                vectorMatrixProduct(ball_A_velocity,transformationMatrix,ball_A_velocityTrans);
+
+                //Target ball
+                std::vector<double> ball_B_velocity = ball_B.getVelocity();
+                std::vector<double> ball_B_velocityTrans = {0,0};
+                vectorMatrixProduct(ball_B_velocity,transformationMatrix,ball_B_velocityTrans);
+
+            if (ball_A_velocityTrans[0] > ball_B_velocityTrans[0]){
+                //Collision constants
+                //Masses
+                double ball_A_mass = ball_A.getMass();
+                double ball_B_mass = ball_B.getMass();
+
+                //Calculating new velocities
+                collisionReturnVelocity(ball_A_velocityTrans, ball_B_velocityTrans, ball_A_mass, ball_B_mass, restitutionCoefficient);
+
+                //Preforming inverse coordinate transformation to collision frame
+                    //Current ball
+                    ball_A_velocity = {0,0};
+                    vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
+                    ball_A.setVelocity(ball_A_velocity);
+
+                    //Target ball
+                    ball_B_velocity = {0,0};
+                    vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
+                    ball_B.setVelocity(ball_B_velocity);
+
+                //Setting position
+                ball_A.setPosition(ball_A.getPreviousPosition());
+                ball_B.setPosition(ball_B.getPreviousPosition());
+            }
+        }
+    }
 }
 
+void collisionWalls(std::vector<Ball> &balls, std::vector<Ball> pocketBalls){
+    //Defining the table geometry
+    TempTable table;
+
+    //Flat wall ranges
+    double A = pocketBalls[0].getPosition()[0]; //X coordinate pocket ball 0
+    double B = pocketBalls[2].getPosition()[0]; //X coordinate pocket ball 2
+    double C = pocketBalls[8].getPosition()[0]; //X coordinate pocket ball 8
+    double D = pocketBalls[6].getPosition()[0]; //X coordinate pocket ball 6
+    double E = pocketBalls[1].getPosition()[1]; //Y coordinate pocket ball 1
+    double F = pocketBalls[4].getPosition()[1]; //Y coordinate pocket ball 4
+
+    for (int i = 0; i < balls.size(); i++){
+        //Checking if the ball has scored
+        bool hasScored = balls[i].getHasScored();
+        if (!hasScored){
+
+            double restitutionCoefficientWalls = 0.6;
+
+            //Checking if the balls experience flat wall collisions or corner collisions
+            std::vector<double> r = balls[i].getPosition();
+            if (!(((A <= r[0] <= B) || (C <= r[0] <= D)) && (E <= r[1] <= F))){
+                //Ball on corner collisions
+                for (int j = 0; j < pocketBalls.size(); j++){
+                    collisionBalls(balls[i],pocketBalls[j],restitutionCoefficientWalls);
+                }
+            }
+            else{
+                //Ball on wall collisions
+                //Relevant table dimensions
+                double W = table.TABLE_WIDTH;
+                double H = table.TABLE_HEIGHT;
+                double cornerX = table.CORNER_X;
+                double cornerY = table.CORNER_Y;
+
+                //Relevant ball variables
+                double R = balls[i].getRadius();
+                std::vector<double> v = balls[i].getVelocity();
+
+                //Setting new velocity
+                    //Collisions with vertical walls
+                    if ((r[0]-cornerX < R)||(abs(r[0]-H-cornerX))){
+                        v[0] = -restitutionCoefficientWalls*v[0];
+                    }
+                    //Collisions with horizontal walls
+                    if ((r[1]-cornerY < R)||(abs(r[1]-W-cornerY))){
+                        v[1] = -restitutionCoefficientWalls*v[1];
+                    }
+
+                    balls[i].setVelocity(v);
+            }
+        }
+    }
+}
+
+void collisions(std::vector<Ball> &balls, std::vector<Ball> pocketBalls){
+    //Ball on ball collisions
+    for (int i = 0; i < (balls.size() - 1); i++){
+        for (int j = i; j < balls.size(); j++){
+            double restitutionCoefficientBalls = 0.9;
+            collisionBalls(balls[i],balls[j],restitutionCoefficientBalls);
+        }
+    }
+
+    //Ball on wall collisions
+    collisionWalls(balls,pocketBalls);
+}
