@@ -34,8 +34,4 @@ void TestPrint();
 
 void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient);
 
-void collisionWalls(std::vector<Ball> &balls, std::vector<Ball> pocketBalls);
-
-void collisions(std::vector<Ball> &balls, std::vector<Ball> pocketBalls);
-
 #endif // VECTOROPERATIONS_H_INCLUDED
