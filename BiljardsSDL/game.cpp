@@ -21,12 +21,13 @@ int game::OnExecute ()  {
   //matrixPrint(POS_POCKET_CORNER_BALLS);
 
   FPS = 0;
-  maxDt = 5; //max Dt in ms
+  maxDt = 2; //max Dt in ms
   time = SDL_GetTicks();
   previousTime = SDL_GetTicks();
 
   //balls[0].setVelocity(vector<double>{-10,-500});
-  balls[0].setVelocity(vector<double>{500,-10});
+  //balls[0].setVelocity(vector<double>{500/2.5,490/2.5});
+  balls[0].setVelocity(vector<double>{5000,4});
   while ( Running )  {
         while ( SDL_PollEvent ( & Event ) )  {
             OnEvent ( & Event ) ;

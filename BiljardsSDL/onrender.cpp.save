@@ -71,12 +71,18 @@ void game::OnRender()
 
     //Plot Balls
     SDL_Color ballColor = {.r = 255, .g = 255, .b = 255};
+    SDL_Color ballColorCollsionPossible = {.r = 255, .g = 0, .b = 0};
     //cout << "balls.size() = " <<balls.size() << endl;
         for(int n=0; n<balls.size(); n++){
         //cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
         center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
         radius = balls[n].getRadius();
-        draw_circle(renderer, center, radius, ballColor);
+        if (balls[n].collisionPosible == true){
+            draw_circle(renderer, center, radius, ballColorCollsionPossible);
+        } else{
+            draw_circle(renderer, center, radius, ballColor);
+        }
+
     }
 
 
@@ -93,9 +99,8 @@ void game::OnRender()
 
 
     char integer_string[32];
-    int integer = 1234;
-    sprintf(integer_string, "%d", integer);
-    char FPStext[64] = "Integer: ";
+    sprintf(integer_string, "%d", FPS);
+    char FPStext[64] = "FPS  ";
     strcat(FPStext, integer_string);
 
     SDL_Color textColor = {.r = 255, .g = 255, .b = 255};

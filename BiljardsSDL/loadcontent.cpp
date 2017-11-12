@@ -33,7 +33,7 @@ bool game::LoadContent ()
         for ( int i = 0; i<2; i++ )   { tempVector[i] = POS_POCKET_CORNER_BALLS[n][i]; }
         tempBall.setPosition(tempVector);
         tempBall.setPreviousPosition(tempVector);
-        tempBall.setRadius(BALL_RADIUS);
+        tempBall.setRadius(CORNER_BALL_RATIO*BALL_RADIUS);
         tempBall.setHasScored(false);
         tempBall.setBallNumber(-1);
         POCKET_CORNER_BALLS.push_back(tempBall);

@@ -77,6 +77,8 @@ void game::OnRender()
         center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
         radius = balls[n].getRadius();
         draw_circle(renderer, center, radius, ballColor);
+
+
     }
 
 
