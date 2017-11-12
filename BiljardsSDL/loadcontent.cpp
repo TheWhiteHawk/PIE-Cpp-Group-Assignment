@@ -1,6 +1,10 @@
 #include"game.h"
 bool game::LoadContent ()
 {
+    //Set mousePos
+    mousePos = {0,0};
+
+
     vector<double> row(2);
 
     const vector<double> X_OFFSET {CORNER_X , CORNER_X+TABLE_WIDTH};

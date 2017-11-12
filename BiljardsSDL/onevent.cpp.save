@@ -9,8 +9,6 @@ void game::OnEvent ( SDL_Event * Event )  {
     mousePos[1] = Event ->motion.y;
  }
  if (Event ->type == SDL_MOUSEBUTTONDOWN ) {
-    if ( Event->button.button == SDL_BUTTON_LEFT ) {
-        cout << "Left Mouse Button Pressed" << endl;
-    }
+    if ( Even)
  }
 }

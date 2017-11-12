@@ -37,7 +37,8 @@ private :
  const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;
  const int CORNER_Y = (SCREEN_HEIGHT-TABLE_HEIGHT)/2;
  */
-
+ //Mouse properties
+ vector<double> mousePos;
  //FPS and frames
  int FPS;
  double time;

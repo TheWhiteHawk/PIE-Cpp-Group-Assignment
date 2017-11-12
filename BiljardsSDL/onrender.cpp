@@ -72,14 +72,26 @@ void game::OnRender()
     //Plot Balls
     SDL_Color ballColor = {.r = 255, .g = 255, .b = 255};
     //cout << "balls.size() = " <<balls.size() << endl;
-        for(int n=0; n<balls.size(); n++){
-        //cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
-        center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
-        radius = balls[n].getRadius();
-        draw_circle(renderer, center, radius, ballColor);
-
-
+    for(int n=0; n<balls.size(); n++){
+        if (!balls[n].getHasScored()) {
+            //cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
+            center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
+            radius = balls[n].getRadius();
+            draw_circle(renderer, center, radius, ballColor);
+        }
     }
+
+
+
+
+
+    SDL_Color mouseBallColor = {.r = 0, .g = 0, .b = 255};
+    SDL_Point mouceCenter = {mousePos[0], mousePos[1]};
+    draw_circle(renderer, mouceCenter, radius, mouseBallColor);
+
+
+
+
 
 
 
