@@ -30,9 +30,15 @@ void game::OnLoop ()
 
             //update velocity due to friction
             vector<double> newVel(2);
+            double velMagnitude = vectorMagnitude(balls[n].getVelocity());
+            if (velMagnitude < dt*a) {
+                newVel = {0,0};
+            }
+            else {
+                newVel[0] = balls[n].getVelocity()[0] - vectorCos(balls[n].getVelocity())*dt*a;
+                newVel[1] = balls[n].getVelocity()[1] - vectorSin(balls[n].getVelocity())*dt*a;
+            }
 
-            newVel[0] = balls[n].getVelocity()[0] - vectorCos(balls[n].getVelocity())*dt*a;
-            newVel[1] = balls[n].getVelocity()[1] - vectorSin(balls[n].getVelocity())*dt*a;
             balls[n].setVelocity(newVel);
         }
 
@@ -48,6 +54,7 @@ void game::OnLoop ()
             }
         }
 
+
         //Wall collitions
         //Flat wall ranges
         double A = POCKET_CORNER_BALLS[0].getPosition()[0]; //X coordinate pocket ball 0
@@ -56,19 +63,54 @@ void game::OnLoop ()
         double D = POCKET_CORNER_BALLS[6].getPosition()[0]; //X coordinate pocket ball 6
         double E = POCKET_CORNER_BALLS[1].getPosition()[1]; //Y coordinate pocket ball 1
         double F = POCKET_CORNER_BALLS[4].getPosition()[1]; //Y coordinate pocket ball 4
-        for (int i = 0; i < balls.size(); i++){
 
+        for (int i = 0; i < balls.size(); i++){
             //Checking if the ball has scored
             bool hasScored = balls[i].getHasScored();
+
             if (!hasScored){
                 //cout << "possible collision hasScored= false" << endl;
                 //Checking if the balls experience flat wall collisions or corner collisions
                 std::vector<double> r = balls[i].getPosition();
-                //if (!((((A <= r[0])&&(r[0] <= B)) || ((C <= r[0])&&(r[0] <= D))) && ((E <= r[1])&&(r[1] <= F)))){
+
                 if ((   (r[0]<A) || (r[0]>B&&r[0]<C) || (r[0]>D)   ) && ( r[1]<E || r[1]>F )){
-                    //Ball on corner collisions
-                    for (int j = 0; j < POCKET_CORNER_BALLS.size(); j++){
-                        collisionBalls(balls[i],POCKET_CORNER_BALLS[j],restitutionCoefficientWalls);
+                    //Ball is able to score or the collide on a pocket corner in this area
+                    //If statement for individual pockets
+                    //Top left pocket
+                    if (r[1]+r[0] <= POCKET_CORNER_BALLS[0].getPosition()[0]+POCKET_CORNER_BALLS[0].getPosition()[1]){
+                        hasScored = true;
+                    }
+                    //Top middle pocket
+                    if (r[1] <= POCKET_CORNER_BALLS[2].getPosition()[1]){
+                        hasScored = true;
+                    }
+                    //Top right pocket
+                    if (r[1]-r[0] <= POCKET_CORNER_BALLS[6].getPosition()[1]-POCKET_CORNER_BALLS[6].getPosition()[0]){
+                        hasScored = true;
+                    }
+                    //Bottom left pocket
+                    if (r[1]-r[0] >= POCKET_CORNER_BALLS[3].getPosition()[1]-POCKET_CORNER_BALLS[3].getPosition()[0]){
+                        hasScored = true;
+                    }
+                    //Bottom middle pocket
+                    if (r[1] >= POCKET_CORNER_BALLS[5].getPosition()[1]){
+                        hasScored = true;
+                    }
+                    //Bottom right pocket
+                    if (r[1]+r[0] >= POCKET_CORNER_BALLS[9].getPosition()[0]+POCKET_CORNER_BALLS[9].getPosition()[1]){
+                        hasScored = true;
+                    }
+
+                    if (hasScored){
+                        balls[i].setHasScored(hasScored);
+                        balls[i].setVelocity(vector<double>{0,0});
+                        cout << "Ball " << balls[i].getBallNumber() << " has scored" << endl;
+                    }
+                    else {
+                        //Ball on corner collisions, but only if there was no score
+                        for (int j = 0; j < POCKET_CORNER_BALLS.size(); j++){
+                            collisionBalls(balls[i],POCKET_CORNER_BALLS[j],restitutionCoefficientWalls);
+                        }
                     }
                 }
                 else{
@@ -96,45 +138,20 @@ void game::OnLoop ()
                         v[1] = -restitutionCoefficientWalls*v[1];
                     }
                     balls[i].setVelocity(v);
-
-/*
-                    //Setting new velocity
-                    //Collisions with vertical walls
-                    if ((r[0]-cornerX < R)||(abs(r[0]-H-cornerX))){
-                        v[0] = -restitutionCoefficientWalls*v[0];
-                    }
-                    //Collisions with horizontal walls
-                    if ((r[1]-cornerY < R)||(abs(r[1]-W-cornerY))){
-                        v[1] = -restitutionCoefficientWalls*v[1];
-                    }
-
-                    balls[i].setVelocity(v);
-                    */
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-        //collisions
-        //cout << "for collision Ball pos x: " << balls[0].getPosition()[0] << "       , y: " << balls[0].getPosition()[1] << endl;
-        //cout << "for collision Ball vel x: " << balls[0].getVelocity()[0] << "       , y: " << balls[0].getVelocity()[1] << endl;
-        //collisionBalls(balls[0],balls[1],1);
-        //collisions(balls, POCKET_CORNER_BALLS);
-        //cout << "after collision Ball pos x: " << balls[0].getPosition()[0] << "       , y: " << balls[0].getPosition()[1] << endl;
-        //cout << "after collision Ball vel x: " << balls[0].getVelocity()[0] << "       , y: " << balls[0].getVelocity()[1] << endl;
-        //return;
     }
 
+    //Check if all balls which are in play have a velocity of 0
+    zeroVel = true;
+    for ( int n=0; n< balls.size(); n++) {
+        if (!balls[n].getHasScored()) {
+            if ( vectorMagnitude(balls[n].getVelocity()) > pow(10,-200)){
+                zeroVel = false;
+            }
+        }
+    }
 
 
 

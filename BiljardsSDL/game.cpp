@@ -27,7 +27,7 @@ int game::OnExecute ()  {
 
   //balls[0].setVelocity(vector<double>{-10,-500});
   //balls[0].setVelocity(vector<double>{500/2.5,490/2.5});
-  balls[0].setVelocity(vector<double>{5000,4});
+  //balls[0].setVelocity(vector<double>{5000,4});
   while ( Running )  {
         OnLoop () ;
         while ( SDL_PollEvent ( & Event ) )  {

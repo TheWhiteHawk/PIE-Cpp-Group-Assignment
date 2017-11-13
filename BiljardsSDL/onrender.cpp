@@ -71,6 +71,7 @@ void game::OnRender()
 
     //Plot Balls
     SDL_Color ballColor = {.r = 255, .g = 255, .b = 255};
+    SDL_Color scoredBallColor = {.r = 255, .g = 123, .b = 200};
     //cout << "balls.size() = " <<balls.size() << endl;
     for(int n=0; n<balls.size(); n++){
         if (!balls[n].getHasScored()) {
@@ -79,16 +80,42 @@ void game::OnRender()
             radius = balls[n].getRadius();
             draw_circle(renderer, center, radius, ballColor);
         }
+        else {
+            center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
+            radius = balls[n].getRadius();
+            draw_circle(renderer, center, radius, scoredBallColor);
+        }
     }
 
 
 
 
 
-    SDL_Color mouseBallColor = {.r = 0, .g = 0, .b = 255};
+    SDL_Color mouseBallColor;
+    if ( zeroVel == false) {
+        mouseBallColor= {.r = 255, .g = 0, .b = 0};
+    }
+    else {
+        mouseBallColor= {.r = 0, .g = 255, .b = 0};
+    }
     SDL_Point mouceCenter = {mousePos[0], mousePos[1]};
     draw_circle(renderer, mouceCenter, radius, mouseBallColor);
 
+    //line in shooting direction
+    //Draw blue horizontal line
+
+    //vectorCos(balls[n].getVelocity())
+    vector<double> relativeVector = {2*balls[0].getPosition()[0]-mousePos[0] , 2*balls[0].getPosition()[1]-mousePos[1]};
+
+    cout << "ball     " << balls[0].getPosition()[0] << "   ,   " << balls[0].getPosition()[1] << endl;
+    cout << "mouse    " << mousePos[0] << "   ,   " << mousePos[1] << endl;
+    cout << "relative " << relativeVector[0] << "   ,   " << relativeVector[1] << endl;
+
+	SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
+	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );
+
+	SDL_SetRenderDrawColor( renderer, 0, 0, 255, 255 );
+	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], relativeVector[0], relativeVector[1] );
 
 
 
@@ -99,10 +126,7 @@ void game::OnRender()
 
 
 
-//    SDL_Point center = {200+time/5, 200};
-//    int radius = time/10;
-//    SDL_Color color = {.r = 255, .g = 255, .b = 255};
-//    draw_circle(renderer, center, radius, color);
+
 
 
 

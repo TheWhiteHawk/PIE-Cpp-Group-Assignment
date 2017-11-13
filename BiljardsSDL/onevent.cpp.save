@@ -9,6 +9,14 @@ void game::OnEvent ( SDL_Event * Event )  {
     mousePos[1] = Event ->motion.y;
  }
  if (Event ->type == SDL_MOUSEBUTTONDOWN ) {
-    if ( Even)
+    if ( Event->button.button == SDL_BUTTON_LEFT ) {
+        cout << "Left Mouse Button Pressed" << endl;
+        if (zeroVel) {
+            vector<doubl> newVel;
+            for ( int n=0; i<2; n++) {
+                newVel[n] = balls[0].getVelocity()
+            }
+        }
+    }
  }
 }

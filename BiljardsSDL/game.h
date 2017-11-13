@@ -45,6 +45,9 @@ private :
  double previousTime;
  double maxDt;
 
+ //Check if balls lay still
+ bool zeroVel;
+
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
  std::vector<Ball> POCKET_CORNER_BALLS;
