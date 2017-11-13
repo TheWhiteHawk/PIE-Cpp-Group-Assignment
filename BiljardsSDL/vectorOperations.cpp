@@ -5,6 +5,8 @@
 #include "../BiljardsSDL/TempTable.h"
 
 double vectorMagnitude(std::vector<double> v){
+    //vectorMagnitude squares all the elements of a vector,
+    //sums them and calculates the square root of the sum
     double value = 0;
     int s = v.size();
     for (int i = 0; i < s; i++){
@@ -14,10 +16,13 @@ double vectorMagnitude(std::vector<double> v){
 }
 
 void vectorAddition(std::vector<double> in_1, std::vector<double> in_2, std::vector<double> &out){
+    //vectorAddition element wise addition of two vectors
     int s1 = in_1.size();
     int s2 = in_2.size();
     out.resize(s1,0);
 
+    //If vector in_2 has one element it will be added to
+    //every element of the vector in_1
     if (s2 == 1){
         in_2.resize(s1,in_2[0]);
         s2 = in_2.size();
@@ -34,10 +39,13 @@ void vectorAddition(std::vector<double> in_1, std::vector<double> in_2, std::vec
 }
 
 void vectorSubstraction(std::vector<double> in_1, std::vector<double> in_2, std::vector<double> &out){
+    //vectorSubtraction preforms element wise subtraction of two vectors
     int s1 = in_1.size();
     int s2 = in_2.size();
     out.resize(s1,0);
 
+    //If vector in_2 has one element it will be subtracted from
+    //every element of the vector in_1
     if (s2 == 1){
         in_2.resize(s1,in_2[0]);
         s2 = in_2.size();
@@ -54,6 +62,8 @@ void vectorSubstraction(std::vector<double> in_1, std::vector<double> in_2, std:
 }
 
 double vectorDotProduct(std::vector<double> in_1, std::vector<double> in_2){
+    //vectorDotProduct preforms element wise multiplication of two vectors and then,
+    //calculates the sum the products
     int s1 = in_1.size();
     int s2 = in_2.size();
     double dotproduct = 0;
@@ -75,10 +85,13 @@ double vectorDotProduct(std::vector<double> in_1, std::vector<double> in_2){
 }
 
 void vectorDotDivision(std::vector<double> in_1, std::vector<double> in_2, std::vector<double> &out){
+    //vectorDotDivision preforms element wise division of two vectors
     int s1 = in_1.size();
     int s2 = in_2.size();
     out.resize(s1,0);
 
+    //If vector in_2 has one element it will be the denominator in
+    //every fraction with elements of the vector in_1
     if (s2 == 1){
         in_2.resize(s1,in_2[0]);
         s2 = in_2.size();
@@ -95,12 +108,15 @@ void vectorDotDivision(std::vector<double> in_1, std::vector<double> in_2, std::
 }
 
 void vectorPrint(std::vector<double> v){
+    //vectorPrint prints all the vector elements below each other on the screen
     for (int i = 0; i < v.size(); i++){
         std::cout << v[i] << std::endl;
     }
 }
 
 void matrixPrint(std::vector<std::vector<double>> M){
+    //matrixPrint prints all the matrix elements,
+    //where the elements of a row are printed in a single line
     for (int i = 0; i < M.size(); i++){
         for (int j = 0; j < (M[0].size()); j++){
             std::cout << M[i][j] << "\t";
@@ -110,9 +126,12 @@ void matrixPrint(std::vector<std::vector<double>> M){
 }
 
 double vectorCos(std::vector<double> v){
+    //vectorCos calculates the value of the cosine from the angle between the vector v and the x-axis
+    //cos(theta) = v*x/|v|, x is a unit vector so it has size one, * denotes a dot product
     std::vector<double> x {1,0};
     double dotproduct = vectorDotProduct(v,x);
     double magnitude = vectorMagnitude(v);
+    //When magnitude is very close to zero the function returns zero instead of Nan
     if (magnitude > pow(10,-300)){
         double cos = dotproduct / magnitude;
         return cos;
@@ -123,9 +142,12 @@ double vectorCos(std::vector<double> v){
 }
 
 double vectorSin(std::vector<double> v){
+    //vectorSin calculates the value of the sine from the angle between the vector v and the x-axis
+    //cos(pi/2-theta) = sin(theta) = v*y/|v|, y is a unit vector so it has size one, * denotes a dot product
     std::vector<double> y {0,1};
     double dotproduct = vectorDotProduct(v,y);
     double magnitude = vectorMagnitude(v);
+    //When magnitude is very close to zero the function returns zero instead of Nan
     if (magnitude > pow(10,-300)){
     double sin = dotproduct / magnitude;
     return sin;
@@ -136,14 +158,18 @@ double vectorSin(std::vector<double> v){
 }
 
 void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
+    //This matrix preforms a coordinate transformation for any {x,y} vector when it is multiplied with it
     M = { {cos , sin},{-sin , cos} };
 }
 
 void transformMatrixInv(double cos, double sin, std::vector<std::vector<double>> &M){
+    //This matrix preforms an inverse coordinate transformation for any {x,y} vector when it is multiplied with it
     M = { {cos , -sin},{sin , cos} };
 }
 
 void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>> M, std::vector<double> &out){
+    //vectorMatrixProduct preforms vector matrix multiplication for any suitable sets of vectors and matrices
+    //it returns the vector out
     int sizeVector = in.size();
     out.resize(sizeVector,0);
     int rowMatrix = M.size();
@@ -166,13 +192,22 @@ void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>
 }
 
 void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double mass_1, double mass_2, double restitutionCoefficient){
-    double vPar_1 = velocity_1[0];
-    double vPar_2 = velocity_2[0];
-    velocity_1[0] = ((restitutionCoefficient * mass_2 * (vPar_2 - vPar_1)) + (mass_1 * vPar_1) + (mass_2 * vPar_2)) / (mass_1 + mass_2);
-    velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2);
+    //collisionReturnVelocity calculates the new velocity components after collision between two object along the collision direction
+    //the velocity calculation is generalized to allow for inelastic collisions
+
+    //restitutionCoefficient = 0 -> perfectly inelastic
+    //0 < restitutionCoefficient < 1 -> inelastic
+    //restitutionCoefficient = 1 -> elastic
+
+    double vPar_1 = velocity_1[0]; //Velocity component parallel to the collision direction of object 1
+    double vPar_2 = velocity_2[0]; //Velocity component parallel to the collision direction of object 2
+    velocity_1[0] = ((restitutionCoefficient * mass_2 * (vPar_2 - vPar_1)) + (mass_1 * vPar_1) + (mass_2 * vPar_2)) / (mass_1 + mass_2); //New velocity component object 1
+    velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2); //New velocity component object 2
 }
 
 void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
+    //collisionBalls calculates the new velocity vectors of two balls after the collide
+
     //Checking if either or both of the balls have scored
     //No collision check is necessary of one of the balls has scored
     bool hasScored_A = ball_A.getHasScored();

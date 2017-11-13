@@ -34,7 +34,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="../BiljardsSDL/TempTable.cpp" />
 		<Unit filename="../BiljardsSDL/TempTable.h" />
 		<Unit filename="../BiljardsSDL/ball.cpp" />
 		<Unit filename="../BiljardsSDL/ball.h" />
