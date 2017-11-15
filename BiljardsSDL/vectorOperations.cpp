@@ -29,7 +29,7 @@ void vectorAddition(std::vector<double> in_1, std::vector<double> in_2, std::vec
     }
 
     if (s1 == s2){
-        for (int i = 0; i < s1; i ++){
+        for (int i = 0; i < s1; i++){
             out[i] = in_1[i] + in_2[i];
         }
     }
@@ -52,7 +52,7 @@ void vectorSubstraction(std::vector<double> in_1, std::vector<double> in_2, std:
     }
 
     if (s1 == s2){
-        for (int i = 0; i < s1; i ++){
+        for (int i = 0; i < s1; i++){
             out[i] = in_1[i] - in_2[i];
         }
     }
@@ -74,7 +74,7 @@ double vectorDotProduct(std::vector<double> in_1, std::vector<double> in_2){
     }
 
     if (s1 == s2){
-        for (int i = 0; i < s1; i ++){
+        for (int i = 0; i < s1; i++){
             dotproduct += in_1[i] * in_2[i];
         }
     }
@@ -98,7 +98,7 @@ void vectorDotDivision(std::vector<double> in_1, std::vector<double> in_2, std::
     }
 
     if (s1 == s2){
-        for (int i = 0; i < s1; i ++){
+        for (int i = 0; i < s1; i++){
             out[i] = in_1[i] / in_2[i];
         }
     }

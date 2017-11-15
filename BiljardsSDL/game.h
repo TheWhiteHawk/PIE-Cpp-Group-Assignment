@@ -47,8 +47,12 @@ private :
 
  //Check if balls lay still
  bool zeroVel;
- //Current Player
+ //Is current player, player 1
  bool firstPlayer;
+ //Does player 1 have even balls
+ bool firstPlayerIsEven;
+ //First score
+ bool firstScore = true;
 
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
