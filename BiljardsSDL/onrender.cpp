@@ -72,6 +72,53 @@ void game::OnRender()
         draw_circle(renderer, center, radius, sideColor);
     }
 
+    ///////////////////////////////////////////////////// Table Graphics over
+    //Player indicator
+    SDL_Color playerTextColor = {.r = 255, .g = 255, .b = 255};
+    int texW = 0;
+    int texH = 0;
+    SDL_Rect dstrect;
+    for (int n = 0; n<2; n++) {
+        switch (n) {
+            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , playerTextColor); break;
+            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , playerTextColor); break;
+        }
+
+        texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+        dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
+        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    }
+
+    //firstPlayer =false;
+    if (firstPlayer) {
+        DrawPlayerIndicator(renderer, SCREEN_WIDTH/2-texH, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-1)*texH, texH, texH);
+    }
+    else{
+        DrawPlayerIndicator(renderer, SCREEN_WIDTH/2-texH, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-1)*texH, texH, texH);
+    }
+    ////////////////////////////////////////////////////// Player indicator over
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -146,10 +193,8 @@ void game::OnRender()
     surface = TTF_RenderText_Solid(font, FPStext , textColor);
     texture = SDL_CreateTextureFromSurface(renderer, surface);
 
-    int texW = 0;
-    int texH = 0;
     SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-    SDL_Rect dstrect = { 0, 0, texW, texH };
+    dstrect = { 0, 0, texW, texH };
 
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
 
@@ -157,25 +202,6 @@ void game::OnRender()
 
 
 
-    //Player indicator
-
-    for (int n = 0; n<2; n++) {
-        switch (n) {
-            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , textColor); break;
-            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , textColor); break;
-        }
-
-        texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-        dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
-        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-    }
-
-
-
-    if (firstPlayer) {
-        cout << "player1" << endl;
-    }
 
 
 

@@ -37,6 +37,7 @@
 		<Unit filename="cleanup.cpp" />
 		<Unit filename="drawcircle.cpp" />
 		<Unit filename="drawcircle.h" />
+		<Unit filename="drawplayerindicator.cpp" />
 		<Unit filename="game.cpp" />
 		<Unit filename="game.h" />
 		<Unit filename="includes.h" />

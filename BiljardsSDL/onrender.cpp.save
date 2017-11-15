@@ -72,6 +72,50 @@ void game::OnRender()
         draw_circle(renderer, center, radius, sideColor);
     }
 
+    ///////////////////////////////////////////////////// Table Graphics over
+    //Player indicator
+    SDL_Color playerTextColor = {.r = 255, .g = 255, .b = 255};
+    for (int n = 0; n<2; n++) {
+        switch (n) {
+            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , playerT); break;
+            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , textColor); break;
+        }
+
+        texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+        dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
+        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    }
+
+
+    DrawPlayerIndicator(renderer, 100, 30, 300 , 300);
+
+
+    if (firstPlayer) {
+        cout << "player1" << endl;
+    }
+    ////////////////////////////////////////////////////// Player indicator over
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -116,7 +160,7 @@ void game::OnRender()
     if (magVec > maxVel) {
         relativeVector = {relativeVector[0] * (maxVel/magVec), relativeVector[1]* (maxVel/magVec)};
     }
-    relativeVector = {relativeVector[0] * (/maxVel), relativeVector[1]* (mouseSpeedScaling)};
+    relativeVector = {relativeVector[0] * (300/maxVel), relativeVector[1]* (300/maxVel)};
 
 	SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
 	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );
@@ -157,25 +201,6 @@ void game::OnRender()
 
 
 
-    //Player indicator
-
-    for (int n = 0; n<2; n++) {
-        switch (n) {
-            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , textColor); break;
-            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , textColor); break;
-        }
-
-        texture = SDL_CreateTextureFromSurface(renderer, surface);
-        SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-        dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
-        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-    }
-
-
-
-    if (firstPlayer) {
-        cout << "player1" << endl;
-    }
 
 
 

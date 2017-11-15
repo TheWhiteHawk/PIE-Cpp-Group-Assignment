@@ -2,7 +2,7 @@
 1510411328 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
 	"game.h"
 
-1510751151 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
+1510753014 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
 	"includes.h"
 	<math.h>
 	"TempTable.h"
@@ -35,20 +35,20 @@
 1510752193 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
 	"game.h"
 
-1510584810 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
+1510752659 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
 	"game.h"
 
 1510411911 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
 	"game.h"
 
-1510748246 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
+1510753014 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
 	"game.h"
 
-1510752300 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
+1510754770 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
 	"game.h"
 	"drawcircle.h"
 
-1509981116 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.h
+1510754719 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.h
 	<SDL.h>
 	<SDL_image.h>
 	"game.h"
@@ -58,7 +58,7 @@
 	<iostream>
 	<vector>
 
-1510746865 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
+1510753014 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\vectoroperations.cpp
 	<iostream>
 	<vector>
 	<math.h>
@@ -140,5 +140,10 @@
 	"../BiljardsSDL/TempTable.h"
 
 1510751089 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
+	"game.h"
+
+1510754998 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\drawplayerindicator.cpp
+	<SDL.h>
+	<SDL_image.h>
 	"game.h"
 
