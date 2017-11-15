@@ -105,6 +105,26 @@ void game::OnLoop ()
                         balls[i].setHasScored(hasScored);
                         balls[i].setVelocity(vector<double>{0,0});
                         cout << "Ball " << balls[i].getBallNumber() << " has scored" << endl;
+
+                        //Balls to player assignment
+                        int ballNumber = balls[i].getBallNumber();
+                        bool isEven;
+                        if ((ballNumber < 0) && (ballNumber != 8) && firstScore){
+                            if (ballNumber % 2 == 0){
+                                isEven = true;
+                            }
+                            else{
+                                isEven = false;
+                            }
+
+                            if (firstPlayer){
+                                firstPlayerIsEven = isEven;
+                            }
+                            else{
+                                firstPlayerIsEven = !isEven;
+                            }
+                            firstScore = false;
+                        }
                     }
                     else {
                         //Ball on corner collisions, but only if there was no score
@@ -152,6 +172,12 @@ void game::OnLoop ()
             }
         }
     }
+
+    if (firstPlayerIsEven){
+
+    }
+
+
     if ( zeroVel && balls[0].getHasScored() ) {
         balls[0].setHasScored(false);
         balls[0].setPosition(vector<double>{TABLE_WIDTH/4+CORNER_X,TABLE_HEIGHT/2+CORNER_Y});
