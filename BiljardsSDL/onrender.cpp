@@ -77,6 +77,8 @@ void game::OnRender()
     int texW = 0;
     int texH = 0;
     SDL_Rect dstrect;
+
+
     for (int n = 0; n<2; n++) {
         switch (n) {
             case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , playerTextColor); break;

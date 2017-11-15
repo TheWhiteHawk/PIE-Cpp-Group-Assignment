@@ -59,6 +59,9 @@ private :
  //First score
  bool firstScore = true;
 
+
+    bool shouldSwitch = true;
+
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
  std::vector<Ball> POCKET_CORNER_BALLS;

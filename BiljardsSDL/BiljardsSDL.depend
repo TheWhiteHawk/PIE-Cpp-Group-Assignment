@@ -79,10 +79,10 @@
 1510482088 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
 	<vector>
 
-1510482089 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
+1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
 	"game.h"
 
-1510758785 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
+1510778658 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
 	"includes.h"
 	<math.h>
 	"TempTable.h"
@@ -107,7 +107,7 @@
 1510488727 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
 	"math.h"
 
-1510143216 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.cpp
+1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.cpp
 	<SDL.h>
 	<SDL_image.h>
 	"game.h"
@@ -116,15 +116,14 @@
 	"game.h"
 	<SDL_ttf.h>
 
-1510755849 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
+1510778806 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
 	"game.h"
 
-1510482089 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
+1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
 	"game.h"
 
-1510756952 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
+1510775581 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
 	"game.h"
-	"drawcircle.h"
 
 1510756952 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.h
 	<SDL.h>
@@ -138,7 +137,7 @@
 	"../BiljardsSDL/ball.h"
 	"../BiljardsSDL/TempTable.h"
 
-1510755849 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
+1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
 	"game.h"
 
 1510759955 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\drawplayerindicator.cpp
@@ -146,11 +145,11 @@
 	<SDL_image.h>
 	"game.h"
 
-1510756952 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawplayerindicator.cpp
+1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawplayerindicator.cpp
 	<SDL.h>
 	<SDL_image.h>
 	"game.h"
 
-1510760993 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
+1510778560 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
 	"game.h"
 
