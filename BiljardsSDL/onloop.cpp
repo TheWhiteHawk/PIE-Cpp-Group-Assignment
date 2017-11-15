@@ -173,10 +173,14 @@ void game::OnLoop ()
         }
     }
 
-    if (firstPlayerIsEven){
-
+    //End game and winning conditions
+    for (int i = 0; i < balls.size(); i++){
+        int ballNumber = balls[i].getBallNumber();
+        if (ballNumber > 0){
+            if (ballNumber != 8){
+            }
+            }
     }
-
 
     if ( zeroVel && balls[0].getHasScored() ) {
         balls[0].setHasScored(false);
