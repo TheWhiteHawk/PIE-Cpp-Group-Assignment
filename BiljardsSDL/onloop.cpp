@@ -109,21 +109,30 @@ void game::OnLoop ()
                         //Balls to player assignment
                         int ballNumber = balls[i].getBallNumber();
                         bool isEven;
-                        if ((ballNumber < 0) && (ballNumber != 8) && firstScore){
+
+                        if ((ballNumber > 0) && (ballNumber != 8) && firstScore){
+
                             if (ballNumber % 2 == 0){
                                 isEven = true;
+                                cout << "even" << endl;
                             }
                             else{
                                 isEven = false;
+                                cout << "odd" << endl;
                             }
 
                             if (firstPlayer){
                                 firstPlayerIsEven = isEven;
+
                             }
                             else{
                                 firstPlayerIsEven = !isEven;
                             }
                             firstScore = false;
+                        }
+
+                        if (!firstScore){
+
                         }
                     }
                     else {
@@ -174,12 +183,50 @@ void game::OnLoop ()
     }
 
     //End game and winning conditions
+    bool evenAllScored = true;
+    bool oddAllScored = true;
+    bool gameEnd = false;
+    bool evenHasWon;
     for (int i = 0; i < balls.size(); i++){
         int ballNumber = balls[i].getBallNumber();
         if (ballNumber > 0){
             if (ballNumber != 8){
+                if (!balls[i].getHasScored()){
+                    if (ballNumber % 2 == 0){
+                        evenAllScored = false;
+                    }
+                    else{
+                        oddAllScored = false;
+                    }
+                }
             }
+            else{
+                gameEnd = balls[i].getHasScored();
             }
+        }
+    }
+
+    if (gameEnd && evenAllScored){
+        evenHasWon = true;
+    }
+    if (gameEnd && oddAllScored){
+        evenHasWon = false;
+    }
+
+
+    if (gameEnd && (evenAllScored || oddAllScored)){
+        if (firstPlayerIsEven == evenHasWon){
+            firstPlayerWins == true;
+            cout << "Player 1 wins!" << endl;
+       }
+       else{
+            firstPlayerWins == false;
+            cout << "Player 2 wins!" << endl;
+       }
+    }
+    if (gameEnd){
+        cout << "Game has ended" << endl;
+        //Running == false;
     }
 
     if ( zeroVel && balls[0].getHasScored() ) {
