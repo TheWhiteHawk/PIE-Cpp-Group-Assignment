@@ -110,20 +110,19 @@ void game::OnRender()
     //line in shooting direction
     //Draw blue horizontal line
 
-    //vectorCos(balls[n].getVelocity())
-    vector<double> relativeVector = {2*balls[0].getPosition()[0]-mousePos[0] , 2*balls[0].getPosition()[1]-mousePos[1]};
-
-    /*
-    cout << "ball     " << balls[0].getPosition()[0] << "   ,   " << balls[0].getPosition()[1] << endl;
-    cout << "mouse    " << mousePos[0] << "   ,   " << mousePos[1] << endl;
-    cout << "relative " << relativeVector[0] << "   ,   " << relativeVector[1] << endl;
-    */
+    vector<double> relativeVector = {balls[0].getPosition()[0]-mousePos[0] , balls[0].getPosition()[1]-mousePos[1]};
+    relativeVector = {relativeVector[0] * (mouseSpeedScaling), relativeVector[1]* (mouseSpeedScaling)};
+    double magVec = vectorMagnitude(relativeVector);
+    if (magVec > maxVel) {
+        relativeVector = {relativeVector[0] * (maxVel/magVec), relativeVector[1]* (maxVel/magVec)};
+    }
+    relativeVector = {relativeVector[0] * (300/maxVel), relativeVector[1]* (300/maxVel)};
 
 	SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
 	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );
 
 	SDL_SetRenderDrawColor( renderer, 0, 0, 255, 255 );
-	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], relativeVector[0], relativeVector[1] );
+	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], balls[0].getPosition()[0] + relativeVector[0], balls[0].getPosition()[1] + relativeVector[1] );
 
 
 
