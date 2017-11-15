@@ -3,6 +3,8 @@ bool game::LoadContent ()
 {
     //Set mousePos
     mousePos = {0,0};
+    maxVel = 1000;
+    mouseSpeedScaling = 6;
     firstPlayer = true;
 
 

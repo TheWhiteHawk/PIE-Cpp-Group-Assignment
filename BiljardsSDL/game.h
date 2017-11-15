@@ -37,8 +37,10 @@ private :
  const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;
  const int CORNER_Y = (SCREEN_HEIGHT-TABLE_HEIGHT)/2;
  */
- //Mouse properties
+ //Mouse properties and Max cue ball velocity
  vector<double> mousePos;
+ double maxVel;
+ double mouseSpeedScaling;
  //FPS and frames
  int FPS;
  double time;

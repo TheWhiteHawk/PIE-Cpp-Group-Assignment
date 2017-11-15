@@ -37,13 +37,18 @@ private :
  const int CORNER_X = (SCREEN_WIDTH-TABLE_WIDTH)/2;
  const int CORNER_Y = (SCREEN_HEIGHT-TABLE_HEIGHT)/2;
  */
- //Mouse properties
+ //Mouse properties and Max cueBall velocity
  vector<double> mousePos;
  //FPS and frames
  int FPS;
  double time;
  double previousTime;
  double maxDt;
+
+ //Check if balls lay still
+ bool zeroVel;
+ //Current Player
+ bool firstPlayer;
 
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
