@@ -22,16 +22,18 @@ void game::OnRender()
 	//SDL_RenderDrawLine( renderer,140+ time/10, 30, 140+45, 60+time/10 );
 
 
-    //Divine center and radius
+    //Divine center, radius and color for plotting circles
     SDL_Point center;
+    int radius;
+    SDL_Color color = {.r = 255, .g = 255, .b = 255};
 
 
 
     //Test Corner Radius
     /*
     center = {CORNER_X+CORNER_CORNER, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS};
-    int radius = CORNER_BALL_RATIO*BALL_RADIUS;
-    SDL_Color color = {.r = 255, .g = 255, .b = 255};
+    radius = CORNER_BALL_RATIO*BALL_RADIUS;
+    color = {.r = 255, .g = 255, .b = 255};
     draw_circle(renderer, center, radius, color);
     */
 
@@ -111,9 +113,11 @@ void game::OnRender()
     //vectorCos(balls[n].getVelocity())
     vector<double> relativeVector = {2*balls[0].getPosition()[0]-mousePos[0] , 2*balls[0].getPosition()[1]-mousePos[1]};
 
+    /*
     cout << "ball     " << balls[0].getPosition()[0] << "   ,   " << balls[0].getPosition()[1] << endl;
     cout << "mouse    " << mousePos[0] << "   ,   " << mousePos[1] << endl;
     cout << "relative " << relativeVector[0] << "   ,   " << relativeVector[1] << endl;
+    */
 
 	SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
 	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );
@@ -133,7 +137,7 @@ void game::OnRender()
 
 
 
-
+    //FPS meter
     char integer_string[32];
     sprintf(integer_string, "%d", FPS);
     char FPStext[64] = "FPS  ";
@@ -149,6 +153,33 @@ void game::OnRender()
     SDL_Rect dstrect = { 0, 0, texW, texH };
 
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
+
+
+
+
+    //Player indicator
+
+    for (int n = 0; n<2; n++) {
+        switch (n) {
+            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , textColor); break;
+            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , textColor); break;
+        }
+
+        texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+        dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2, texW, texH };
+        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    }
+
+
+
+    if (firstPlayer) {
+        cout << "player1" << endl;
+    }
+
+
+
 
 
 

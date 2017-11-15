@@ -3,6 +3,8 @@ bool game::LoadContent ()
 {
     //Set mousePos
     mousePos = {0,0};
+    firstPlayer = true;
+
 
 
     vector<double> row(2);

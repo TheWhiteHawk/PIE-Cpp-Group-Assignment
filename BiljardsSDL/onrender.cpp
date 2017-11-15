@@ -137,7 +137,7 @@ void game::OnRender()
 
 
 
-
+    //FPS meter
     char integer_string[32];
     sprintf(integer_string, "%d", FPS);
     char FPStext[64] = "FPS  ";
@@ -153,6 +153,33 @@ void game::OnRender()
     SDL_Rect dstrect = { 0, 0, texW, texH };
 
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+
+
+
+
+
+    //Player indicator
+
+    for (int n = 0; n<2; n++) {
+        switch (n) {
+            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , textColor); break;
+            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , textColor); break;
+        }
+
+        texture = SDL_CreateTextureFromSurface(renderer, surface);
+        SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
+        dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
+        SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+    }
+
+
+
+    if (firstPlayer) {
+        cout << "player1" << endl;
+    }
+
+
+
 
 
 
