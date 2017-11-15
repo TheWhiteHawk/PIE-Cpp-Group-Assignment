@@ -54,6 +54,8 @@ private :
  bool firstPlayer;
  //Does player 1 have even balls
  bool firstPlayerIsEven;
+ //Has player 1 won
+ bool firstPlayerWins;
  //First score
  bool firstScore = true;
 
