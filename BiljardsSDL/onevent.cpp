@@ -12,6 +12,7 @@ void game::OnEvent ( SDL_Event * Event )  {
     if ( Event->button.button == SDL_BUTTON_LEFT ) {
         cout << "Left Mouse Button Pressed" << endl;
         if (zeroVel) {
+            firstTimeStepAfterPlay = true;
             vector<double> newVel = {balls[0].getPosition()[0]-mousePos[0] , balls[0].getPosition()[1]-mousePos[1]};
             newVel= {newVel[0] * (mouseSpeedScaling), newVel[1]* (mouseSpeedScaling)};
             double magVec = vectorMagnitude(newVel);

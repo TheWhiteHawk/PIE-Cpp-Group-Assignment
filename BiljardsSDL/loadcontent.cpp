@@ -6,6 +6,7 @@ bool game::LoadContent ()
     maxVel = 1000;
     mouseSpeedScaling = 6;
     firstPlayer = true;
+    firstTimeStepAfterPlay = false;
 
 
 

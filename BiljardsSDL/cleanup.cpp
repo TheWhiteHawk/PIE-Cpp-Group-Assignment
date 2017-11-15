@@ -3,6 +3,7 @@
 void game::Cleanup ()
 {
  TTF_CloseFont(font);
+ TTF_CloseFont(ballFont);
  SDL_DestroyTexture(texture);
  SDL_FreeSurface(surface);
  SDL_DestroyRenderer ( renderer ) ;

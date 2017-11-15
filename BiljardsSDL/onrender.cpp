@@ -1,5 +1,4 @@
 #include"game.h"
-#include"drawcircle.h"
 
 void game::OnRender()
 {
@@ -14,7 +13,7 @@ void game::OnRender()
 
     //Render green filled quad
     SDL_Rect fillRect = { CORNER_X, CORNER_Y, TABLE_WIDTH, TABLE_HEIGHT };
-	SDL_SetRenderDrawColor( renderer, 0, 140, 0, 255 );
+	SDL_SetRenderDrawColor( renderer, 0, 150, 0, 255 );
 	SDL_RenderFillRect( renderer, &fillRect );
 
     //Draw blue horizontal line
@@ -69,7 +68,7 @@ void game::OnRender()
     for(int n=0; n<POS_POCKET_CORNER_BALLS.size(); n++){
         center = {POS_POCKET_CORNER_BALLS[n][0], POS_POCKET_CORNER_BALLS[n][1]};
         radius = CORNER_BALL_RATIO*BALL_RADIUS;
-        draw_circle(renderer, center, radius, sideColor);
+        draw_circle(renderer, center, radius, sideColor,-1);
     }
 
     ///////////////////////////////////////////////////// Table Graphics over
@@ -127,16 +126,34 @@ void game::OnRender()
     SDL_Color scoredBallColor = {.r = 255, .g = 123, .b = 200};
     //cout << "balls.size() = " <<balls.size() << endl;
     for(int n=0; n<balls.size(); n++){
+        switch (balls[n].getBallNumber()) {
+            case 0: ballColor = {.r = 255, .g = 255, .b = 255}; break;
+            case 1:
+            case 9: ballColor = {.r = 255, .g = 220, .b = 0}; break;
+            case 2:
+            case 10: ballColor = {.r = 0, .g = 0, .b = 255}; break;
+            case 3:
+            case 11: ballColor = {.r = 255, .g = 0, .b = 0}; break;
+            case 4:
+            case 12: ballColor = {.r = 255, .g = 0, .b = 255}; break;
+            case 5:
+            case 13: ballColor = {.r = 255, .g = 128, .b = 0}; break;
+            case 6:
+            case 14: ballColor = {.r = 0, .g = 100, .b = 0}; break;
+            case 7:
+            case 15: ballColor = {.r = 102, .g = 51, .b = 0}; break;
+            case 8: ballColor = {.r = 0, .g = 0, .b = 0}; break;
+        }
         if (!balls[n].getHasScored()) {
             //cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
             center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
             radius = balls[n].getRadius();
-            draw_circle(renderer, center, radius, ballColor);
+            draw_circle(renderer, center, radius, ballColor, balls[n].getBallNumber());
         }
         else {
             center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
             radius = balls[n].getRadius();
-            draw_circle(renderer, center, radius, scoredBallColor);
+            draw_circle(renderer, center, radius, scoredBallColor,balls[n].getBallNumber());
         }
     }
 
@@ -152,7 +169,7 @@ void game::OnRender()
         mouseBallColor= {.r = 0, .g = 255, .b = 0};
     }
     SDL_Point mouceCenter = {mousePos[0], mousePos[1]};
-    draw_circle(renderer, mouceCenter, radius, mouseBallColor);
+    draw_circle(renderer, mouceCenter, radius, mouseBallColor, -1);
 
     //line in shooting direction
     //Draw blue horizontal line

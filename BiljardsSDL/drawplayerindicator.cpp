@@ -2,7 +2,7 @@
 #include <SDL_image.h>
 #include"game.h"
 
-void DrawPlayerIndicator(SDL_Renderer * renderer, double X, double Y, double W , double H)
+void game::DrawPlayerIndicator(SDL_Renderer * renderer, double X, double Y, double W , double H)
 {
     SDL_SetRenderDrawColor(renderer, 255, 0,0, 255);
     //SDL_RenderDrawPoint(renderer, center.x + dx, center.y + dy);

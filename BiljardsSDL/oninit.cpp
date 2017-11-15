@@ -25,6 +25,11 @@ bool game::OnInit ()  {
    cout << SDL_GetError ()  << endl;
    return 1;
   }
+  ballFont = TTF_OpenFont("arial.ttf", BALL_RADIUS);
+  if ( ballFont == NULL ) {
+   cout << SDL_GetError ()  << endl;
+   return 1;
+  }
 
  return true;
 }

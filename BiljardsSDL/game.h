@@ -46,6 +46,7 @@ private :
  double time;
  double previousTime;
  double maxDt;
+ bool firstTimeStepAfterPlay;
 
  //Check if balls lay still
  bool zeroVel;
@@ -64,6 +65,7 @@ private :
  SDL_Window * window;
  SDL_Renderer * renderer;
  TTF_Font * font;
+ TTF_Font * ballFont;
  SDL_Surface * surface;
  SDL_Texture * texture;
 
@@ -78,6 +80,10 @@ public :
  void OnLoop () ;
  void OnRender () ;
  void Cleanup () ;
+
+ //needed to draw stuff
+ void draw_circle(SDL_Renderer * renderer, SDL_Point center, int radius, SDL_Color color, int ballNumber);
+ void DrawPlayerIndicator(SDL_Renderer * renderer, double X, double Y, double W , double H);
 
 } ;
 #endif // GAME_H_INCLUDED
