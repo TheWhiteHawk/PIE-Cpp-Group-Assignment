@@ -22,14 +22,20 @@ void game::OnRender()
 	//SDL_RenderDrawLine( renderer,140+ time/10, 30, 140+45, 60+time/10 );
 
 
+    //Divine center, radius and color for plotting circles
+    SDL_Point center;
+    int radius;
+    SDL_Color color = {.r = 255, .g = 255, .b = 255};
+
 
 
     //Test Corner Radius
-    SDL_Point center = {CORNER_X+CORNER_CORNER, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS};
-    int radius = CORNER_BALL_RATIO*BALL_RADIUS;
-    SDL_Color color = {.r = 255, .g = 255, .b = 255};
+    /*
+    center = {CORNER_X+CORNER_CORNER, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS};
+    radius = CORNER_BALL_RATIO*BALL_RADIUS;
+    color = {.r = 255, .g = 255, .b = 255};
     draw_circle(renderer, center, radius, color);
-
+    */
 
 
     //Plot Side Pannels
@@ -107,9 +113,11 @@ void game::OnRender()
     //vectorCos(balls[n].getVelocity())
     vector<double> relativeVector = {2*balls[0].getPosition()[0]-mousePos[0] , 2*balls[0].getPosition()[1]-mousePos[1]};
 
+    /*
     cout << "ball     " << balls[0].getPosition()[0] << "   ,   " << balls[0].getPosition()[1] << endl;
     cout << "mouse    " << mousePos[0] << "   ,   " << mousePos[1] << endl;
     cout << "relative " << relativeVector[0] << "   ,   " << relativeVector[1] << endl;
+    */
 
 	SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
 	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );

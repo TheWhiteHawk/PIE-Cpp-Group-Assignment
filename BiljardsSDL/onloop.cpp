@@ -152,6 +152,10 @@ void game::OnLoop ()
             }
         }
     }
+    if ( zeroVel && balls[0].getHasScored() ) {
+        balls[0].setHasScored(false);
+        balls[0].setPosition(vector<double>{TABLE_WIDTH/4+CORNER_X,TABLE_HEIGHT/2+CORNER_Y});
+    }
 
 
 

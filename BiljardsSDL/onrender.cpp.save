@@ -22,14 +22,18 @@ void game::OnRender()
 	//SDL_RenderDrawLine( renderer,140+ time/10, 30, 140+45, 60+time/10 );
 
 
+    //Divine center and radius
+    SDL_Point center;
+
 
 
     //Test Corner Radius
-    SDL_Point center = {CORNER_X+CORNER_CORNER, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS};
+    /*
+    center = {CORNER_X+CORNER_CORNER, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS};
     int radius = CORNER_BALL_RATIO*BALL_RADIUS;
     SDL_Color color = {.r = 255, .g = 255, .b = 255};
     draw_circle(renderer, center, radius, color);
-
+    */
 
 
     //Plot Side Pannels

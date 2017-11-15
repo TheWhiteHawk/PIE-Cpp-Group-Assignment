@@ -147,8 +147,14 @@ void game::OnLoop ()
     zeroVel = true;
     for ( int n=0; n< balls.size(); n++) {
         if (!balls[n].getHasScored()) {
-            if ( vectorMagnitude(balls[n].getVelocity() < pow(10,-200))
+            if ( vectorMagnitude(balls[n].getVelocity()) > pow(10,-200)){
+                zeroVel = false;
+            }
         }
+    }
+    if ( zeroVel && balls[0].getHasScored() ) {
+        balls[0].getHasScored(false);
+        balls[0].setPosition(ve)
     }
 
 
