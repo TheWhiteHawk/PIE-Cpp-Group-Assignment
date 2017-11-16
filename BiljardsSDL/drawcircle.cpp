@@ -22,7 +22,7 @@ void game::draw_circle(SDL_Renderer * renderer, SDL_Point center, int radius, SD
     }
     if (ballNumber>0) {
 
-        if (ballNumber == 2 || ballNumber == 4 || ballNumber == 6 || ballNumber == 9 || ballNumber == 11 || ballNumber == 13 || ballNumber == 15 ) {
+        if (ballNumber > 8){
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             for (int h = 0; h < radius * 2; h++) {
                 for (int w = 0; w < radius * 2; w++) {
