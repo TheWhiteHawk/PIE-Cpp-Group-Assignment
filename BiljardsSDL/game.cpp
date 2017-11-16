@@ -29,6 +29,9 @@ int game::OnExecute ()  {
   //balls[0].setVelocity(vector<double>{500/2.5,490/2.5});
   //balls[0].setVelocity(vector<double>{5000,4});
   while ( Running )  {
+        if (Running){
+            //cout << "running is true" << endl;
+        }
         OnLoop () ;
         while ( SDL_PollEvent ( & Event ) )  {
             OnEvent ( & Event ) ;
@@ -41,6 +44,10 @@ int game::OnExecute ()  {
  Cleanup () ;
 
  return 0;
+}
+
+void game::stopRunning(){
+    Running = false;
 }
 
 int main ( int argc , char * argv [ ] )  {

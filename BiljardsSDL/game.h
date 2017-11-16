@@ -59,8 +59,17 @@ private :
  //First score
  bool firstScore = true;
 
+ bool gameEnd = false;
 
+    bool scoreHappend = false;
     bool shouldSwitch = true;
+
+    bool newTurn = true;
+             bool allEven = true;
+    bool allOdd = true;
+
+char* firstPlayerMessage = "PLAYER 1";
+char* secondPlayerMessage = "PLAYER 2";
 
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;
@@ -85,6 +94,8 @@ public :
  void OnLoop () ;
  void OnRender () ;
  void Cleanup () ;
+
+ void stopRunning();
 
  //needed to draw stuff
  void draw_circle(SDL_Renderer * renderer, SDL_Point center, int radius, SDL_Color color, int ballNumber);

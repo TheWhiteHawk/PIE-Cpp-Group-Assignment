@@ -20,9 +20,7 @@ void game::OnLoop ()
     double a = a_m*PIXEL_METER_RATIO; //acceleration in px/s^2
     double restitutionCoefficientWalls = 0.6;
 
-         bool allEven = true;
-    bool allOdd = true;
-    bool scoreHappend = false;
+    //bool scoreHappend = false;
     //cout << "yes 27" << endl;
     //shouldSwitch = true;
     //All scored balls are even
@@ -121,6 +119,7 @@ void game::OnLoop ()
                         if ((ballNumber > 0) && (ballNumber != 8)){
                             scoreHappend = true;
                             if (ballNumber % 2 == 0){
+                            //if (ballNumber < 8){
                                 isEven = true;
                                 allOdd = false;
                                 cout << "even" << endl;
@@ -139,6 +138,10 @@ void game::OnLoop ()
                                 }
                                 firstScore = false;
                             }
+                        }
+
+                        if (ballNumber == 0){
+                            scoreHappend = false;
                         }
                     }
                     else {
@@ -178,7 +181,22 @@ void game::OnLoop ()
         }
     }
 
-    if (scoreHappend){
+
+
+    //Check if all balls which are in play have a velocity of 0
+    zeroVel = true;
+    for ( int n=0; n< balls.size(); n++) {
+        if (!balls[n].getHasScored()) {
+            if ( vectorMagnitude(balls[n].getVelocity()) > pow(10,-200)){
+                zeroVel = false;
+                newTurn = false;
+            }
+        }
+    }
+
+    if (zeroVel && firstTimeStepAfterPlay){
+            cout << "ZERO VELOCITY" << endl;
+        if (scoreHappend){
         cout << "scoreHappened" << endl;
         if (firstPlayer){
             cout << "firstPlayer" << endl;
@@ -235,65 +253,60 @@ void game::OnLoop ()
             }
         }
     }
-
-
-
-
-    //Check if all balls which are in play have a velocity of 0
-    zeroVel = true;
-    for ( int n=0; n< balls.size(); n++) {
-        if (!balls[n].getHasScored()) {
-            if ( vectorMagnitude(balls[n].getVelocity()) > pow(10,-200)){
-                zeroVel = false;
-            }
-        }
     }
+
+
+
+
 
     //End game and winning conditions
     bool evenAllScored = true;
     bool oddAllScored = true;
-    bool gameEnd = false;
     bool evenHasWon;
-    for (int i = 0; i < balls.size(); i++){
-        int ballNumber = balls[i].getBallNumber();
-        if (ballNumber > 0){
-            if (ballNumber != 8){
-                if (!balls[i].getHasScored()){
-                    if (ballNumber % 2 == 0){
-                        evenAllScored = false;
-                    }
-                    else{
-                        oddAllScored = false;
+    if (!gameEnd){
+        for (int i = 0; i < balls.size(); i++){
+            int ballNumber = balls[i].getBallNumber();
+            if (ballNumber > 0){
+                if (ballNumber != 8){
+                    if (!balls[i].getHasScored()){
+                        if (ballNumber % 2 == 0){
+                        //if (ballNumber < 8){
+                            evenAllScored = false;
+                        }
+                        else{
+                            oddAllScored = false;
+                        }
                     }
                 }
+                else{
+                    gameEnd = balls[i].getHasScored();
+                }
             }
-            else{
-                gameEnd = balls[i].getHasScored();
-            }
+        }
+
+        if (gameEnd && evenAllScored){
+            evenHasWon = true;
+        }
+        if (gameEnd && oddAllScored){
+            evenHasWon = false;
+        }
+
+        if (gameEnd && (evenAllScored || oddAllScored)){
+            if (firstPlayerIsEven == evenHasWon){
+                firstPlayerWins == true;
+                cout << "Player 1 wins!" << endl;
+           }
+           else{
+                firstPlayerWins == false;
+                cout << "Player 2 wins!" << endl;
+           }
+        }
+        if (gameEnd){
+            cout << "Game has ended" << endl;
+            stopRunning();
         }
     }
 
-    if (gameEnd && evenAllScored){
-        evenHasWon = true;
-    }
-    if (gameEnd && oddAllScored){
-        evenHasWon = false;
-    }
-
-    if (gameEnd && (evenAllScored || oddAllScored)){
-        if (firstPlayerIsEven == evenHasWon){
-            firstPlayerWins == true;
-            cout << "Player 1 wins!" << endl;
-       }
-       else{
-            firstPlayerWins == false;
-            cout << "Player 2 wins!" << endl;
-       }
-    }
-    if (gameEnd){
-        cout << "Game has ended" << endl;
-        //Running == false;
-    }
 
     //Only execute on the first time step after pbool hasScoredlay
     if (zeroVel&&firstTimeStepAfterPlay){
@@ -304,6 +317,12 @@ void game::OnLoop ()
                 case false: firstPlayer = true; break;
             }
         }
+        newTurn = true;
+        shouldSwitch = true;
+        scoreHappend = false;
+        allEven = true;
+        allOdd = true;
+
         if (balls[0].getHasScored() ) {
             balls[0].setHasScored(false);
             balls[0].setPosition(vector<double>{TABLE_WIDTH/4+CORNER_X,TABLE_HEIGHT/2+CORNER_Y});

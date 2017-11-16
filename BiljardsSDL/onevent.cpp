@@ -10,8 +10,8 @@ void game::OnEvent ( SDL_Event * Event )  {
  }
  if (Event ->type == SDL_MOUSEBUTTONDOWN ) {
     if ( Event->button.button == SDL_BUTTON_LEFT ) {
-        cout << "yes on event 13" << endl;
-        shouldSwitch = true;
+        //cout << "yes on event 13" << endl;
+        //shouldSwitch = true;
         cout << "Left Mouse Button Pressed" << endl;
         if (zeroVel) {
             firstTimeStepAfterPlay = true;
