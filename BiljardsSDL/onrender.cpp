@@ -79,6 +79,8 @@ void game::OnRender()
     SDL_Rect dstrect;
 
     //char* firstPlayerMessage = "test message";
+
+    /*
     if (!firstScore){
         if (firstPlayerIsEven){
             firstPlayerMessage = "PLAYER 1 IS EVEN";
@@ -89,6 +91,7 @@ void game::OnRender()
             secondPlayerMessage = "PLAYER 2 IS EVEN";
         }
     }
+    */
 
     for (int n = 0; n<2; n++) {
         switch (n) {
@@ -101,6 +104,26 @@ void game::OnRender()
         dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
         SDL_RenderCopy(renderer, texture, NULL, &dstrect);
     }
+
+    SDL_Color ballIndicatorColor = {.r = 255, .g = 0, .b = 0};
+    if (!firstScore){
+        if (firstPlayerIsEven){
+            center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 3);
+            center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
+        }
+        else if (!firstPlayerIsEven){
+            center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
+            center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 3);
+        }
+    }
+
+
+
+
 
     //firstPlayer =false;
     if (firstPlayer) {

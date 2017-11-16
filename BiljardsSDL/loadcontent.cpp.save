@@ -1,6 +1,15 @@
 #include"game.h"
 bool game::LoadContent ()
 {
+    //Set mousePos
+    mousePos = {0,0};
+    maxVel = 1000;
+    mouseSpeedScaling = 6;
+    firstPlayer = true;
+    firstTimeStepAfterPlay = false;
+
+
+
     vector<double> row(2);
 
     const vector<double> X_OFFSET {CORNER_X , CORNER_X+TABLE_WIDTH};
@@ -33,7 +42,7 @@ bool game::LoadContent ()
         for ( int i = 0; i<2; i++ )   { tempVector[i] = POS_POCKET_CORNER_BALLS[n][i]; }
         tempBall.setPosition(tempVector);
         tempBall.setPreviousPosition(tempVector);
-        tempBall.setRadius(BALL_RADIUS);
+        tempBall.setRadius(CORNER_BALL_RATIO*BALL_RADIUS);
         tempBall.setHasScored(false);
         tempBall.setBallNumber(-1);
         POCKET_CORNER_BALLS.push_back(tempBall);
@@ -58,11 +67,11 @@ bool game::LoadContent ()
     vector<double> tempVector(2);
     tempVector[0] = TABLE_WIDTH/4+CORNER_X;
     tempVector[1] = TABLE_HEIGHT/2+CORNER_Y;
-    
+
     //TEST
-    tempVector[0] = TABLE_WIDTH/4+CORNER_X;
-    tempVector[1] = TABLE_HEIGHT/2+CORNER_Y;
-    
+    //tempVector[0] = (TABLE_WIDTH/4)*3+CORNER_X;
+    //tempVector[1] = TABLE_HEIGHT+CORNER_Y;
+
     balls[0].setPosition(tempVector);
     int index = 1;
     for (int n = 0; n<5; n++)  {
@@ -75,6 +84,7 @@ bool game::LoadContent ()
     }
 
     const double BALL_MASS = 0.170097139; //mass of the ball in kg, the mass is 6 oz
+    vector<int> nr = 
     for (int n = 0; n<balls.size(); n++) {
         switch (n) {
             case 0 ... 4:   balls[n].setBallNumber(n);

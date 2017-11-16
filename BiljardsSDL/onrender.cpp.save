@@ -13,7 +13,7 @@ void game::OnRender()
 
     //Render green filled quad
     SDL_Rect fillRect = { CORNER_X, CORNER_Y, TABLE_WIDTH, TABLE_HEIGHT };
-	SDL_SetRenderDrawColor( renderer, 0, 140, 0, 255 );
+	SDL_SetRenderDrawColor( renderer, 0, 150, 0, 255 );
 	SDL_RenderFillRect( renderer, &fillRect );
 
     //Draw blue horizontal line
@@ -77,10 +77,26 @@ void game::OnRender()
     int texW = 0;
     int texH = 0;
     SDL_Rect dstrect;
+
+    //char* firstPlayerMessage = "test message";
+
+    /*
+    if (!firstScore){
+        if (firstPlayerIsEven){
+            firstPlayerMessage = "PLAYER 1 IS EVEN";
+            secondPlayerMessage = "PLAYER 2 IS ODD";
+        }
+        else if (!firstPlayerIsEven){
+            firstPlayerMessage = "PLAYER 1 IS ODD";
+            secondPlayerMessage = "PLAYER 2 IS EVEN";
+        }
+    }
+    */
+
     for (int n = 0; n<2; n++) {
         switch (n) {
-            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , playerTextColor); break;
-            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , playerTextColor); break;
+            case 0: surface = TTF_RenderText_Solid(font, firstPlayerMessage , playerTextColor); break;
+            case 1: surface = TTF_RenderText_Solid(font, secondPlayerMessage , playerTextColor); break;
         }
 
         texture = SDL_CreateTextureFromSurface(renderer, surface);
@@ -88,6 +104,26 @@ void game::OnRender()
         dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
         SDL_RenderCopy(renderer, texture, NULL, &dstrect);
     }
+
+    SDL_Color ballIndicatorColor = {.r = 255, .g = 0, .b = 0};
+    if (!firstScore){
+        if (firstPlayerIsEven){
+            center = {SCREEN_WIDTH/2+texW, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 3);
+            center = {SCREEN_WIDTH/2+texW, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
+        }
+        else if (!firstPlayerIsEven){
+            center = {SCREEN_WIDTH/2+texW, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
+            center = {SCREEN_WIDTH/2+texW + , (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
+            draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 3);
+        }
+    }
+
+
+
+
 
     //firstPlayer =false;
     if (firstPlayer) {
@@ -129,7 +165,7 @@ void game::OnRender()
         switch (balls[n].getBallNumber()) {
             case 0: ballColor = {.r = 255, .g = 255, .b = 255}; break;
             case 1:
-            case 9: ballColor = {.r = 255, .g = 255, .b = 0}; break;
+            case 9: ballColor = {.r = 255, .g = 220, .b = 0}; break;
             case 2:
             case 10: ballColor = {.r = 0, .g = 0, .b = 255}; break;
             case 3:
@@ -139,7 +175,7 @@ void game::OnRender()
             case 5:
             case 13: ballColor = {.r = 255, .g = 128, .b = 0}; break;
             case 6:
-            case 14: ballColor = {.r = 0, .g =255, .b = 0}; break;
+            case 14: ballColor = {.r = 0, .g = 100, .b = 0}; break;
             case 7:
             case 15: ballColor = {.r = 102, .g = 51, .b = 0}; break;
             case 8: ballColor = {.r = 0, .g = 0, .b = 0}; break;

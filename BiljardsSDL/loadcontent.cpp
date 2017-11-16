@@ -1,4 +1,6 @@
 #include"game.h"
+#include "assignballnumber.h"
+
 bool game::LoadContent ()
 {
     //Set mousePos
@@ -84,8 +86,9 @@ bool game::LoadContent ()
     }
 
     const double BALL_MASS = 0.170097139; //mass of the ball in kg, the mass is 6 oz
+    vector<int> nr = assignballnumber();
     for (int n = 0; n<balls.size(); n++) {
-        switch (n) {
+        /*switch (n) {
             case 0 ... 4:   balls[n].setBallNumber(n);
                                     break;
             case 5:          balls[n].setBallNumber(8);
@@ -98,7 +101,8 @@ bool game::LoadContent ()
                                     break;
             case 15:        balls[n].setBallNumber(n-1);
                                     break;
-        }
+        }*/
+        balls[n].setBallNumber(nr[n]);
         balls[n].setMass(BALL_MASS);
         balls[n].setRadius(BALL_RADIUS);
         balls[n].setVelocity(vector<double>{0,0});

@@ -1,0 +1,9 @@
+#ifndef ASSIGNBALLNUMBER_H_INCLUDED
+#define ASSIGNBALLNUMBER_H_INCLUDED
+
+#include <vector>
+
+vector<int> assignballnumber();
+
+
+#endif // ASSIGNBALLNUMBER_H_INCLUDED

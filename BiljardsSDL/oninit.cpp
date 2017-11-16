@@ -20,7 +20,7 @@ bool game::OnInit ()  {
    return 1;
   }
 
-  font = TTF_OpenFont("arial.ttf", 25);
+  font = TTF_OpenFont("arial.ttf", 32);
   if ( font == NULL ) {
    cout << SDL_GetError ()  << endl;
    return 1;
