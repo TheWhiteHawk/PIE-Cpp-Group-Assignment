@@ -15,7 +15,7 @@ double vectorMagnitude(std::vector<double> v){
     return sqrt(value);
 }
 
-void vectorAddition(std::vector<double> in_1, std::vector<double> in_2, std::vector<double> &out){
+void vectorAddition(std::vector<double> &in_1, std::vector<double> &in_2, std::vector<double> &out){
     //vectorAddition element wise addition of two vectors
     int s1 = in_1.size();
     int s2 = in_2.size();
@@ -38,7 +38,7 @@ void vectorAddition(std::vector<double> in_1, std::vector<double> in_2, std::vec
     }
 }
 
-void vectorSubstraction(std::vector<double> in_1, std::vector<double> in_2, std::vector<double> &out){
+void vectorSubstraction(std::vector<double> &in_1, std::vector<double> &in_2, std::vector<double> &out){
     //vectorSubtraction preforms element wise subtraction of two vectors
     int s1 = in_1.size();
     int s2 = in_2.size();
@@ -61,7 +61,7 @@ void vectorSubstraction(std::vector<double> in_1, std::vector<double> in_2, std:
     }
 }
 
-double vectorDotProduct(std::vector<double> in_1, std::vector<double> in_2){
+double vectorDotProduct(std::vector<double> &in_1, std::vector<double> &in_2){
     //vectorDotProduct preforms element wise multiplication of two vectors and then,
     //calculates the sum the products
     int s1 = in_1.size();
@@ -84,7 +84,7 @@ double vectorDotProduct(std::vector<double> in_1, std::vector<double> in_2){
     return dotproduct;
 }
 
-void vectorDotDivision(std::vector<double> in_1, std::vector<double> in_2, std::vector<double> &out){
+void vectorDotDivision(std::vector<double> &in_1, std::vector<double> &in_2, std::vector<double> &out){
     //vectorDotDivision preforms element wise division of two vectors
     int s1 = in_1.size();
     int s2 = in_2.size();
@@ -107,14 +107,15 @@ void vectorDotDivision(std::vector<double> in_1, std::vector<double> in_2, std::
     }
 }
 
-void vectorPrint(std::vector<double> v){
+void vectorPrint(std::vector<double> &v){
     //vectorPrint prints all the vector elements below each other on the screen
     for (int i = 0; i < v.size(); i++){
-        std::cout << v[i] << std::endl;
+        std::cout << v[i] << "\t";
     }
+    std::cout << std::endl;
 }
 
-void matrixPrint(std::vector<std::vector<double>> M){
+void matrixPrint(std::vector<std::vector<double>> &M){
     //matrixPrint prints all the matrix elements,
     //where the elements of a row are printed in a single line
     for (int i = 0; i < M.size(); i++){
@@ -157,17 +158,17 @@ double vectorSin(std::vector<double> v){
     }
 }
 
-void transformMatrix(double cos, double sin, std::vector<std::vector<double>> &M){
+void transformMatrix(double &cos, double &sin, std::vector<std::vector<double>> &M){
     //This matrix preforms a coordinate transformation for any {x,y} vector when it is multiplied with it
     M = { {cos , sin},{-sin , cos} };
 }
 
-void transformMatrixInv(double cos, double sin, std::vector<std::vector<double>> &M){
+void transformMatrixInv(double &cos, double &sin, std::vector<std::vector<double>> &M){
     //This matrix preforms an inverse coordinate transformation for any {x,y} vector when it is multiplied with it
     M = { {cos , -sin},{sin , cos} };
 }
 
-void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>> M, std::vector<double> &out){
+void vectorMatrixProduct(std::vector<double> &in, std::vector<std::vector<double>> &M, std::vector<double> &out){
     //vectorMatrixProduct preforms vector matrix multiplication for any suitable sets of vectors and matrices
     //it returns the vector out
     int sizeVector = in.size();
@@ -183,6 +184,7 @@ void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>
             }
         }
         else{
+            std::cout << colMatrix << " " << sizeVector << std::endl;
             std::cout << "Number of columns in the matrix does not match vector size!" << std::endl;
         }
     }
@@ -191,7 +193,7 @@ void vectorMatrixProduct(std::vector<double> in, std::vector<std::vector<double>
     }
 }
 
-void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double mass_1, double mass_2, double restitutionCoefficient){
+void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double &mass_1, double &mass_2, double &restitutionCoefficient){
     //collisionReturnVelocity calculates the new velocity components after collision between two object along the collision direction
     //the velocity calculation is generalized to allow for inelastic collisions
 
@@ -205,7 +207,7 @@ void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double
     velocity_2[0] = ((restitutionCoefficient * mass_1 * (vPar_1 - vPar_2)) + (mass_2 * vPar_2) + (mass_1 * vPar_1)) / (mass_1 + mass_2); //New velocity component object 2
 }
 
-void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
+void collisionBalls(Ball &ball_A, Ball &ball_B, double &restitutionCoefficient){
     //collisionBalls calculates the new velocity vectors of two balls after the collide
 
     //Checking if either or both of the balls have scored
@@ -257,7 +259,6 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double restitutionCoefficient){
                     vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
                     ball_A.setVelocity(ball_A_velocity);
 
-                    //Target ball
                     ball_B_velocity = {0,0};
                     vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
                     ball_B.setVelocity(ball_B_velocity);
