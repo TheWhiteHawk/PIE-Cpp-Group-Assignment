@@ -15,7 +15,7 @@ vector<int> assignballnumber() {
     int ind;
     int N = pool.size();
     for (int n = 0; n<N; n++) {
-        cout << "n: " << n << endl;
+        //cout << "n: " << n << endl;
         if (n == 0) {
             ind = 0;
             out[ind] = pool[ind];
@@ -58,7 +58,7 @@ vector<int> assignballnumber() {
                 outInd = n-1;
             }
             ind = rand() % pool.size();
-            cout << "n: " << n << " , ind: " << ind << " , pool[ind]: " << pool[ind] << endl;
+            //cout << "n: " << n << " , ind: " << ind << " , pool[ind]: " << pool[ind] << endl;
             out[outInd] = pool[ind];
             pool.erase (pool.begin()+ind);
         }

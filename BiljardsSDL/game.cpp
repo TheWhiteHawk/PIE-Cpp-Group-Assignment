@@ -51,6 +51,7 @@ void game::stopRunning(){
 }
 
 int main ( int argc , char * argv [ ] )  {
+
  game theGame;
 
  return theGame.OnExecute () ;
