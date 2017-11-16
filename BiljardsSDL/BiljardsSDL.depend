@@ -2,7 +2,7 @@
 1510761924 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
 	"game.h"
 
-1510761902 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
+1510765647 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
 	"includes.h"
 	<math.h>
 	"TempTable.h"
@@ -41,7 +41,7 @@
 1510761879 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
 	"game.h"
 
-1510758980 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
+1510765647 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
 	"game.h"
 
 1510765164 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
