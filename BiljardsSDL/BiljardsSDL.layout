@@ -2,10 +2,32 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="ball.cpp" open="0" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="oninit.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="16" topLine="0" />
+			<Cursor1 position="116" topLine="0" />
 		</Cursor>
+	</File>
+	<File name="vectorOperations.cpp" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7429" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="6" />
+			<Collapse line="17" />
+			<Collapse line="40" />
+			<Collapse line="63" />
+			<Collapse line="86" />
+			<Collapse line="109" />
+			<Collapse line="111" />
+			<Collapse line="117" />
+			<Collapse line="128" />
+			<Collapse line="144" />
+			<Collapse line="160" />
+			<Collapse line="165" />
+			<Collapse line="170" />
+			<Collapse line="195" />
+			<Collapse line="209" />
+		</Folding>
 	</File>
 	<File name="TempTable.h" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
@@ -17,34 +39,14 @@
 			<Cursor1 position="782" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="vectorOperations.cpp" open="0" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="game.h" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="2876" topLine="96" />
+			<Cursor1 position="2331" topLine="39" />
 		</Cursor>
 	</File>
-	<File name="vectorOperations.h" open="0" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="loadcontent.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="1313" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="game.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2371" topLine="67" />
-		</Cursor>
-	</File>
-	<File name="drawcircle.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="731" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="game.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="888" topLine="19" />
-		</Cursor>
-	</File>
-	<File name="oninit.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="116" topLine="0" />
+			<Cursor1 position="203" topLine="21" />
 		</Cursor>
 	</File>
 	<File name="cleanup.cpp" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -57,9 +59,9 @@
 			<Cursor1 position="214" topLine="5" />
 		</Cursor>
 	</File>
-	<File name="loadcontent.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="game.cpp" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="203" topLine="42" />
+			<Cursor1 position="820" topLine="0" />
 		</Cursor>
 	</File>
 	<File name="onevent.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -74,7 +76,22 @@
 	</File>
 	<File name="onloop.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="12046" topLine="293" />
+			<Cursor1 position="12185" topLine="295" />
+		</Cursor>
+	</File>
+	<File name="ball.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="814" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="vectorOperations.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1230" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="drawcircle.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="731" topLine="0" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
