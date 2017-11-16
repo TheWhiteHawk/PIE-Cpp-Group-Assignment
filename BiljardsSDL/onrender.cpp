@@ -77,10 +77,23 @@ void game::OnRender()
     int texW = 0;
     int texH = 0;
     SDL_Rect dstrect;
+
+    //char* firstPlayerMessage = "test message";
+    if (!firstScore){
+        if (firstPlayerIsEven){
+            firstPlayerMessage = "PLAYER 1 IS EVEN";
+            secondPlayerMessage = "PLAYER 2 IS ODD";
+        }
+        else if (!firstPlayerIsEven){
+            firstPlayerMessage = "PLAYER 1 IS ODD";
+            secondPlayerMessage = "PLAYER 2 IS EVEN";
+        }
+    }
+
     for (int n = 0; n<2; n++) {
         switch (n) {
-            case 0: surface = TTF_RenderText_Solid(font, "PLAYER 1" , playerTextColor); break;
-            case 1: surface = TTF_RenderText_Solid(font, "PLAYER 2" , playerTextColor); break;
+            case 0: surface = TTF_RenderText_Solid(font, firstPlayerMessage , playerTextColor); break;
+            case 1: surface = TTF_RenderText_Solid(font, secondPlayerMessage , playerTextColor); break;
         }
 
         texture = SDL_CreateTextureFromSurface(renderer, surface);
