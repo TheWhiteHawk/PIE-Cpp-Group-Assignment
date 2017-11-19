@@ -59,7 +59,9 @@ void game::draw_circle(SDL_Renderer * renderer, SDL_Point center, int radius, SD
         texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
         SDL_Rect dstrect = { center.x-texW/2, center.y-texH/2, texW, texH };
+        SDL_FreeSurface(surface);
         SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+        SDL_DestroyTexture(texture);
     }
 
 

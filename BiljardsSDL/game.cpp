@@ -39,7 +39,7 @@ int game::OnExecute ()  {
 
 
    OnRender () ;
-  }
+ }
 
  Cleanup () ;
 

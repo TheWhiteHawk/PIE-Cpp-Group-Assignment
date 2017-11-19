@@ -10,7 +10,7 @@ bool game::OnInit ()  {
 
 
   // win = SDL_CreateWindow ( "Image Loading" , 100 , 100 , WIDTH , HEIGHT , SDL_WINDOW_RESIZABLE ) ;
-  if ( ( window = SDL_CreateWindow ( "SDL Render Clear" , 100 , 100 , SCREEN_WIDTH ,SCREEN_HEIGHT , SDL_WINDOW_SHOWN ) )  == NULL )  {
+  if ( ( window = SDL_CreateWindow ( "8 Ball" , 100 , 100 , SCREEN_WIDTH ,SCREEN_HEIGHT , SDL_WINDOW_SHOWN ) )  == NULL )  {
    return false;
   }
   // SDL Renderer

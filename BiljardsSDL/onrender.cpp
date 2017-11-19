@@ -2,6 +2,7 @@
 
 void game::OnRender()
 {
+
     //Clear Render
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
@@ -72,6 +73,7 @@ void game::OnRender()
     }
 
     ///////////////////////////////////////////////////// Table Graphics over
+
     //Player indicator
     SDL_Color playerTextColor = {.r = 255, .g = 255, .b = 255};
     int texW = 0;
@@ -102,7 +104,9 @@ void game::OnRender()
         texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
         dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
+        SDL_FreeSurface(surface);
         SDL_RenderCopy(renderer, texture, NULL, &dstrect);
+        SDL_DestroyTexture(texture);
     }
 
     SDL_Color ballIndicatorColor = {.r = 255, .g = 0, .b = 0};
@@ -132,6 +136,7 @@ void game::OnRender()
     else{
         DrawPlayerIndicator(renderer, SCREEN_WIDTH/2-texH, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-1)*texH, texH, texH);
     }
+
     ////////////////////////////////////////////////////// Player indicator over
 
 
@@ -249,8 +254,9 @@ void game::OnRender()
     SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
     dstrect = { 0, 0, texW, texH };
 
+    SDL_FreeSurface(surface);
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
-
+    SDL_DestroyTexture(texture);
 
 
 
