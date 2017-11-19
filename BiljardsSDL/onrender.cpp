@@ -111,13 +111,13 @@ void game::OnRender()
 
     SDL_Color ballIndicatorColor = {.r = 255, .g = 0, .b = 0};
     if (!firstScore){
-        if (firstPlayerIsEven){
+        if (firstPlayerIsFull){
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
             draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 3);
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
             draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
         }
-        else if (!firstPlayerIsEven){
+        else if (!firstPlayerIsFull){
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
             draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};

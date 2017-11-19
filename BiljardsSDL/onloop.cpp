@@ -23,7 +23,7 @@ void game::OnLoop ()
     //bool scoreHappend = false;
     //cout << "yes 27" << endl;
     //shouldSwitch = true;
-    //All scored balls are even
+    //All scored balls are full
     for (int t=0; t<numberOfSteps; t++) {
         //update positions
         for (int n = 0; n<balls.size(); n++) {
@@ -115,26 +115,26 @@ void game::OnLoop ()
 
                         //Balls to player assignment
                         int ballNumber = balls[i].getBallNumber();
-                        bool isEven;
+                        bool isFull;
                         if ((ballNumber > 0) && (ballNumber != 8)){
                             scoreHappend = true;
-                            if (ballNumber % 2 == 0){
+                            if (ballNumber < 8 == 0){
                             //if (ballNumber < 8){
-                                isEven = true;
-                                allOdd = false;
-                                cout << "even" << endl;
+                                isFull = true;
+                                allHalf = false;
+                                cout << "Full" << endl;
                             }
                             else{
-                                isEven = false;
-                                allEven = false;
-                                cout << "odd" << endl;
+                                isFull = false;
+                                allFull = false;
+                                cout << "Half" << endl;
                             }
                         if (firstScore){
                                 if (firstPlayer){
-                                    firstPlayerIsEven = isEven;
+                                    firstPlayerIsFull = isFull;
                                 }
                                 else{
-                                    firstPlayerIsEven = !isEven;
+                                    firstPlayerIsFull = !isFull;
                                 }
                                 firstScore = false;
                             }
@@ -200,10 +200,10 @@ void game::OnLoop ()
         cout << "scoreHappened" << endl;
         if (firstPlayer){
             cout << "firstPlayer" << endl;
-            if (firstPlayerIsEven){
-                cout << "firstPlayerIsEven" << endl;
-                if (allEven){
-                    cout << "all even" << endl;
+            if (firstPlayerIsFull){
+                cout << "firstPlayerIsFull" << endl;
+                if (allFull){
+                    cout << "all Full" << endl;
                     shouldSwitch = false;
                     cout << "no 187" << endl;
                 }
@@ -213,9 +213,9 @@ void game::OnLoop ()
                 }
             }
             else{
-                cout << "firstPlayerIsOdd" << endl;
-                if (allOdd){
-                    cout << "all odd" << endl;
+                cout << "firstPlayerIsHalf" << endl;
+                if (allHalf){
+                    cout << "all Half" << endl;
                     shouldSwitch = false;
                     cout << "no 197" << endl;
                  }
@@ -227,10 +227,10 @@ void game::OnLoop ()
         }
         else{
             cout << "secondPlayer" << endl;
-            if (!firstPlayerIsEven){
-                cout << "firstPlayerIsOdd" << endl;
-                if (allEven){
-                    cout << "all even" << endl;
+            if (!firstPlayerIsFull){
+                cout << "firstPlayerIsHalf" << endl;
+                if (allFull){
+                    cout << "all Full" << endl;
                     shouldSwitch = false;
                     cout << "no 211" << endl;
                 }
@@ -240,9 +240,9 @@ void game::OnLoop ()
                 }
             }
             else{
-                cout << "firstPlayerIsEven" << endl;
-                if (allOdd){
-                    cout << "all odd" << endl;
+                cout << "firstPlayerIsFull" << endl;
+                if (allHalf){
+                    cout << "all Half" << endl;
                     shouldSwitch = false;
                     cout << "no 222" << endl;
                 }
@@ -260,21 +260,21 @@ void game::OnLoop ()
 
 
     //End game and winning conditions
-    bool evenAllScored = true;
-    bool oddAllScored = true;
-    bool evenHasWon;
+    bool fullAllScored = true;
+    bool halfAllScored = true;
+    bool fullHasWon;
     if (!gameEnd){
         for (int i = 0; i < balls.size(); i++){
             int ballNumber = balls[i].getBallNumber();
             if (ballNumber > 0){
                 if (ballNumber != 8){
                     if (!balls[i].getHasScored()){
-                        if (ballNumber % 2 == 0){
+                        if (ballNumber < 8){
                         //if (ballNumber < 8){
-                            evenAllScored = false;
+                            fullAllScored = false;
                         }
                         else{
-                            oddAllScored = false;
+                            halfAllScored = false;
                         }
                     }
                 }
@@ -284,15 +284,15 @@ void game::OnLoop ()
             }
         }
 
-        if (gameEnd && evenAllScored){
-            evenHasWon = true;
+        if (gameEnd && fullAllScored){
+            fullHasWon = true;
         }
-        if (gameEnd && oddAllScored){
-            evenHasWon = false;
+        if (gameEnd && halfAllScored){
+            fullHasWon = false;
         }
 
-        if (gameEnd && (evenAllScored || oddAllScored)){
-            if (firstPlayerIsEven == evenHasWon){
+        if (gameEnd && (fullAllScored || halfAllScored)){
+            if (firstPlayerIsFull == fullHasWon){
                 firstPlayerWins == true;
                 cout << "Player 1 wins!" << endl;
            }
@@ -320,8 +320,8 @@ void game::OnLoop ()
         newTurn = true;
         shouldSwitch = true;
         scoreHappend = false;
-        allEven = true;
-        allOdd = true;
+        allFull = true;
+        allHalf = true;
 
 
 
