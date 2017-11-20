@@ -53,7 +53,7 @@ private :
  //Is current player, player 1
  bool firstPlayer;
  //Does player 1 have even balls
- bool firstPlayerIsEven;
+ bool firstPlayerIsFull;
  //Has player 1 won
  bool firstPlayerWins;
  //First score
@@ -61,12 +61,11 @@ private :
 
  bool gameEnd = false;
 
-    bool scoreHappend = false;
-    bool shouldSwitch = true;
-
-    bool newTurn = true;
-             bool allEven = true;
-    bool allOdd = true;
+bool scoreHappend = false;
+bool shouldSwitch = true;
+bool newTurn = true;
+bool allFull = true;
+bool allHalf = true;
 
 char* firstPlayerMessage = "PLAYER 1";
 char* secondPlayerMessage = "PLAYER 2";

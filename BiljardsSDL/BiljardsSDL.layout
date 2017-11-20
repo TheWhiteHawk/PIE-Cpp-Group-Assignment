@@ -2,6 +2,7 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< HEAD
 	<File name="cleanup.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="156" topLine="0" />
@@ -10,6 +11,16 @@
 	<File name="drawcircle.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="2376" topLine="19" />
+=======
+	<File name="vectorOperations.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7387" topLine="229" />
+		</Cursor>
+	</File>
+	<File name="cleanup.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="156" topLine="0" />
+>>>>>>> f604f324556a5e1b80cc21c5a4c5094f4dbc1fa8
 		</Cursor>
 	</File>
 	<File name="game.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -17,6 +28,7 @@
 			<Cursor1 position="801" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="onloop.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="6527" topLine="247" />
@@ -43,4 +55,26 @@
 		</Cursor>
 	</File>
 	<EditorTabsLayout layout="0cfc7df85a115c6600091e2a00000002=*0;BiljardsSDL:onloop.cpp,1;BiljardsSDL:vectorOperations.cpp,2;BiljardsSDL:game.cpp,3;BiljardsSDL:onrender.cpp,4;BiljardsSDL:cleanup.cpp,5;BiljardsSDL:oninit.cpp,6;BiljardsSDL:game.h,7;BiljardsSDL:drawcircle.cpp@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=854;besth=385;minw=854;minh=385;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0cfc7df85a115c6600091e2a00000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
+=======
+	<File name="game.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1718" topLine="42" />
+		</Cursor>
+	</File>
+	<File name="oninit.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="634" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="onloop.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11285" topLine="268" />
+		</Cursor>
+	</File>
+	<File name="onrender.cpp" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4208" topLine="94" />
+		</Cursor>
+	</File>
+>>>>>>> f604f324556a5e1b80cc21c5a4c5094f4dbc1fa8
 </CodeBlocks_layout_file>
