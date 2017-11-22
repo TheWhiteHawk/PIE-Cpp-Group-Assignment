@@ -168,7 +168,7 @@ void transformMatrixInv(double &cos, double &sin, std::vector<std::vector<double
     M = { {cos , -sin},{sin , cos} };
 }
 
-void vectorMatrixProduct(std::vector<double> &in, std::vector<std::vector<double>> &M, std::vector<double> &out){
+int vectorMatrixProduct(std::vector<double> &in, std::vector<std::vector<double>> &M, std::vector<double> &out){
     //vectorMatrixProduct preforms vector matrix multiplication for any suitable sets of vectors and matrices
     //it returns the vector out
     int sizeVector = in.size();
@@ -186,11 +186,13 @@ void vectorMatrixProduct(std::vector<double> &in, std::vector<std::vector<double
         else{
             std::cout << colMatrix << " " << sizeVector << std::endl;
             std::cout << "Number of columns in the matrix does not match vector size!" << std::endl;
+            return -1;
         }
     }
     else{
         std::cout << "Matrix is not square!" << std::endl;
     }
+    return 0;
 }
 
 void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double &mass_1, double &mass_2, double &restitutionCoefficient){
@@ -234,15 +236,15 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double &restitutionCoefficient){
             transformMatrixInv(cos,sin,inverseTransformationMatrix);
 
             //Preforming coordinate transformation to collision frame
-                //Current ball
-                std::vector<double> ball_A_velocity = ball_A.getVelocity();
-                std::vector<double> ball_A_velocityTrans = {0,0};
-                vectorMatrixProduct(ball_A_velocity,transformationMatrix,ball_A_velocityTrans);
+            //Current ball
+            std::vector<double> ball_A_velocity = ball_A.getVelocity();
+            std::vector<double> ball_A_velocityTrans = {0,0};
+            if (vectorMatrixProduct(ball_A_velocity,transformationMatrix,ball_A_velocityTrans)<0) {std::cout << "Error in with ball_A_velocity" << std::endl;}
 
-                //Target ball
-                std::vector<double> ball_B_velocity = ball_B.getVelocity();
-                std::vector<double> ball_B_velocityTrans = {0,0};
-                vectorMatrixProduct(ball_B_velocity,transformationMatrix,ball_B_velocityTrans);
+            //Target ball
+            std::vector<double> ball_B_velocity = ball_B.getVelocity();
+            std::vector<double> ball_B_velocityTrans = {0,0};
+            if (vectorMatrixProduct(ball_B_velocity,transformationMatrix,ball_B_velocityTrans)<0) {std::cout << "Error in with ball_B_velocity" << std::endl;}
 
             if (ball_A_velocityTrans[0] > ball_B_velocityTrans[0]){
                 //Collision constants
@@ -254,14 +256,14 @@ void collisionBalls(Ball &ball_A, Ball &ball_B, double &restitutionCoefficient){
                 collisionReturnVelocity(ball_A_velocityTrans, ball_B_velocityTrans, ball_A_mass, ball_B_mass, restitutionCoefficient);
 
                 //Preforming inverse coordinate transformation to collision frame
-                    //Current ball
-                    ball_A_velocity = {0,0};
-                    vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity);
-                    ball_A.setVelocity(ball_A_velocity);
+                //Current ball
+                ball_A_velocity = {0,0};
+                if (vectorMatrixProduct(ball_A_velocityTrans,inverseTransformationMatrix,ball_A_velocity)<0) {std::cout << "Error in with ball_A_velocityTrans" << std::endl;}
+                ball_A.setVelocity(ball_A_velocity);
 
-                    ball_B_velocity = {0,0};
-                    vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity);
-                    ball_B.setVelocity(ball_B_velocity);
+                ball_B_velocity = {0,0};
+                if (vectorMatrixProduct(ball_B_velocityTrans,inverseTransformationMatrix,ball_B_velocity)<0) {std::cout << "Error in with ball_B_velocityTrans" << std::endl;}
+                ball_B.setVelocity(ball_B_velocity);
 
                 //Setting position
                 ball_A.setPosition(ball_A.getPreviousPosition());
