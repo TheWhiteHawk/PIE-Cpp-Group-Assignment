@@ -291,15 +291,31 @@ void game::OnLoop ()
             fullHasWon = false;
         }
 
-        if (gameEnd && (fullAllScored || halfAllScored)){
+        if (gameEnd && ((fullAllScored && !halfAllScored) || (halfAllScored && !fullAllScored))){
             if (firstPlayerIsFull == fullHasWon){
                 firstPlayerWins == true;
                 cout << "Player 1 wins!" << endl;
-           }
-           else{
+            }
+            else{
                 firstPlayerWins == false;
                 cout << "Player 2 wins!" << endl;
-           }
+            }
+        }
+        else if (gameEnd && fullAllScored && halfAllScored){
+            if (firstPlayer){
+                cout << "Player 1 wins!" << endl;
+            }
+            else{
+                cout << "Player 2 wins!" << endl;
+            }
+        }
+        else{
+            if (!firstPlayer){
+                cout << "Player 1 wins!" << endl;
+            }
+            else{
+                cout << "Player 2 wins!" << endl;
+            }
         }
         if (gameEnd){
             cout << "Game has ended" << endl;
