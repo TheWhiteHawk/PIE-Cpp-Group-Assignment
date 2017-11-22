@@ -309,7 +309,7 @@ void game::OnLoop ()
                 cout << "Player 2 wins!" << endl;
             }
         }
-        else{
+        else if (gameEnd){
             if (!firstPlayer){
                 cout << "Player 1 wins!" << endl;
             }
