@@ -65,13 +65,16 @@ private :
  bool scoreHappend = false;
  //Players should switch at the end of the turn
  bool shouldSwitch = true;
- //
+ //Is it a new turn
  bool newTurn = true;
+ //Are all the balls that are pocketed this turn full
  bool allFull = true;
+ //Are all the balls that are pocketed this turn half
  bool allHalf = true;
 
-char* firstPlayerMessage = "PLAYER 1";
-char* secondPlayerMessage = "PLAYER 2";
+ //Text that is displayed for the players
+ char* firstPlayerMessage = "PLAYER 1";
+ char* secondPlayerMessage = "PLAYER 2";
 
  //Position of the pocket corners
  std::vector<std::vector<double>> POS_POCKET_CORNER_BALLS;

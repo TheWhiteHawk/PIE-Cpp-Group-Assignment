@@ -19,6 +19,7 @@ void game::OnLoop ()
     double restitutionCoefficientWalls = 0.6;
 
     for (int t=0; t<numberOfSteps; t++) {
+        //----------------------VARIABLE-UPDATE----------------------
         //update positions
         for (int n = 0; n<balls.size(); n++) {
             //update positions
@@ -121,11 +122,9 @@ void game::OnLoop ()
                             if (firstScore){
                                 if (firstPlayer){
                                     firstPlayerIsFull = isFull;
-                                    cout << "firstPlayerIsFull" << endl;
                                 }
                                 else{
                                     firstPlayerIsFull = !isFull;
-                                    cout << "!firstPlayerIsFull" << endl;
                                 }
                                 firstScore = false;
                             }
@@ -224,6 +223,8 @@ void game::OnLoop ()
     }
 
     //----------------------WINNING-CONDITIONS----------------------
+    //The player who pockets the 8-ball after pocketing all his own balls wins
+    //The player who pockets the 8-ball before pocketing all his own balls loses
     if (gameEnd && fullAllScored){
         fullHasWon = true;
     }
@@ -271,20 +272,6 @@ void game::OnLoop ()
     //---------------------ACTIONS-ON-TURN-END----------------------
     //Only execute on the first time step after pbool hasScoredlay
     if (zeroVel&&firstTimeStepAfterPlay){
-        if (allFull){
-            cout << "allFull" << endl;
-        }
-        else{
-            cout << "!allFull" << endl;
-        }
-        if (allHalf){
-            cout << "allHalf" << endl;
-        }
-        else{
-            cout << "!allHalf" << endl;
-        }
-
-
         //---------------------PLAYER-SWITCHING-CONDITIONS----------------------
         //Player switching does not happen when a player only pockets balls that belong to him during a turn
         //it does happen when any other ball is pocketed or no ball is pocketed
