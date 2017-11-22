@@ -26,7 +26,7 @@ void transformMatrix(double &cos, double &sin, std::vector<std::vector<double>> 
 
 void transformMatrixInv(double &cos, double &sin, std::vector<std::vector<double>> &M);
 
-void vectorMatrixProduct(std::vector<double> &in, std::vector<std::vector<double>> &M, std::vector<double> &out);
+int vectorMatrixProduct(std::vector<double> &in, std::vector<std::vector<double>> &M, std::vector<double> &out);
 
 void collisionReturnVelocity(std::vector<double> &velocity_1, std::vector<double> &velocity_2, double &mass_1, double &mass_2, double &restitutionCoefficient);
 

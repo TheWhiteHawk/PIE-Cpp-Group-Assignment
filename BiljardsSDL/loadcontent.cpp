@@ -38,6 +38,7 @@ bool game::LoadContent ()
 
     for(int n=0; n<POS_POCKET_CORNER_BALLS.size(); n++){
         Ball tempBall;
+        tempBall.setBallNumber(100); // so all properties can be set
         tempBall.setMass(pow(10,150));
         vector<double> tempVector {0 , 0};
         tempBall.setVelocity(tempVector);

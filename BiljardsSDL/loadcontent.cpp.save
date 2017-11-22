@@ -1,4 +1,6 @@
 #include"game.h"
+#include "assignballnumber.h"
+
 bool game::LoadContent ()
 {
     //Set mousePos
@@ -36,6 +38,7 @@ bool game::LoadContent ()
 
     for(int n=0; n<POS_POCKET_CORNER_BALLS.size(); n++){
         Ball tempBall;
+        tempBall.setBallNumber(100); // so all properties can be set
         tempBall.setMass(pow(10,150));
         vector<double> tempVector {0 , 0};
         tempBall.setVelocity(tempVector);
@@ -46,6 +49,10 @@ bool game::LoadContent ()
         tempBall.setHasScored(false);
         tempBall.setBallNumber(-1);
         POCKET_CORNER_BALLS.push_back(tempBall);
+        vector<double> testVector;
+        testVector = POCKET_CORNER_BALLS[n].getVelocity();
+        vectorPrint(testVector);
+        cout << POCKET_CORNER_BALLS[n].getBallNumber() << endl;
     }
     //cout << "TEST DINGEN:  " <<POCKET_CORNER_BALLS[0].getPosition()[0] << endl;
 
@@ -84,9 +91,9 @@ bool game::LoadContent ()
     }
 
     const double BALL_MASS = 0.170097139; //mass of the ball in kg, the mass is 6 oz
-    vector<int> nr = 
+    vector<int> nr = assignballnumber();
     for (int n = 0; n<balls.size(); n++) {
-        switch (n) {
+        /*switch (n) {
             case 0 ... 4:   balls[n].setBallNumber(n);
                                     break;
             case 5:          balls[n].setBallNumber(8);
@@ -99,7 +106,8 @@ bool game::LoadContent ()
                                     break;
             case 15:        balls[n].setBallNumber(n-1);
                                     break;
-        }
+        }*/
+        balls[n].setBallNumber(nr[n]);
         balls[n].setMass(BALL_MASS);
         balls[n].setRadius(BALL_RADIUS);
         balls[n].setVelocity(vector<double>{0,0});
