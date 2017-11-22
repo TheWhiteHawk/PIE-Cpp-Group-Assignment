@@ -2,48 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-<<<<<<< HEAD
+	<File name="game.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="45" />
+		</Cursor>
+	</File>
 	<File name="onloop.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="11774" topLine="279" />
-=======
-	<File name="vectorOperations.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1354" topLine="0" />
+			<Cursor1 position="8666" topLine="169" />
 		</Cursor>
 	</File>
-	<File name="TempTable.h" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="796" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="loadcontent.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1440" topLine="24" />
-		</Cursor>
-	</File>
-	<File name="ball.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1088" topLine="12" />
-		</Cursor>
-	</File>
-	<File name="game.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="184" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="vectorOperations.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9122" topLine="183" />
->>>>>>> dfb650620e339697509e97d2cbe555abb582cf4e
-		</Cursor>
-		<Folding>
-			<Collapse line="28" />
-			<Collapse line="54" />
-		</Folding>
-	</File>
-<<<<<<< HEAD
-=======
-	<EditorTabsLayout layout="0d240a805a156da400011c2700000002=0;BiljardsSDL:vectorOperations.h,1;BiljardsSDL:vectorOperations.cpp,2;BiljardsSDL:game.cpp,*3;BiljardsSDL:TempTable.h@layout2|name=dummy;caption=;state=2098174;dir=3;layer=0;row=0;pos=0;prop=100000;bestw=854;besth=385;minw=854;minh=385;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|name=0d240a805a156da400011c2700000002;caption=;state=2098172;dir=5;layer=0;row=0;pos=0;prop=100000;bestw=200;besth=200;minw=-1;minh=-1;maxw=-1;maxh=-1;floatx=-1;floaty=-1;floatw=-1;floath=-1|dock_size(5,0,0)=202|" />
->>>>>>> dfb650620e339697509e97d2cbe555abb582cf4e
 </CodeBlocks_layout_file>

@@ -58,14 +58,16 @@ private :
  bool firstPlayerWins;
  //First score
  bool firstScore = true;
-
+ //8-ball has been pocketed
  bool gameEnd = false;
-
-bool scoreHappend = false;
-bool shouldSwitch = true;
-bool newTurn = true;
-bool allFull = true;
-bool allHalf = true;
+ //A ball has been pocketed this turn
+ bool scoreHappend = false;
+ //Players should switch at the end of the turn
+ bool shouldSwitch = true;
+ //
+ bool newTurn = true;
+ bool allFull = true;
+ bool allHalf = true;
 
 char* firstPlayerMessage = "PLAYER 1";
 char* secondPlayerMessage = "PLAYER 2";
