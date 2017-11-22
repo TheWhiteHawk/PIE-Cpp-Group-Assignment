@@ -5,6 +5,7 @@ game::game ()
 {
  window = NULL;
  Running = true;
+ ForceQuit = false;
 }
 
 int game::OnExecute ()  {
@@ -40,6 +41,10 @@ int game::OnExecute ()  {
 
    OnRender () ;
  }
+ if (gameEnd && !ForceQuit){
+    OnEnd () ;
+ }
+
 
  Cleanup () ;
 

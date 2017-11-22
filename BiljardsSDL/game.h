@@ -9,6 +9,7 @@ class game : public TempTable
 {
 private :
  bool Running;
+ bool ForceQuit;
 
  /*
  //Screen in pixels
@@ -92,6 +93,7 @@ public :
  void OnEvent ( SDL_Event * Event ) ;
  void OnLoop () ;
  void OnRender () ;
+ void OnEnd () ;
  void Cleanup () ;
 
  void stopRunning();

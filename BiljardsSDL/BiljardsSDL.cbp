@@ -43,6 +43,7 @@
 		<Unit filename="game.h" />
 		<Unit filename="includes.h" />
 		<Unit filename="loadcontent.cpp" />
+		<Unit filename="onend.cpp" />
 		<Unit filename="onevent.cpp" />
 		<Unit filename="oninit.cpp" />
 		<Unit filename="onloop.cpp" />

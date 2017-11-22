@@ -191,17 +191,17 @@ void game::OnRender()
             radius = balls[n].getRadius();
             draw_circle(renderer, center, radius, ballColor, balls[n].getBallNumber());
         }
-        else {
+        /*else {
             center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
             radius = balls[n].getRadius();
             draw_circle(renderer, center, radius, scoredBallColor,balls[n].getBallNumber());
-        }
+        }*/
     }
 
 
 
 
-
+    /*
     SDL_Color mouseBallColor;
     if ( zeroVel == false) {
         mouseBallColor= {.r = 255, .g = 0, .b = 0};
@@ -211,23 +211,26 @@ void game::OnRender()
     }
     SDL_Point mouceCenter = {mousePos[0], mousePos[1]};
     draw_circle(renderer, mouceCenter, radius, mouseBallColor, -1);
-
+    */
     //line in shooting direction
     //Draw blue horizontal line
 
-    vector<double> relativeVector = {balls[0].getPosition()[0]-mousePos[0] , balls[0].getPosition()[1]-mousePos[1]};
-    relativeVector = {relativeVector[0] * (mouseSpeedScaling), relativeVector[1]* (mouseSpeedScaling)};
-    double magVec = vectorMagnitude(relativeVector);
-    if (magVec > maxVel) {
-        relativeVector = {relativeVector[0] * (maxVel/magVec), relativeVector[1]* (maxVel/magVec)};
+    if (zeroVel) {
+        vector<double> relativeVector = {balls[0].getPosition()[0]-mousePos[0] , balls[0].getPosition()[1]-mousePos[1]};
+        relativeVector = {relativeVector[0] * (mouseSpeedScaling), relativeVector[1]* (mouseSpeedScaling)};
+        double magVec = vectorMagnitude(relativeVector);
+        if (magVec > maxVel) {
+            relativeVector = {relativeVector[0] * (maxVel/magVec), relativeVector[1]* (maxVel/magVec)};
+        }
+        relativeVector = {relativeVector[0] * (300/maxVel), relativeVector[1]* (300/maxVel)};
+
+        SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
+        SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );
+
+        SDL_SetRenderDrawColor( renderer, 0, 0, 255, 255 );
+        SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], balls[0].getPosition()[0] + relativeVector[0], balls[0].getPosition()[1] + relativeVector[1] );
     }
-    relativeVector = {relativeVector[0] * (300/maxVel), relativeVector[1]* (300/maxVel)};
 
-	SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
-	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], mousePos[0], mousePos[1] );
-
-	SDL_SetRenderDrawColor( renderer, 0, 0, 255, 255 );
-	SDL_RenderDrawLine(renderer, balls[0].getPosition()[0], balls[0].getPosition()[1], balls[0].getPosition()[0] + relativeVector[0], balls[0].getPosition()[1] + relativeVector[1] );
 
 
 
