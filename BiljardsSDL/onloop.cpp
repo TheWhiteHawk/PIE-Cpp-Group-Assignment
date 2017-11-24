@@ -183,7 +183,6 @@ void game::OnLoop ()
         if (!balls[n].getHasScored()) {
             if ( vectorMagnitude(balls[n].getVelocity()) > pow(10,-200)){
                 zeroVel = false;
-                newTurn = false;
             }
         }
     }
@@ -325,7 +324,6 @@ void game::OnLoop ()
         //---------------------REMAINING-ACTIONS----------------------
         //Booleans that need to be reset for ever turn
         firstTimeStepAfterPlay = false;
-        newTurn = true;
         shouldSwitch = true;
         scoreHappend = false;
         allFull = true;

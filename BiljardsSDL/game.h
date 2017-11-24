@@ -65,8 +65,6 @@ private :
  bool scoreHappend = false;
  //Players should switch at the end of the turn
  bool shouldSwitch = true;
- //Is it a new turn
- bool newTurn = true;
  //Are all the balls that are pocketed this turn full
  bool allFull = true;
  //Are all the balls that are pocketed this turn half
