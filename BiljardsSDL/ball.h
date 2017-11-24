@@ -1,6 +1,6 @@
 #ifndef BALL_H_INCLUDED
 #define BALL_H_INCLUDED
-
+//Project was build on this template: http://www.grhmedia.com/SDL001.php
 #include <vector>
 
 class Ball

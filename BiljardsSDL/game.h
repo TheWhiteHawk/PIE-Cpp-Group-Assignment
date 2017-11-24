@@ -11,6 +11,7 @@ private :
  bool Running;
  bool ForceQuit;
 
+ //leftover code which is now included in TempTable
  /*
  //Screen in pixels
  const int SCREEN_WIDTH = 1440;

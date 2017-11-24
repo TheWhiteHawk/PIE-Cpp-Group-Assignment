@@ -3,7 +3,7 @@
 
 bool game::LoadContent ()
 {
-    //Set mousePos
+    //Set mousePos, the max ball velocity in pixels/s, mouseScaling (distance between the mouse and cue ball scalled to the velocity of the cueball when clicked). set some variables.
     mousePos = {0,0};
     maxVel = 1000;
     mouseSpeedScaling = 6;
@@ -11,7 +11,7 @@ bool game::LoadContent ()
     firstTimeStepAfterPlay = false;
 
 
-
+    //Set the ball positions of the corner balls, these are the round edges of the table.
     vector<double> row(2);
 
     const vector<double> X_OFFSET {CORNER_X , CORNER_X+TABLE_WIDTH};
@@ -36,6 +36,7 @@ bool game::LoadContent ()
         }
     }
 
+    //make a vector of the round corners so they can be used in collisions.
     for(int n=0; n<POS_POCKET_CORNER_BALLS.size(); n++){
         Ball tempBall;
         tempBall.setBallNumber(100); // so all properties can be set
@@ -50,13 +51,7 @@ bool game::LoadContent ()
         tempBall.setBallNumber(-1);
         POCKET_CORNER_BALLS.push_back(tempBall);
     }
-    //cout << "TEST DINGEN:  " <<POCKET_CORNER_BALLS[0].getPosition()[0] << endl;
 
-
-//    for(int n = 0; n<4; n++){
-//        vector<double> row {n , n};
-//        POS_POCKET_CORNER_BALLS.push_back(row);
-//    }
 
 
 
@@ -71,12 +66,11 @@ bool game::LoadContent ()
     tempVector[0] = TABLE_WIDTH/4+CORNER_X;
     tempVector[1] = TABLE_HEIGHT/2+CORNER_Y;
 
-    //TEST
-    //tempVector[0] = (TABLE_WIDTH/4)*3+CORNER_X;
-    //tempVector[1] = TABLE_HEIGHT+CORNER_Y;
 
-    balls[0].setPosition(tempVector);
+
+    balls[0].setPosition(tempVector); // set the position of the cue ball
     int index = 1;
+    //set the position of all the other balls.
     for (int n = 0; n<5; n++)  {
             for (int m = 0; m<(n+1); m++) {
                 tempVector[0] = (TABLE_WIDTH/4)*3+CORNER_X + n*sqrt(3)*BALL_RADIUS;
@@ -87,22 +81,9 @@ bool game::LoadContent ()
     }
 
     const double BALL_MASS = 0.170097139; //mass of the ball in kg, the mass is 6 oz
-    vector<int> nr = assignballnumber();
+    vector<int> nr = assignballnumber(); // make a vector of ball numbers which are random
+    //set all the properties of the balls
     for (int n = 0; n<balls.size(); n++) {
-        /*switch (n) {
-            case 0 ... 4:   balls[n].setBallNumber(n);
-                                    break;
-            case 5:          balls[n].setBallNumber(8);
-                                    break;
-            case 6 ... 8:   balls[n].setBallNumber(n-1);
-                                    break;
-            case 9 ... 13:   balls[n].setBallNumber(n);
-                                    break;
-            case 14:        balls[n].setBallNumber(n+1);
-                                    break;
-            case 15:        balls[n].setBallNumber(n-1);
-                                    break;
-        }*/
         balls[n].setBallNumber(nr[n]);
         balls[n].setMass(BALL_MASS);
         balls[n].setRadius(BALL_RADIUS);
@@ -110,6 +91,8 @@ bool game::LoadContent ()
         balls[n].setPreviousPosition(balls[n].getPosition());
         balls[n].setHasScored(false);
     }
+
+
 
 
 

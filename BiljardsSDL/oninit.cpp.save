@@ -19,6 +19,11 @@ bool game::OnInit ()  {
    cout << SDL_GetError ()  << endl;
    return 1;
   }
+   rendererBackgound = SDL_CreateRenderer ( window ,  - 1 , SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC ) ;
+ if ( renderer == NULL ) {
+   cout << SDL_GetError ()  << endl;
+   return 1;
+  }
 
   font = TTF_OpenFont("arial.ttf", 32);
   if ( font == NULL ) {

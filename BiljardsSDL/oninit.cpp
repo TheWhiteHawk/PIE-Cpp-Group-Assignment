@@ -8,8 +8,7 @@ bool game::OnInit ()  {
    return false;
   }
 
-
-  // win = SDL_CreateWindow ( "Image Loading" , 100 , 100 , WIDTH , HEIGHT , SDL_WINDOW_RESIZABLE ) ;
+//initialize window
   if ( ( window = SDL_CreateWindow ( "8 Ball" , 100 , 100 , SCREEN_WIDTH ,SCREEN_HEIGHT , SDL_WINDOW_SHOWN ) )  == NULL )  {
    return false;
   }
@@ -20,6 +19,7 @@ bool game::OnInit ()  {
    return 1;
   }
 
+  //initialize fonts
   font = TTF_OpenFont("arial.ttf", 32);
   if ( font == NULL ) {
    cout << SDL_GetError ()  << endl;
