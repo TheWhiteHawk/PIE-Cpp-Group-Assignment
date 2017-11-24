@@ -130,7 +130,7 @@ void game::OnLoop ()
                         }
                         //Scoring the cue ball is not counted as a ball being scored
                         if (ballNumber == 0){
-                            scoreHappend = false;
+                            cueScored = true;
                         }
                     }
                     //---------------------POCKET-CORNER-COLLISION-CHECK----------------------
@@ -272,7 +272,7 @@ void game::OnLoop ()
         //---------------------PLAYER-SWITCHING-CONDITIONS----------------------
         //Player switching does not happen when a player only pockets balls that belong to him during a turn
         //it does happen when any other ball is pocketed or no ball is pocketed
-        if (scoreHappend){
+        if (scoreHappend && !cueScored){
             if (firstPlayer){
                 if (firstPlayerIsFull){
                     if (allFull){
@@ -326,6 +326,7 @@ void game::OnLoop ()
         scoreHappend = false;
         allFull = true;
         allHalf = true;
+        cueScored = false;
 
 
         //Repositioning the cue ball when it has been pocketed

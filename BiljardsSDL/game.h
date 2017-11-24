@@ -70,6 +70,8 @@ private :
  bool allFull = true;
  //Are all the balls that are pocketed this turn half
  bool allHalf = true;
+ //Cue ball scored
+ bool cueScored = false;
 
  //Text that is displayed for the players
  char* firstPlayerMessage = "PLAYER 1";
