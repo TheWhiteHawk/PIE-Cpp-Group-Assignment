@@ -11,8 +11,6 @@ void game::OnLoop ()
     int numberOfSteps = ceil(timeInBetweenFrames/maxDt);
     double dt = (timeInBetweenFrames/numberOfSteps)/1000;
 
-
-
     //Loop for updating positions, velocities and collisions
     double rolingResistanceCoefficient = 0.010; //mu ball cloth
     double g = 9.81;
@@ -20,11 +18,8 @@ void game::OnLoop ()
     double a = a_m*PIXEL_METER_RATIO; //acceleration in px/s^2
     double restitutionCoefficientWalls = 0.6;
 
-    //bool scoreHappend = false;
-    //cout << "yes 27" << endl;
-    //shouldSwitch = true;
-    //All scored balls are full
     for (int t=0; t<numberOfSteps; t++) {
+        //----------------------VARIABLE-UPDATE----------------------
         //update positions
         for (int n = 0; n<balls.size(); n++) {
             //update positions
@@ -47,10 +42,6 @@ void game::OnLoop ()
             balls[n].setVelocity(newVel);
         }
 
-
-
-
-
         //Ball on ball collisions
         for (int i = 0; i < (balls.size() - 1); i++){
             for (int j = i; j < balls.size(); j++){
@@ -58,7 +49,6 @@ void game::OnLoop ()
                 collisionBalls(balls[i],balls[j],restitutionCoefficientBalls);
             }
         }
-
 
         //Wall collitions
         //Flat wall ranges
@@ -72,64 +62,64 @@ void game::OnLoop ()
         for (int i = 0; i < balls.size(); i++){
             //Checking if the ball has scored
             bool hasScored = balls[i].getHasScored();
-
             if (!hasScored){
-                //cout << "possible collision hasScored= false" << endl;
-                //Checking if the balls experience flat wall collisions or corner collisions
                 std::vector<double> r = balls[i].getPosition();
-
+                //----------------------SCORING-CHECK----------------------
+                //Checking if the balls experience flat wall collisions or corner collisions/scoring
                 if ((   (r[0]<A) || (r[0]>B&&r[0]<C) || (r[0]>D)   ) && ( r[1]<E || r[1]>F )){
                     //Ball is able to score or the collide on a pocket corner in this area
-                    //If statement for individual pockets
-                    //Top left pocket
-                    if (r[1]+r[0] <= POCKET_CORNER_BALLS[0].getPosition()[0]+POCKET_CORNER_BALLS[0].getPosition()[1]){
-                        hasScored = true;
-                    }
-                    //Top middle pocket
-                    if (r[1] <= POCKET_CORNER_BALLS[2].getPosition()[1]){
-                        hasScored = true;
-                    }
-                    //Top right pocket
-                    if (r[1]-r[0] <= POCKET_CORNER_BALLS[6].getPosition()[1]-POCKET_CORNER_BALLS[6].getPosition()[0]){
-                        hasScored = true;
-                    }
-                    //Bottom left pocket
-                    if (r[1]-r[0] >= POCKET_CORNER_BALLS[3].getPosition()[1]-POCKET_CORNER_BALLS[3].getPosition()[0]){
-                        hasScored = true;
-                    }
-                    //Bottom middle pocket
-                    if (r[1] >= POCKET_CORNER_BALLS[5].getPosition()[1]){
-                        hasScored = true;
-                    }
-                    //Bottom right pocket
-                    if (r[1]+r[0] >= POCKET_CORNER_BALLS[9].getPosition()[0]+POCKET_CORNER_BALLS[9].getPosition()[1]){
-                        hasScored = true;
-                    }
+                    //If statement for scoring conditions of individual pockets
+                        //Top left pocket
+                        if (r[1]+r[0] <= POCKET_CORNER_BALLS[0].getPosition()[0]+POCKET_CORNER_BALLS[0].getPosition()[1]){
+                            hasScored = true;
+                        }
+                        //Top middle pocket
+                        if (r[1] <= POCKET_CORNER_BALLS[2].getPosition()[1]){
+                            hasScored = true;
+                        }
+                        //Top right pocket
+                        if (r[1]-r[0] <= POCKET_CORNER_BALLS[6].getPosition()[1]-POCKET_CORNER_BALLS[6].getPosition()[0]){
+                            hasScored = true;
+                        }
+                        //Bottom left pocket
+                        if (r[1]-r[0] >= POCKET_CORNER_BALLS[3].getPosition()[1]-POCKET_CORNER_BALLS[3].getPosition()[0]){
+                            hasScored = true;
+                        }
+                        //Bottom middle pocket
+                        if (r[1] >= POCKET_CORNER_BALLS[5].getPosition()[1]){
+                            hasScored = true;
+                        }
+                        //Bottom right pocket
+                        if (r[1]+r[0] >= POCKET_CORNER_BALLS[9].getPosition()[0]+POCKET_CORNER_BALLS[9].getPosition()[1]){
+                            hasScored = true;
+                        }
 
-
-
+                    //----------------------ACTIONS-UPON-SCORE----------------------
+                    //Checks if a ball has scored, then it set the score variable of the ball to true
+                    //and its velocity vector to a zero vector
                     if (hasScored){
                         balls[i].setHasScored(hasScored);
                         balls[i].setVelocity(vector<double>{0,0});
                         cout << "Ball " << balls[i].getBallNumber() << " has scored" << endl;
 
-                        //Balls to player assignment
-                        int ballNumber = balls[i].getBallNumber();
-                        bool isFull;
+
+                        int ballNumber = balls[i].getBallNumber(); //Declare the ball number for compacter notation
+                        bool isFull; //Boolean for the type of the first scored ball
                         if ((ballNumber > 0) && (ballNumber != 8)){
-                            scoreHappend = true;
-                            if (ballNumber < 8 == 0){
-                            //if (ballNumber < 8){
+                            scoreHappend = true; //Boolean to keep track if balls have been scored during a turn
+                            //A check is done on which type of ball has been scored
+                            if (ballNumber < 8){
                                 isFull = true;
                                 allHalf = false;
-                                cout << "Full" << endl;
                             }
                             else{
                                 isFull = false;
                                 allFull = false;
-                                cout << "Half" << endl;
                             }
-                        if (firstScore){
+
+                            //---------------------BALL-ASSIGNMENT----------------------
+                            //Balls to player assignment when the first ball is scored
+                            if (firstScore){
                                 if (firstPlayer){
                                     firstPlayerIsFull = isFull;
                                 }
@@ -138,21 +128,24 @@ void game::OnLoop ()
                                 }
                                 firstScore = false;
                             }
-                        }
 
+                        }
+                        //Scoring the cue ball is not counted as a ball being scored
                         if (ballNumber == 0){
                             scoreHappend = false;
                         }
                     }
+                    //---------------------POCKET-CORNER-COLLISION-CHECK----------------------
+                    //Ball on corner collisions, but only if there was no score
                     else {
-                        //Ball on corner collisions, but only if there was no score
                         for (int j = 0; j < POCKET_CORNER_BALLS.size(); j++){
                             collisionBalls(balls[i],POCKET_CORNER_BALLS[j],restitutionCoefficientWalls);
                         }
                     }
                 }
+                //----------------------FLAT-WALL-COLLISION-CHECK----------------------
+                //Ball on wall collisions
                 else{
-                    //Ball on wall collisions
                     //Relevant table dimensions
                     double W = TABLE_WIDTH;
                     double H = TABLE_HEIGHT;
@@ -163,6 +156,7 @@ void game::OnLoop ()
                     double R = balls[i].getRadius();
                     std::vector<double> v = balls[i].getVelocity();
 
+                    //Collision conditions for the walls
                     if ((r[0]<CORNER_X+R) && v[0]<0){
                         v[0] = -restitutionCoefficientWalls*v[0];
                     }
@@ -182,95 +176,36 @@ void game::OnLoop ()
     }
 
 
-
+    //----------------------TURN-END-CONDITIONS----------------------
     //Check if all balls which are in play have a velocity of 0
     zeroVel = true;
     for ( int n=0; n< balls.size(); n++) {
         if (!balls[n].getHasScored()) {
             if ( vectorMagnitude(balls[n].getVelocity()) > pow(10,-200)){
                 zeroVel = false;
-                newTurn = false;
             }
         }
     }
 
-    if (zeroVel && firstTimeStepAfterPlay){
-            cout << "ZERO VELOCITY" << endl;
-        if (scoreHappend){
-        cout << "scoreHappened" << endl;
-        if (firstPlayer){
-            cout << "firstPlayer" << endl;
-            if (firstPlayerIsFull){
-                cout << "firstPlayerIsFull" << endl;
-                if (allFull){
-                    cout << "all Full" << endl;
-                    shouldSwitch = false;
-                    cout << "no 187" << endl;
-                }
-                else{
-                    shouldSwitch = true;
-                    cout << "yes 190" << endl;
-                }
-            }
-            else{
-                cout << "firstPlayerIsHalf" << endl;
-                if (allHalf){
-                    cout << "all Half" << endl;
-                    shouldSwitch = false;
-                    cout << "no 197" << endl;
-                 }
-                 else{
-                    cout << "yes 200" << endl;
-                    shouldSwitch = true;
-                }
-            }
-        }
-        else{
-            cout << "secondPlayer" << endl;
-            if (!firstPlayerIsFull){
-                cout << "firstPlayerIsHalf" << endl;
-                if (allFull){
-                    cout << "all Full" << endl;
-                    shouldSwitch = false;
-                    cout << "no 211" << endl;
-                }
-                else{
-                    shouldSwitch = true;
-                    cout << "yes 214" << endl;
-                }
-            }
-            else{
-                cout << "firstPlayerIsFull" << endl;
-                if (allHalf){
-                    cout << "all Half" << endl;
-                    shouldSwitch = false;
-                    cout << "no 222" << endl;
-                }
-                else{
-                    shouldSwitch = true;
-                    cout << "yes 224" << endl;
-                }
-            }
-        }
-    }
-    }
-
-
-
-
-
+    //----------------------END-GAME-CHECKS----------------------
     //End game and winning conditions
+
+    //The game ends when the 8-ball is pocketed
+    //The state of the game (i.e. which balls are still on the table when the 8-ball is pocketed)
+    //and the player who pockets the 8-ball determine which player wins the game
     bool fullAllScored = true;
     bool halfAllScored = true;
     bool fullHasWon;
     if (!gameEnd){
+        //A check is done for all balls to see if the entire set of balls (e.g. half or full balls) has been pocketed
         for (int i = 0; i < balls.size(); i++){
             int ballNumber = balls[i].getBallNumber();
+            //Checking all the balls except for the 8-ball and the cue ball
             if (ballNumber > 0){
                 if (ballNumber != 8){
+                    //If a ball in the full or half set has not scored the corresponding boolean is set to false
                     if (!balls[i].getHasScored()){
                         if (ballNumber < 8){
-                        //if (ballNumber < 8){
                             fullAllScored = false;
                         }
                         else{
@@ -278,73 +213,124 @@ void game::OnLoop ()
                         }
                     }
                 }
+                //The gameEnd boolean has the same value as the hasScored boolean in the 8-ball
                 else{
                     gameEnd = balls[i].getHasScored();
                 }
             }
         }
+    }
 
-        if (gameEnd && fullAllScored){
-            fullHasWon = true;
-        }
-        if (gameEnd && halfAllScored){
-            fullHasWon = false;
-        }
+    //----------------------WINNING-CONDITIONS----------------------
+    //The player who pockets the 8-ball after pocketing all his own balls wins
+    //The player who pockets the 8-ball before pocketing all his own balls loses
+    if (gameEnd && fullAllScored){
+        fullHasWon = true;
+    }
+    if (gameEnd && halfAllScored){
+        fullHasWon = false;
+    }
 
-        if (gameEnd && ((fullAllScored && !halfAllScored) || (halfAllScored && !fullAllScored))){
-            if (firstPlayerIsFull == fullHasWon){
-                firstPlayerWins = true;
-                cout << "Player 1 wins!" << endl;
-            }
-            else{
-                firstPlayerWins = false;
-                cout << "Player 2 wins!" << endl;
-            }
+    if (gameEnd && ((fullAllScored && !halfAllScored) || (halfAllScored && !fullAllScored))){
+        if (firstPlayerIsFull == fullHasWon){
+            firstPlayerWins = true;
+            cout << "Player 1 wins!" << endl;
         }
-        else if (gameEnd && fullAllScored && halfAllScored){
-            if (firstPlayer){
-                firstPlayerWins = true;
-                cout << "Player 1 wins!" << endl;
-            }
-            else{
-                firstPlayerWins = false;
-                cout << "Player 2 wins!" << endl;
-            }
+        else{
+            firstPlayerWins = false;
+            cout << "Player 2 wins!" << endl;
         }
-        else if (gameEnd){
-            if (!firstPlayer){
-                firstPlayerWins = true;
-                cout << "Player 1 wins!" << endl;
-            }
-            else{
-                firstPlayerWins = false;
-                cout << "Player 2 wins!" << endl;
-            }
+    }
+    else if (gameEnd && fullAllScored && halfAllScored){
+        if (firstPlayer){
+            firstPlayerWins = true;
+            cout << "Player 1 wins!" << endl;
         }
-        if (gameEnd){
-            cout << "Game has ended" << endl;
-            stopRunning();
+        else{
+            firstPlayerWins = false;
+            cout << "Player 2 wins!" << endl;
+        }
+    }
+    else if (gameEnd){
+        if (!firstPlayer){
+            firstPlayerWins = true;
+            cout << "Player 1 wins!" << endl;
+        }
+        else{
+            firstPlayerWins = false;
+            cout << "Player 2 wins!" << endl;
         }
     }
 
+    //----------------------GAME-END----------------------
+    if (gameEnd){
+        cout << "Game has ended" << endl;
+        stopRunning();
+    }
 
+    //---------------------ACTIONS-ON-TURN-END----------------------
     //Only execute on the first time step after pbool hasScoredlay
     if (zeroVel&&firstTimeStepAfterPlay){
-        firstTimeStepAfterPlay = false;
+        //---------------------PLAYER-SWITCHING-CONDITIONS----------------------
+        //Player switching does not happen when a player only pockets balls that belong to him during a turn
+        //it does happen when any other ball is pocketed or no ball is pocketed
+        if (scoreHappend){
+            if (firstPlayer){
+                if (firstPlayerIsFull){
+                    if (allFull){
+                        shouldSwitch = false;
+                    }
+                    else{
+                        shouldSwitch = true;
+                    }
+                }
+                else{
+                    if (allHalf){
+                        shouldSwitch = false;
+                     }
+                     else{
+                        shouldSwitch = true;
+                    }
+                }
+            }
+            else{
+                if (!firstPlayerIsFull){
+                    if (allFull){
+                        shouldSwitch = false;
+                    }
+                    else{
+                        shouldSwitch = true;
+                    }
+                }
+                else{
+                    if (allHalf){
+                        shouldSwitch = false;
+                    }
+                    else{
+                        shouldSwitch = true;
+                    }
+                }
+            }
+        }
+
+        //Switching the player
         if (shouldSwitch){
             switch (firstPlayer){
                 case true: firstPlayer = false; break;
                 case false: firstPlayer = true; break;
             }
         }
-        newTurn = true;
+
+        //---------------------REMAINING-ACTIONS----------------------
+        //Booleans that need to be reset for ever turn
+        firstTimeStepAfterPlay = false;
         shouldSwitch = true;
         scoreHappend = false;
         allFull = true;
         allHalf = true;
 
 
-
+        //Repositioning the cue ball when it has been pocketed
         if (balls[0].getHasScored() ) {
             balls[0].setHasScored(false);
             balls[0].setPosition(vector<double>{TABLE_WIDTH/4+CORNER_X,TABLE_HEIGHT/2+CORNER_Y});
