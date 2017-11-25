@@ -7,15 +7,13 @@ void game::OnRender()
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    //Render gray filled quad
-    SDL_Rect fillRect1 = { CORNER_X-CORNER_BALL_RATIO*BALL_RADIUS*2, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2, TABLE_WIDTH+CORNER_BALL_RATIO*BALL_RADIUS*4, TABLE_HEIGHT+CORNER_BALL_RATIO*BALL_RADIUS*4 };
-	SDL_SetRenderDrawColor( renderer, 120, 120, 120, 255 );
-	SDL_RenderFillRect( renderer, &fillRect1 );
-
     //Render green filled quad
-    SDL_Rect fillRect = { CORNER_X, CORNER_Y, TABLE_WIDTH, TABLE_HEIGHT };
+    SDL_Rect fillRect = { CORNER_X-CORNER_BALL_RATIO*BALL_RADIUS, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS, TABLE_WIDTH+CORNER_BALL_RATIO*BALL_RADIUS*2, TABLE_HEIGHT+CORNER_BALL_RATIO*BALL_RADIUS*2 };
 	SDL_SetRenderDrawColor( renderer, 0, 150, 0, 255 );
 	SDL_RenderFillRect( renderer, &fillRect );
+
+	//draw corners holes (triagle corners)
+    DrawCornerHoles(renderer);
 
 
 

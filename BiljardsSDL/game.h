@@ -107,6 +107,6 @@ public :
  //needed to draw stuff
  void draw_circle(SDL_Renderer * renderer, SDL_Point center, int radius, SDL_Color color, int ballNumber);
  void DrawPlayerIndicator(SDL_Renderer * renderer, double X, double Y, double W , double H);
-
+ void DrawCornerHoles(SDL_Renderer * renderer);
 } ;
 #endif // GAME_H_INCLUDED

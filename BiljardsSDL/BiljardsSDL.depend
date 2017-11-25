@@ -2,7 +2,7 @@
 1511533932 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
 	"game.h"
 
-1511530197 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
+1511627141 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
 	"includes.h"
 	<math.h>
 	"TempTable.h"
@@ -28,7 +28,7 @@
 	<SDL_image.h>
 	"game.h"
 
-1511535611 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.cpp
+1511629937 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\game.cpp
 	"game.h"
 	<SDL_ttf.h>
 
@@ -36,16 +36,16 @@
 	"game.h"
 	"assignballnumber.h"
 
-1511530778 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
+1511537372 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
 	"game.h"
 
 1511535313 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
 	"game.h"
 
-1511530819 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
+1511538263 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
 	"game.h"
 
-1511531254 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
+1511629642 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
 	"game.h"
 
 1510759904 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.h
@@ -69,7 +69,7 @@
 	<vector>
 	"../BiljardsSDL/ball.h"
 
-1511536586 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
+1511630332 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
 	"math.h"
 
 1510488727 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
@@ -173,11 +173,16 @@
 	<cstdlib>
 	<time.h>
 
-1511525620 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onend.cpp
+1511537244 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\onend.cpp
 	"game.h"
 	<SDL_ttf.h>
 
 1511374117 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onend.cpp
 	"game.h"
 	<SDL_ttf.h>
+
+1511629380 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\cornerholes.cpp
+	<SDL.h>
+	<SDL_image.h>
+	"game.h"
 
