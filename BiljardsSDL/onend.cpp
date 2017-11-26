@@ -29,7 +29,6 @@ void game::OnEnd()
         SDL_Rect dstrect;
 
         char* message;
-        //cout << firstPlayerWins << endl;
         if (firstPlayerWins) {
             message = "PLAYER 1 WINS";
         }
@@ -37,14 +36,15 @@ void game::OnEnd()
             message = "PLAYER 2 WINS";
         }
 
-
+        //here the msg is added to the render
         SDL_Color textColor = {.r = 255, .g = 255, .b = 255};
         surface = TTF_RenderText_Solid(font, message , textColor);
         texture = SDL_CreateTextureFromSurface(renderer, surface);
 
         SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
-        dstrect = { 0, 0, texW, texH };
+        dstrect = { (SCREEN_WIDTH-texW)/2, (SCREEN_HEIGHT-texH)/2, texW, texH };
 
+        //Memory freed
         SDL_FreeSurface(surface);
         SDL_RenderCopy(renderer, texture, NULL, &dstrect);
         SDL_DestroyTexture(texture);
@@ -56,7 +56,7 @@ void game::OnEnd()
 
 
 
-
+        //make the part a steady FPS
         int ticksLeft = desiredTicks - (SDL_GetTicks()-tickBeforeLastRender);
         if (ticksLeft > 0) {
             SDL_Delay(ticksLeft);

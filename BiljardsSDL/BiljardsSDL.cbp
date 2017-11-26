@@ -37,6 +37,7 @@
 		<Unit filename="ball.cpp" />
 		<Unit filename="ball.h" />
 		<Unit filename="cleanup.cpp" />
+		<Unit filename="cornerholes.cpp" />
 		<Unit filename="drawcircle.cpp" />
 		<Unit filename="drawplayerindicator.cpp" />
 		<Unit filename="game.cpp" />

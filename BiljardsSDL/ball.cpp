@@ -3,7 +3,7 @@
 #include <vector>
 
 
-
+// Set the ball position of the ball and check its size.
 void Ball::setPosition(std::vector<double> newPos){
     if (newPos.size() == 2){
         position = newPos;
@@ -14,10 +14,12 @@ void Ball::setPosition(std::vector<double> newPos){
     }
 }
 
+// Get the ball position of the ball.
 std::vector<double> Ball::getPosition(){
     return position;
 }
 
+// Set the previous ball position of the ball and check its size.
 void Ball::setPreviousPosition(std::vector<double> newPos){
     if (newPos.size() == 2){
         previousPosition = newPos;
@@ -28,10 +30,12 @@ void Ball::setPreviousPosition(std::vector<double> newPos){
     }
 }
 
+//Get the previous ball position of the ball and check its size.
 std::vector<double> Ball::getPreviousPosition(){
     return previousPosition;
 }
 
+// Set the ball velocity of the ball and check its size.
 void Ball::setVelocity(std::vector<double>newVel){
     if (ballNumber > -1) {
         if (newVel.size() == 2){
@@ -44,11 +48,12 @@ void Ball::setVelocity(std::vector<double>newVel){
     }
 }
 
+// Get the ball velocity of the ball.
 std::vector<double> Ball::getVelocity(){
     return velocity;
 }
 
-
+// Set the mass of the ball and check its sign
 void Ball::setMass(double newMass){
     if (newMass > 0){
         mass = newMass;
@@ -59,11 +64,12 @@ void Ball::setMass(double newMass){
     }
 }
 
+// Get the mass of the ball
 double Ball::getMass(){
     return mass;
 }
 
-
+//Set the radius of the ball and check its sign
 void Ball::setRadius(double newRadius){
     if (newRadius > 0){
         radius = newRadius;
@@ -74,18 +80,22 @@ void Ball::setRadius(double newRadius){
     }
 }
 
+//get the radius of the ball
 double Ball::getRadius(){
     return radius;
 }
 
+//set the hasScored bool of the ball
 void Ball::setHasScored(bool newHasScored){
     hasScored = newHasScored;
 }
 
+//get the hasScored bool of the ball
 bool Ball::getHasScored(){
     return hasScored;
 }
 
+//set the ball number if number is larger tan -2
 void Ball::setBallNumber(int newBallNumber){
     if (newBallNumber > -2){
         ballNumber = newBallNumber;
@@ -96,6 +106,7 @@ void Ball::setBallNumber(int newBallNumber){
     }
 }
 
+//get the ball number
 int Ball::getBallNumber(){
     return ballNumber;
 }

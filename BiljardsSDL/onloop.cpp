@@ -3,9 +3,7 @@ void game::OnLoop ()
 {
     time = SDL_GetTicks();
     double timeInBetweenFrames = time-previousTime;
-    //cout << "dt: " << timeInBetweenFrames << endl;
     FPS = 1000/(timeInBetweenFrames);
-    //cout << "FPS: " << FPS << endl;
     previousTime = time;
 
     int numberOfSteps = ceil(timeInBetweenFrames/maxDt);

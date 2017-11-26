@@ -1,5 +1,7 @@
 #include"game.h"
 
+
+//Release fonts, textures, surfaces and destroys the window
 void game::Cleanup ()
 {
  TTF_CloseFont(font);

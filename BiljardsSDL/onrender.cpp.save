@@ -3,23 +3,18 @@
 void game::OnRender()
 {
 
-    //Clear Render
+    //Clear Render and set the background color to black
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_RenderClear(renderer);
 
-    //Render gray filled quad
-    SDL_Rect fillRect1 = { CORNER_X-CORNER_BALL_RATIO*BALL_RADIUS*2, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2, TABLE_WIDTH+CORNER_BALL_RATIO*BALL_RADIUS*4, TABLE_HEIGHT+CORNER_BALL_RATIO*BALL_RADIUS*4 };
-	SDL_SetRenderDrawColor( renderer, 120, 120, 120, 255 );
-	SDL_RenderFillRect( renderer, &fillRect1 );
-
     //Render green filled quad
-    SDL_Rect fillRect = { CORNER_X, CORNER_Y, TABLE_WIDTH, TABLE_HEIGHT };
+    SDL_Rect fillRect = { CORNER_X-CORNER_BALL_RATIO*BALL_RADIUS, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS, TABLE_WIDTH+CORNER_BALL_RATIO*BALL_RADIUS*2, TABLE_HEIGHT+CORNER_BALL_RATIO*BALL_RADIUS*2 };
 	SDL_SetRenderDrawColor( renderer, 0, 150, 0, 255 );
 	SDL_RenderFillRect( renderer, &fillRect );
 
-    //Draw blue horizontal line
-	//SDL_SetRenderDrawColor( renderer, 0, 255, 255, 255 );
-	//SDL_RenderDrawLine( renderer,140+ time/10, 30, 140+45, 60+time/10 );
+	//draw corners holes (triagle corners)
+    DrawCornerHoles(renderer);
+
 
 
     //Divine center, radius and color for plotting circles
@@ -28,14 +23,6 @@ void game::OnRender()
     SDL_Color color = {.r = 255, .g = 255, .b = 255};
 
 
-
-    //Test Corner Radius
-    /*
-    center = {CORNER_X+CORNER_CORNER, CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS};
-    radius = CORNER_BALL_RATIO*BALL_RADIUS;
-    color = {.r = 255, .g = 255, .b = 255};
-    draw_circle(renderer, center, radius, color);
-    */
 
 
     //Plot Side Pannels
@@ -74,26 +61,13 @@ void game::OnRender()
 
     ///////////////////////////////////////////////////// Table Graphics over
 
-    //Player indicator
+    //Player 1 and 2 text
     SDL_Color playerTextColor = {.r = 255, .g = 255, .b = 255};
     int texW = 0;
     int texH = 0;
     SDL_Rect dstrect;
 
-    //char* firstPlayerMessage = "test message";
 
-    /*
-    if (!firstScore){
-        if (firstPlayerIsEven){
-            firstPlayerMessage = "PLAYER 1 IS EVEN";
-            secondPlayerMessage = "PLAYER 2 IS ODD";
-        }
-        else if (!firstPlayerIsEven){
-            firstPlayerMessage = "PLAYER 1 IS ODD";
-            secondPlayerMessage = "PLAYER 2 IS EVEN";
-        }
-    }
-    */
 
     for (int n = 0; n<2; n++) {
         switch (n) {
@@ -104,20 +78,22 @@ void game::OnRender()
         texture = SDL_CreateTextureFromSurface(renderer, surface);
         SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
         dstrect = { SCREEN_WIDTH/2, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (n-1)*texH, texW, texH };
+        //release memory
         SDL_FreeSurface(surface);
         SDL_RenderCopy(renderer, texture, NULL, &dstrect);
         SDL_DestroyTexture(texture);
     }
 
+    //plot a full and half ball if balls are assigned to the players
     SDL_Color ballIndicatorColor = {.r = 255, .g = 0, .b = 0};
     if (!firstScore){
-        if (firstPlayerIsFull){
+        if (!firstPlayerIsFull){
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
             draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 3);
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
             draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
         }
-        else if (!firstPlayerIsFull){
+        else if (firstPlayerIsFull){
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (1-0.5)*texH};
             draw_circle(renderer, center, BALL_RADIUS, ballIndicatorColor, 11);
             center = {SCREEN_WIDTH/2+texW +2*BALL_RADIUS, (CORNER_Y-CORNER_BALL_RATIO*BALL_RADIUS*2)/2 + (0-0.5)*texH};
@@ -162,7 +138,7 @@ void game::OnRender()
 
 
 
-    //Plot Balls
+    //Plot Balls with the correct colour
     SDL_Color ballColor = {.r = 255, .g = 255, .b = 255};
     SDL_Color scoredBallColor = {.r = 255, .g = 123, .b = 200};
     //cout << "balls.size() = " <<balls.size() << endl;
@@ -186,34 +162,16 @@ void game::OnRender()
             case 8: ballColor = {.r = 0, .g = 0, .b = 0}; break;
         }
         if (!balls[n].getHasScored()) {
-            //cout << "Coordinate = " << balls[n].getPosition()[0] << "  ,  " << balls[n].getPosition()[1] << endl;
             center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
             radius = balls[n].getRadius();
             draw_circle(renderer, center, radius, ballColor, balls[n].getBallNumber());
         }
-        /*else {
-            center = {balls[n].getPosition()[0], balls[n].getPosition()[1]};
-            radius = balls[n].getRadius();
-            draw_circle(renderer, center, radius, scoredBallColor,balls[n].getBallNumber());
-        }*
     }
 
 
 
-
-    /*
-    SDL_Color mouseBallColor;
-    if ( zeroVel == false) {
-        mouseBallColor= {.r = 255, .g = 0, .b = 0};
-    }
-    else {
-        mouseBallColor= {.r = 0, .g = 255, .b = 0};
-    }
-    SDL_Point mouceCenter = {mousePos[0], mousePos[1]};
-    draw_circle(renderer, mouceCenter, radius, mouseBallColor, -1);
-    */
     //line in shooting direction
-    //Draw blue horizontal line
+    //and line from the cursor to the cue ball
 
     if (zeroVel) {
         vector<double> relativeVector = {balls[0].getPosition()[0]-mousePos[0] , balls[0].getPosition()[1]-mousePos[1]};
@@ -257,6 +215,7 @@ void game::OnRender()
     SDL_QueryTexture(texture, NULL, NULL, &texW, &texH);
     dstrect = { 0, 0, texW, texH };
 
+    //release memory
     SDL_FreeSurface(surface);
     SDL_RenderCopy(renderer, texture, NULL, &dstrect);
     SDL_DestroyTexture(texture);
