@@ -21,11 +21,7 @@ public :
  //Radius of the ball in pixels
  const double BALL_RADIUS = BALL_RADIUS_M*PIXEL_METER_RATIO;
  //Pocket width/Ball diameter Ratio
-<<<<<<< HEAD
- const double POCKET_BALL_RATIO = 1.6;
-=======
  const double POCKET_BALL_RATIO = 1.6;//1.6;
->>>>>>> a6e002073972d272bf4d4c1b87614cff1971da24
  //Pocket corner radius/Ball diameter Ratio;
  const double CORNER_BALL_RATIO = 2;
  //Distance pocket corner center to table corner
