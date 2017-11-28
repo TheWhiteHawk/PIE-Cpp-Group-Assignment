@@ -30,7 +30,7 @@ vector<int> assignballnumber() {
         else if (n == 2) { // set the back corner balls to a random half an full ball.
             int corner = rand() % 2;
             if (corner == 0){
-                ind = rand() % 7 + 8;
+                ind = rand() % 7 + 7;
                 out[11] = pool[ind];
                 pool.erase (pool.begin()+ind);
                 ind = rand() % 7;
@@ -38,7 +38,7 @@ vector<int> assignballnumber() {
                 pool.erase (pool.begin()+ind);
             }
             else {
-                ind = rand() % 7 + 8;
+                ind = rand() % 7 + 7;
                 out[15] = pool[ind];
                 pool.erase (pool.begin()+ind);
                 ind = rand() % 7;

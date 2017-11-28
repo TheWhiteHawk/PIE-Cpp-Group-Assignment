@@ -72,18 +72,18 @@
 1511630332 c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
 	"math.h"
 
-1510488727 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.cpp
 	"ball.h"
 	<iostream>
 	<vector>
 
-1510482088 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
+1511720599 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\ball.h
 	<vector>
 
-1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\cleanup.cpp
 	"game.h"
 
-1511531401 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
+1511720599 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\game.h
 	"includes.h"
 	<math.h>
 	"TempTable.h"
@@ -108,22 +108,22 @@
 1511534577 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\temptable.h
 	"math.h"
 
-1511088855 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.cpp
 	<SDL.h>
 	<SDL_image.h>
 	"game.h"
 
-1511374117 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\game.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\game.cpp
 	"game.h"
 	<SDL_ttf.h>
 
-1511374117 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onevent.cpp
 	"game.h"
 
-1511088855 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\oninit.cpp
 	"game.h"
 
-1511374597 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onrender.cpp
 	"game.h"
 
 1510756952 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawcircle.h
@@ -138,7 +138,7 @@
 	"../BiljardsSDL/ball.h"
 	"../BiljardsSDL/TempTable.h"
 
-1511355852 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\loadcontent.cpp
 	"game.h"
 	"assignballnumber.h"
 
@@ -147,12 +147,12 @@
 	<SDL_image.h>
 	"game.h"
 
-1510768357 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawplayerindicator.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\drawplayerindicator.cpp
 	<SDL.h>
 	<SDL_image.h>
 	"game.h"
 
-1511531401 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onloop.cpp
 	"game.h"
 
 1511533310 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\assignballnumber.cpp
@@ -167,7 +167,7 @@
 1510847927 c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\assignballnumber.h
 	<vector>
 
-1511088855 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\assignballnumber.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\assignballnumber.cpp
 	<vector>
 	<iostream>
 	<cstdlib>
@@ -177,11 +177,16 @@
 	"game.h"
 	<SDL_ttf.h>
 
-1511374117 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onend.cpp
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\onend.cpp
 	"game.h"
 	<SDL_ttf.h>
 
 1511629380 source:c:\users\bas\documents\github\pie-cpp-group-assignment\biljardssdl\cornerholes.cpp
+	<SDL.h>
+	<SDL_image.h>
+	"game.h"
+
+1511720599 source:c:\users\ben\documents\github\pie-cpp-group-assignment\biljardssdl\cornerholes.cpp
 	<SDL.h>
 	<SDL_image.h>
 	"game.h"
